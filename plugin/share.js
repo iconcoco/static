@@ -1,22 +1,6 @@
-/**
- * 
- * @param {*} target  分享的目标
- * @param {*} config  分享的内容
- * 
- */
-var nativeShare = function(target, config) {
-    // sinaWeibo 新浪微博   weixin  微信好友   weixinFriend  微信朋友圈  QQ QQ  QZone q空间
-    // config = {
-    //     url:'',// 分享的网页链接
-    //     title:'',// 标题
-    //     desc:'',// 描述
-    //     img:'',// 图片
-    //     img_title:'',// 图片标题
-    //     from:'王俊锋的博客' // 来源
-    // };
+var nativeShare = function(target, config, elementNode) {
 
-
-    if (!arguments.length) {
+    if (!document.getElementById(elementNode)) {
         return false;
     }
 
@@ -38,6 +22,7 @@ var nativeShare = function(target, config) {
     var isWeixin = false;
 
     config = config || {};
+    this.elementNode = elementNode;
     this.url = config.url || document.location.href || '';
     this.title = config.title || document.title || '';
     this.desc = config.desc || document.title || '';
@@ -100,6 +85,20 @@ var nativeShare = function(target, config) {
         }
     };
 
+    this.html = function() {
+        var position = document.getElementById(this.elementNode);
+        var html = '<div class="label">分享到</div>' +
+            '<div class="list clearfix">' +
+            '<span data-app="sinaWeibo" class="nativeShare weibo"><i></i>新浪微博</span>' +
+            '<span data-app="weixin" class="nativeShare weixin"><i></i>微信好友</span>' +
+            '<span data-app="weixinFriend" class="nativeShare weixin_timeline"><i></i>微信朋友圈</span>' +
+            '<span data-app="QQ" class="nativeShare qq"><i></i>QQ好友</span>' +
+            '<span data-app="QZone" class="nativeShare qzone"><i></i>QQ空间</span>' +
+            '<span data-app="" class="nativeShare more"><i></i>更多</span>' +
+            '</div>';
+        // position.innerHTML = html;
+    };
+
     this.isloadqqApi = function() {
         if (isqqBrowser) {
             var b = (version.qq < 5.4) ? qApiSrc.lower : qApiSrc.higher;
@@ -151,13 +150,24 @@ var nativeShare = function(target, config) {
         }
         this.isloadqqApi();
         if (isqqBrowser || isucBrowser) {
-            this.share(target);
+            this.html();
         } else {
+            // document.write('目前该分享插件仅支持手机UC浏览器和QQ浏览器');
             alert('当前浏览器不支持该分享！')
         }
     };
 
     this.init();
+
+    var share = this;
+    var items = document.getElementsByClassName('nativeShare');
+    for (var i = 0; i < items.length; i++) {
+        items[i].onclick = function() {
+            share.share(this.getAttribute('data-app'));
+        }
+    }
+
+    share.share(target);
 
     return this;
 };
