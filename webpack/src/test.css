@@ -1,0 +1,21 @@
+
+
+.box{
+    height: 200px;
+    width: 200px;
+    border: 1px solid red;
+    background: url('./images/timg.jpg') no-repeat center center;
+
+}
+
+img{
+    width: 600px;
+    /* height: 600px; */
+    border: 1px solid red;
+}
+
+
+p{
+    display: flex;
+    background-color: red;
+}
