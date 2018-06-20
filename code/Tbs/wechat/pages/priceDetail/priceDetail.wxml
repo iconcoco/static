@@ -1,0 +1,72 @@
+<view class="conter">
+    <view class="title">
+        <image class="img1" src="{{img1}}"></image>
+    </view>
+    <view class="section2">
+        <view class="conter">
+            <view class="half-zx-price">
+                <text class="title">半包装修预估价格</text>
+                <view class="half-price-result">
+                    <view class="pa all-moneys">
+                        <text id="all_moneys">{{moneys}}</text>
+                        <text class="wan">万</text>
+                    </view>
+                    <view class="pa zx-type weishengjian">
+                        ￥
+                        <text id="toilet">{{toilet}}</text>
+                    </view>
+                    <view class="pa zx-type keting">
+                        ￥
+                        <text id="living_room">{{livingRoom}}</text>
+                    </view>
+                    <view class="pa zx-type qita">
+                        ￥
+                        <text id="other">{{other}}</text>
+                    </view>
+                    <view class="pa zx-type chufang">
+                        ￥
+                        <text id="kitchen">{{kitchen}}</text>
+                    </view>
+                    <view class="pa zx-type yangtai">
+                        ￥
+                        <text id="balcony">{{balcony}}</text>
+                    </view>
+                    <view class="pa zx-type woshi">
+                        ￥
+                        <text id="bedroom">{{bedroom}}</text>
+                    </view>
+                </view>
+                <text class="info1 info">因施工材料质量不同，具体报价以量房实测为准；</text>
+                <text class="info2 info">稍后土拨鼠装修顾问将回电您，为您免费提供更多装修咨询服务</text>
+            </view>
+            <view class="space20"></view>
+            <view>
+                <image class="img5" src="{{t_price_img1}}"></image>
+            </view>
+            <view>
+                <image class="img6" src="{{t_price_img2}}"></image>
+            </view>
+            <view>
+                <image class="img7" src="{{t_price_img3}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="tbs-footer">
+        <text>土拨鼠装修网 用心装好家</text>
+        <text>CopyRight @2008-2018浙ICP备08017760-1号</text>
+    </view>
+</view>
+<dialog id="diaLog" index= '2'>
+    <view slot="title" class="pop-header">
+        <text>温馨提示</text>
+    </view>
+    <view slot="message" class="pop-ban">
+       <text>因品牌、工程量不同，具体报价以实际量房为</text>
+       <text>准，建议预约上门量房报价。稍后客服将电话</text>
+       <text>与您联系，免费为您提供装修相关咨询。</text>
+    </view>
+    <view slot="btnGroup" class="pop-footer">
+        <text>我知道了</text>
+    </view>
+</dialog>
+

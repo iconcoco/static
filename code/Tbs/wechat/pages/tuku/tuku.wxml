@@ -1,0 +1,146 @@
+<view class="refesh" wx:if="{{isRefesh}}" bindtap="hideRefesh">
+  <icon type="waiting" size="20" />
+  <text class="refesh-font">刷新中...</text>
+</view>
+<view class="choose">
+  <view class="tab-btn flex-row font-size" onPullDownRefresh="onPullDownRefresh">
+    <text bindtap="switchTaoTu" class="tt margin-right-15 font-blod {{taotuActive?'tab-ac':''}}">套图</text>
+    <text bindtap="switchDanTu" class="dt font-blod {{dantuActive? 'tab-ac':''}}">单图</text>
+  </view>
+</view>
+<view class="choose-wrap">
+  <view class="taotu-item-wrap {{taotuActive?'':'hide'}}">
+    <view class="tab flex-row ">
+      <view bindtap="itemClick" data-id="0" class="flex-1 tab-item">{{taotuStyleDataTxt}}
+        <image class="jt {{tabType==0?'hide':''}}" src='../../images/down.png'></image>
+        <image class="jt {{tabType==0?'':'hide'}}" src='../../images/up.png'></image>
+      </view>
+      <view bindtap="itemClick" data-id="1" class="flex-1 tab-item">{{taotuLayoutDataTxt}}
+        <image class="jt {{tabType==1?'hide':''}}" src='../../images/down.png'></image>
+        <image class="jt {{tabType==1?'':'hide'}}" src='../../images/up.png'></image>
+      </view>
+      <view bindtap="itemClick" data-id="2" class="flex-1 tab-item">{{taotuAreaDataTxt}}
+        <image class="jt {{tabType==2?'hide':''}}" src='../../images/down.png'></image>
+        <image class="jt {{tabType==2?'':'hide'}}" src='../../images/up.png'></image>
+      </view>
+      <view bindtap="itemClick" data-id="3" class="flex-1 tab-item">{{taotuColorDataTxt}}
+        <image class="jt {{tabType==3?'hide':''}}" src='../../images/down.png'></image>
+        <image class="jt {{tabType==3?'':'hide'}}" src='../../images/up.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class="taotu-item-wrap">
+    <view class="tab flex-row {{dantuActive?'':'hide'}}">
+      <view bindtap="itemClick" data-id="4" class="flex-1 tab-item">{{dantuStyleDataTxt}}
+        <image class="jt {{tabType==4?'hide':''}}" src='../../images/down.png'></image>
+        <image class="jt {{tabType==4?'':'hide'}}" src='../../images/up.png'></image>
+      </view>
+      <view bindtap="itemClick" data-id="5" class="flex-1 tab-item">{{dantuPartDataTxt}}
+        <image class="jt {{tabType==5?'hide':''}}" src='../../images/down.png'></image>
+        <image class="jt {{tabType==5?'':'hide'}}" src='../../images/up.png'></image>
+      </view>
+      <view bindtap="itemClick" data-id="6" class="flex-1 tab-item">{{dantuSpaceDataTxt}}
+        <image class="jt {{tabType==6?'hide':''}}" src='../../images/down.png'></image>
+        <image class="jt {{tabType==6?'':'hide'}}" src='../../images/up.png'></image>
+      </view>
+      <view bindtap="itemClick" data-id="7" class="flex-1 tab-item">{{dantuColorDataTxt}}
+        <image class="jt {{tabType==7?'hide':''}}" src='../../images/down.png'></image>
+        <image class="jt {{tabType==7?'':'hide'}}" src='../../images/up.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class="taotulabel-wrap {{taotuActive?'':'hide'}}">
+    <view class="{{tabType==0?'':'hide'}}">
+      <view class=" item-wrap fenge {{tabType==0&&showTabItem?'':'hide'}}">
+        <text bindtap="chooseStyle" class="choose-item {{item.id==taoTuStyleDataId?'choose-item-ac': ''}}" wx:for="{{taotu.styleData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-txt="{{item.name}}">{{item.name}}</text>
+      </view>
+    </view>
+    <view class="{{tabType==1?'':'hide'}} item-wrap">
+      <text bindtap="chooseLayout" class="choose-item {{item.id==taoTuLayoutDataId?'choose-item-ac': ''}}" wx:for="{{taotu.layoutData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-txt="{{item.name}}">{{item.name}}</text>
+    </view>
+    <view class="{{tabType==2?'':'hide'}} item-wrap">
+      <text bindtap="chooseArea" class="choose-item {{item.id==taoTuAreaDataId?'choose-item-ac': ''}}" wx:for="{{taotu.areaData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-txt="{{item.name}}">{{item.name}}</text>
+    </view>
+    <view class="{{tabType==3?'':'hide'}} item-wrap">
+      <text bindtap="chooseColor" class="choose-item {{item.id !=0 ?'colors':''}} {{item.id=='140' ? 'colors_kf': ''}} {{item.id==taoTuColorDataId?'choose-item-ac': ''}}" wx:for="{{taotu.colorData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-txt="{{item.name}}"><text style="background: {{item.value}}" class="{{item.id != 0 ? 'color': ''}}"></text><text style="background: linear-gradient(#9ED110, #50B517, #179067, #476EAF, #9f49ac, #CC42A2, #FF3BA7, #FF5800, #FF8100, #FEAC00, #FFCC00, #EDE604);" class="{{item.id != 0 ? 'color': ''}}" wx:if="{{item.id==142}}"></text> {{item.name}}</text>
+    </view>
+  </view>
+  <view class="dantulabel-wrap {{dantuActive?'':'hide'}}">
+    <view class="{{tabType==4?'':'hide'}}">
+      <view class=" item-wrap fenge {{tabType==4}}">
+        <text bindtap="chooseStyle" class="choose-item {{item.id==danTuStyleDataId?'choose-item-ac': ''}}" wx:for="{{dantu.styleData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-txt="{{item.name}}">{{item.name}}</text>
+      </view>
+    </view>
+    <view class="{{tabType==5?'':'hide'}} item-wrap">
+      <text bindtap="choosePart" class="choose-item {{item.id==danTuPartDataId?'choose-item-ac': ''}}" wx:for="{{dantu.partData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-txt="{{item.name}}">{{item.name}}</text>
+    </view>
+    <view class="{{tabType==6?'':'hide'}} item-wrap">
+      <text bindtap="chooseSpace" class="choose-item {{item.id==dantuSpaceDataId?'choose-item-ac': ''}}" wx:for="{{dantu.spaceData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-txt="{{item.name}}">{{item.name}}</text>
+    </view>
+    <view class="{{tabType==7?'':'hide'}} item-wrap">
+      <text bindtap="chooseColor" class="{{item.id !=0 ?'colors':''}} {{item.id=='140' ? 'colors_kf': ''}} choose-item {{item.id==danTuColorDataId?'choose-item-ac': ''}}" wx:for="{{dantu.colorData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-txt="{{item.name}}"><text style="background: {{item.value}}" class="{{item.id != 0 ? 'color': ''}}"></text><text style="background: linear-gradient(#9ED110, #50B517, #179067, #476EAF, #9f49ac, #CC42A2, #FF3BA7, #FF5800, #FF8100, #FEAC00, #FFCC00, #EDE604);" class="{{item.id != 0 ? 'color': ''}}" wx:if="{{item.id==142}}"></text> {{item.name}}</text>
+    </view>
+  </view>
+</view>
+<scroll-view scroll-y="true" bindscrolltolower="bindscrolltolower" class="taotuContent-wrap {{taotuActive?'':'hide'}}"
+    bindtouchstart="handletouchtart"
+    bindtouchmove="handletouchmove"
+    bindtouchend='handletouchend'
+>
+    <view class="taotu-wrap flex-row">
+          <view class="taotu-left flex-1">
+              <view class="taotu-item" wx:for="{{taotuList}}"wx:if="{{index%2==0}}" wx:key="{{index}}" data-item="{{item}}" data-index="{{index}}" bindtap='toimagesLibrary'>
+                  <view><image mode="aspectFill" class="tuku-image {{item.type==3? 'ad-image': ''}}" src="{{item.img_url}}" 
+                  style="height: {{item.height /2}}rpx"></image></view>
+                  <view  class="tuku-title">
+                    <text>{{item.title}}</text>
+                  </view>
+                  <view  class="tuku-designer span">
+                    <image src='{{item.designer.icon || "../../images/tbs.png"}}'></image>
+                  </view>
+                  <view class="span tuku-designer-name">
+                    <text>{{item.designer.name || '土拨鼠'}}</text>
+                  </view>
+              </view>
+          </view>
+          <view class="taotu-right flex-1">
+            <view class="taotu-item" wx:for="{{taotuList}}" wx:if="{{index%2!==0}}" wx:key="{{index}}" data-item="{{item}}" data-index="{{index}}" bindtap='toimagesLibrary'>
+                  <view><image  wx:if="{{item.type==3}}" class="tuku-image {{item.type==3? 'ad-image': ''}}" src="{{item.img_url}}" 
+                  style="height: 336rpx;"></image>
+                  <image  mode="aspectFill" wx:if="{{item.type!==3}}" class="tuku-image {{item.type==3? 'ad-image': ''}}" src="{{item.img_url}}" 
+                  style="height: {{item.height/2}}rpx"></image>
+                  </view>
+                  <view  class="tuku-title">
+                    <text>{{item.title}}</text>
+                  </view>
+                  <view  class="tuku-designer span">
+                    <image src='{{item.designer.icon || "../../images/tbs.png"}}'></image>
+                  </view>
+                  <view class="span tuku-designer-name">
+                    <text>{{item.designer.name || '土拨鼠'}}</text>
+                  </view>
+              </view>
+          </view>
+    </view>
+</scroll-view>
+<scroll-view scroll-y="true" bindscrolltolower="bindscrolltolower" class="taotuContent-wrap {{dantuActive?'':'hide'}}"
+  bindtouchstart="handletouchtart"
+    bindtouchmove="handletouchmove"
+    bindtouchend='handletouchend'
+>
+<view class="taotu-wrap flex-row">
+          <view class="taotu-left flex-1">
+              <view class="taotu-item" wx:for="{{dantuList}}"wx:if="{{index%2==0}}" wx:key="{{index}}" data-item="{{item}}" data-index="{{index}}" bindtap='toImageSingle'>
+                  <view><image data-id="{{item.id}}"  mode="aspectFill" class="tuku-image {{item.type==3? 'ad-image': ''}}" src="{{item.img_url}}" 
+                  style="height: {{item.height /2}}rpx"></image></view>
+              </view>
+          </view>
+          <view class="taotu-right flex-1">
+            <view class="taotu-item" wx:for="{{dantuList}}" wx:if="{{index%2!==0}}" wx:key="{{index}}" data-item="{{item}}" data-index="{{index}}" bindtap='toImageSingle'>
+                  <view><image mode="aspectFill" class="tuku-image {{item.type==3? 'ad-image': ''}}" src="{{item.img_url}}" 
+                  style="height: {{item.height /2}}rpx"></image></view>
+              </view>
+          </view>
+    </view>
+</scroll-view>
+<view class="modal {{showTabItem? '': 'hide'}}" bindtap="hide"></view>

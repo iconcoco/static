@@ -1,0 +1,54 @@
+/* components/imageDetail/imageDetail.wxss */
+@import '../../app.wxss'
+.image-detail{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 999;
+  overflow: hidden;
+}
+.slide-image,swiper{
+  width: 100%;
+  height: 600rpx;
+}
+.image-wrap{
+  margin-top: 50vh;
+  transform: translateY(-500rpx)
+}
+.close{
+  width: 32rpx;
+  height: 32rpx;
+  padding: 30rpx 32rpx;
+  margin: 50rpx 0 0 50rpx;
+}
+.image-bottom{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  color: white;
+}
+.title{
+  padding: 0 0 20rpx 20rpx;
+}
+.page{
+  flex: 100rpx 0 0;
+}
+.ad-title{
+  display: flex;
+  align-items: center;
+  padding-left: 40rpx;
+  background-color: white;
+    font-size: 32rpx;
+  color: black;
+}
+.ad-btn{
+  display: flex;
+  height: 100rpx;
+  width: 240rpx;
+  border-radius: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff6c14;
+  color: white;
+}

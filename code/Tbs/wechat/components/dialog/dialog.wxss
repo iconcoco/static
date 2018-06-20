@@ -1,0 +1,56 @@
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.dialog.hide {
+  display: none;
+}
+
+.md-modal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.md-modal-inner{
+  width: 710rpx;
+  height: 580rpx;
+  position: absolute;
+  left: 50%;
+  top: 330rpx;
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+  z-index: 1000;
+}
+.md-modal-inner2 {
+  width: 640rpx;
+  height: 400rpx;
+  position: absolute;
+  left: 50%;
+  top: 330rpx;
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+  z-index: 1000;
+}
+/* .md-top {
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  position: relative;
+  margin-top: 20rpx;
+}
+ */

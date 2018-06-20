@@ -1,0 +1,27 @@
+<view class='chosecity {{isModal ? "hide" : ""}} clearfix'>
+    <view class='chosoecity_bg' catchtouchstart='hideList'>
+        <text class='close_modal'>点击此处收起</text>
+    </view>
+    <view class='chosecity_content {{isShow ? "active" : ""}}'>
+        <scroll-view class='provice' scroll-y='true'>
+            <view wx:for="{{provinceArray}}" 
+                  wx:key=''
+                  catchtap='choseProvince'
+                  data-id="{{provinceArray[index].provinceid}}"
+                  data-name="{{provinceArray[index].full_name}}"
+                  class='{{provinceArray[index].provinceid==current_p.province_id ? "active": ""}}'>
+                <text>{{provinceArray[index].order}}</text>{{provinceArray[index].full_name}}
+            </view>
+        </scroll-view>
+		 <scroll-view class='city' scroll-y='true' >
+            <view wx:for='{{cityArray}}'
+                  wx:key=''
+                  data-id="{{cityArray[index].city_id}}"
+                  data-name="{{cityArray[index].full_name}}"
+                  data-citygrade = "{{cityGrade}}"
+                  catchtap='choseCity'>
+            {{cityArray[index].full_name}}
+			</view>
+        </scroll-view>
+    </view>
+</view>

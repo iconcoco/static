@@ -1,0 +1,52 @@
+<view class="top">
+  <image class="top-img" mode="aspectFill" src='{{detailData.img_url}}'></image>
+  <view class="flex-row sjs-wrap">
+    <view style="height: 96rpx">
+      <image mode="aspectFill" src="{{detailData.designer.icon}}" class="avatat-img"></image>
+    </view>
+    <view style="height: 96rpx" class="flex-center">
+      <text class="sjsname">{{detailData.designer.name}}</text>
+    </view>
+    <view style="height: 96rpx" class="flex-center">
+      <text class="sjspng">设计师</text>
+    </view>
+  </view>
+</view>
+<view class="bot">
+  <view class="msg">
+    <text class="font-blod">留下你的信息，让TA联系你</text>
+  </view>
+  <view class="from">
+    <view class="form-item">
+      <input type="text" class="ipt-txt" name="cellphone" cursor="5" value='{{name}}' data-index='1' bindblur='inputBlur' placeholder='您的称呼' placeholder-class="placeClass-no">
+      </input>
+    </view>
+    <view class="form-item" bindtap="showCity">
+      <text data-index='2'  placeholder='选择城市' class="{{city?'placeClass':'placeClass-no'}}">{{city? city: '请选择您房屋所在的城市'}}</text>
+      <image class="arrow" src="../../images/arrow.png"></image>
+    </view>
+    <view class="form-item">
+      <input type="number" class="ipt-txt" name="cellphone" cursor="5" value='{{cellphone}}' data-index='3' bindblur='inputBlur' placeholder='联系电话' placeholder-class="placeClass-no">
+      </input>
+    </view>
+    <view class="pub-btn">
+      <button formType="submit" bindtap='submitFn'>提交</button>
+    </view>
+  </view>
+  <chooseCity id='chose_city' showCity="true" bind:choseCityEvent='component_city'></chooseCity>
+</view>
+<view class="pop  {{isWrong ? '': 'hide'}}"> {{msg}} </view>
+<dialog id="diaLog" index= '2'>
+    <view slot="title" class="pop-header">
+        <text>预约成功</text>
+    </view>
+    <view slot="message" class="pop-ban">
+       <text>您已成功预约免费设计服务。在签订合同之前不会</text>
+       <text>收取任何费用，如有疑问欢迎在装修管家致电时提</text>
+       <text>出。请留意0574来电！</text>
+    </view>
+    <view slot="btnGroup" class="pop-footer">
+        <text>我知道了</text>
+    </view>
+</dialog>
+

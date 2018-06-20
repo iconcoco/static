@@ -1,0 +1,87 @@
+ <!-- <scroll-view scroll-y='true' bindscroll='pageScroll' scroll-with-animation='true' enable-back-to-top='true' scroll-into-view='{{toView}}' class='container  {{isModal ? "active":""}}'>  -->
+ <view class='container  {{isModal ? "active":""}}'> 
+    <view id='main_bg' class=' main_bg'>
+        <view bindanimationiteration='animationend' class='broad  {{isRun ? "active" : ""}} '>
+            <label class='broad_radio fl'></label>
+            <text class='fl'> {{broadTxt.city}}{{broadTxt.name}}{{broadTxt.gentle}}已获取3份免费设计与报价  {{broadTxt.timer}}秒前</text> </view>
+        <view class='design_main'>
+
+            <view id='place_name' class='place-name'>
+
+                <text>全国限</text>
+                <text class='stress'>2000</text>
+                <text>名额，</text>
+                <text class='stress'>还剩</text>
+
+                <view class='num num_1'>
+						<label>0</label>
+				</view>
+                <view class='num'>
+						<label>{{num.ten}}</label>
+				</view>
+                <view class='num num_3'>
+						<label>{{num.per}}</label>
+				</view>
+
+
+                <text class='stress'>名</text>
+            </view>
+            <!--提交发单的表单  -->
+            <form bindsubmit='formSubmit'>
+                <view class='form-item'>
+                    <input  bindfocus='iptfocus' maxlength='10' bindblur='iptblur' data-index='1' name='ownername' type='text' placeholder-class='placeholder' placeholder='{{holder ? " " : "请输入您的称呼"}}' value='{{formdata.name}}'></input>
+                </view>
+
+                <view class='form-item address'>
+                    <label catchtap='showCity' class='belong-city {{position[1].city_id ? "" : "placeholder"}}'>{{position[1].city_id == 0 ? "请选择您房屋所在的城市" : position[0].full_name}} {{position[1].city_id == 0 ? "" : position[1].full_name}}</label>
+                    <image src='../../images/arrow.png'></image>
+                </view>
+
+                <view class='form-item'>
+                    <input bindfocus='iptfocus' bindblur='iptblur'  data-index='2'  name='phone' maxlength='11' type='number' placeholder-class='placeholder' confirm-type='done' name='cellphone' placeholder='{{holder_2 ? " " : "请输入您的手机号码，获取0元设计名额"}}' value='{{formdata.cellphone}}'></input>
+                </view>
+
+                <!--隐藏域表单中提交到后台的数据  -->
+                <input class='hide' name='province' value='{{position[0].province_id}}'></input>
+                <input class='hide' name='city' value='{{position[1].city_id}}'></input>
+
+                <input class='hide' name="source" value="1227"></input>
+                <input class='hide' name="chcode" value="{{chcode}}"></input>
+                <input class='hide' name="subchannel" value="{{subchannel}}"></input>
+                <input class='hide' name="pos" value="{{pos}}"></input>
+                <input class='hide' name="channel" value="{{channel}}"></input>
+                <input class='hide' name="urlhistory" value="{{urlhistory}}"></input>
+                <input class='hide' name="userid" value="0"></input>
+
+
+                <view class='form-item' hover-class='button-hover'>
+                    <button formType='submit'>立即申请</button>
+                    <image class='finger' src='/images/finger.png'></image>
+                </view>
+            </form>
+        </view>
+    </view>
+    <view id='intro' class='introduce'>
+        <view class='bg_1'></view>
+        <view id='pro_design' class='p_design {{scrollAnimate.isShow? "active" : ""}} '>
+            <label class='pic_1'></label>
+            <label class='pic_2'></label>
+            <label class='pic_3'></label>
+        </view>
+        <view class='bg_3'></view>
+    </view>
+
+    <view class=' im_fetch  {{scrollTop.isShow? "" : "hide"}}' catchtap='backtop'>
+        <label class='label'>立即获取</label>
+        <image class='img' src='../../images/to_top.png'></image>
+    </view>
+
+ 
+
+</view>
+<!--发单错误的提示  -->
+<view class='promp  {{isWrong ? "active": ""}}'> {{msg}} </view>
+<!--引入成功之后提示的组件  -->
+ <propSucess id='sucess_pop'></propSucess> 
+<!--引入选择城市的自定义组件  -->
+<chooseCity  id='chose_city'  bind:choseCityEvent='component_city'  bind:closeBlock='close_city_component' ></chooseCity>

@@ -1,0 +1,209 @@
+/* pages/search/search.wxss */
+@import "../../app.wxss"
+.scroll-view{
+  height: 100vh;
+}
+.labelTxt{
+  display: inline-block;
+  padding: 20rpx 30rpx;
+  background-color: balck;
+  font-size: 24rpx;
+  margin: 20rpx 20rpx 0 0;
+  color: #495060;
+  background-color: #f8f8f9;
+  border-radius: 5px;
+}
+.search_wrap{
+  position: relative;
+  height: 90rpx;
+  overflow: hidden;
+}
+.clear{
+  position: absolute;
+  align-self: center;
+  font-size: 14rpx;
+  width: 32rpx;
+  height: 32rpx;
+  right: 120rpx;
+  top: 55rpx;
+  color: white;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgrey;
+  border-radius: 50%;
+}
+.clear-img{
+   width: 32rpx;
+  height: 32rpx;
+}
+.title-txt{
+  width: 310rpx;
+  text-align: center;
+  font-size: 24rpx;
+  padding-bottom: 10rpx;
+}
+.back{
+  flex: 72rpx 0 0;
+  font-size: 28rpx;
+  align-self: center;
+  padding-left: 30rpx;
+}
+.search_icons::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 20rpx;
+  height: 20rpx;
+  top: 60rpx;
+  left: 18rpx;
+  border: 2rpx solid black;
+  border-radius: 50%;
+}
+.input{
+  margin-left: 60rpx;
+  display: inline-block;
+  height: 100%;
+  width: 80%;
+  font-size: 32rpx;
+}
+.search_icons{
+  text-align: center;
+  flex: 60rpx 0 0; 
+}
+.search_icons::after{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 2rpx;
+  height: 16rpx;
+  top: 78.5rpx;
+  left: 40rpx;
+  background: black;
+  transform: rotate(-45deg);
+}
+.placeholder-class{
+  font-size: 24rpx;
+  color: #888888;
+  padding-left: 10rpx;
+}
+.noData{
+  width: 100vw;
+  height: 300rpx;
+  text-align: center;
+  margin-top: 60rpx;
+}
+.noData-img{
+   width: 230rpx;
+  height: 140rpx;
+  margin-left: -60rpx;
+}
+.noData-txt{
+  width: 400rpx;
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: 24rpx;
+  padding-bottom: 20rpx;
+  color: #80848f;
+  margin: 40rpx auto;
+ }
+.searchList-item{
+  width: 310rpx;
+  overflow: hidden;
+  margin: 0 0rpx 20rpx 0rpx;
+  border: 1px solid #f8f8f9;
+}
+.searchList-item:nth-child(even) {
+  margin-left: 40rpx;
+}
+.searchList-item-img{
+  width: 100%;
+}
+.colors{
+   flex: 0 0 116rpx;
+  padding-left: 35rpx;
+}
+.taotu-left{
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+.taotu-right{
+  margin-right: 40rpx;
+}
+.taotu-item{
+  margin-bottom: 40rpx;
+}
+.tuku-title{
+  width: 315rpx;
+  font-size: 32rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 20rpx 0;
+}
+.tuku-designer image{
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+}
+.tuku-designer-name{
+  font-size: 24rpx;
+  color: #888888;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+}
+.tuku-image-wrap{
+  width: 305rpx;
+  height: 472rpx;
+  overflow: hidden;
+}
+.tuku-image-wrap:nth-child(odd) {
+  margin-left: 40rpx;
+}
+.tuku-image-wrap:nth-child(even) {
+  margin-left: 40rpx;
+}
+.tuku-image{
+  width: 310rpx;
+  max-height: 432rpx;
+  border-radius: 5px;
+}
+.mt-40{
+  margin-top: 30rpx;
+}
+.title-txt{
+  width: 324rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  font-size: 32rpx;
+  color: black;
+}
+.name-txt{
+  font-size: 24rpx;
+  color: #888888;
+}
+.name-image{
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50% 50%;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.color{
+  position: absolute;
+  left: 30rpx;
+  display: inline-block;
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  border: .5rpx solid #f8f8f9;
+}
+.taotuContent-wrap{
+  height: 90vh;
+}
+.ad-image{
+  height: 336rpx;
+  border-radius: 5px;
+}

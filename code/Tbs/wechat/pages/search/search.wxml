@@ -1,0 +1,60 @@
+<scroll-view bindscrolltolower="bindscrolltolower" scroll-y="true" class="scroll-view">
+  <view class="search_wrap margin-15 padding-top-15 flex-row" >
+    <view' class="input-text radius-5 flex-1">
+      <image  class="search" src='../../images/search.png'></image>
+      <input class="input" bindinput="bindinput" value="{{searchText}}" type="text" focus="{{focus}}"
+      confirm-type="search"
+      auto-focus='true'  placeholder-class='placeholder-class' placeholder="想看什么？搜一搜"></input>
+    </view> 
+    <view  class="back" bindtap='back'>
+      取消
+  </view>
+  <view  class="clear {{showClear? '':'hide'}}" bindtap='clears'>
+    <image class="clear-img" src='../../images/x_1@2x.png'></image>
+  </view>
+</view>
+<view class="noData" wx:if="{{nodata}}">
+  <image class="noData-img" src='../../images/nodata.png'></image>
+  <view class="noData-txt"><text>没有搜索到“<text style="color: #000">{{searchText}}</text>”的相关案例，试试以下热门内容吧</text></view>
+</view>
+<view class="searchList margin-top-20" wx:if="{{!nodata}}">
+    <view class="taotu-wrap flex-row">
+          <view class="taotu-left flex-1">
+              <view class="taotu-item" wx:for="{{searchData}}"wx:if="{{index%2==0}}" wx:key="{{index}}" data-item="{{item}}" data-index="{{index}}" bindtap='toimagesLibrary'>
+                  <view><image mode="aspectFill" class="tuku-image {{item.type==3? 'ad-image': ''}}" src="{{item.img_url}}" 
+                  style="height: {{item.height /2}}rpx"></image></view>
+                  <view  class="tuku-title">
+                    <text>{{item.title}}</text>
+                  </view>
+                  <view  class="tuku-designer span" wx:if="{{item.type==1 && item.designer.icon}}">
+                    <image src='{{item.designer.icon}}'></image>
+                  </view>
+                  <view class="span tuku-designer-name" wx:if="{{item.type==1 && item.designer.icon}}">
+                    <text>{{item.designer.name}}</text>
+                  </view>
+              </view>
+          </view>
+          <view class="taotu-right flex-1">
+            <view class="taotu-item" wx:for="{{searchData}}" wx:if="{{index%2!==0}}" wx:key="{{index}}" data-item="{{item}}" data-index="{{index}}" bindtap='toimagesLibrary'>
+                  <view><image mode="aspectFill" class="tuku-image {{item.type==3? 'ad-image': ''}}" src="{{item.img_url}}" 
+                  style="height: {{item.height /2}}rpx"></image></view>
+                  <view  class="tuku-title">
+                    <text>{{item.title}}</text>
+                  </view>
+                  <view  class="tuku-designer span" wx:if="{{item.type==1 && item.designer.icon}}">
+                    <image src='{{item.designer.icon}}'></image>
+                  </view>
+                  <view class="span tuku-designer-name" wx:if="{{item.type==1 && item.designer.icon}}">
+                    <text>{{item.designer.name}}</text>
+                  </view>
+              </view>
+          </view>
+    </view>
+</view>
+<view class="label margin-15" wx:if="{{searchData.length <= 0}}">
+<view>大家都在搜</view>
+<view>
+    <text bindtap="labelSearch" data-item="{{item}}"class="labelTxt" wx:for="{{label}}" wx:key="{{index}}">{{item.name}}</text>
+</view>
+</view>
+</scroll-view>

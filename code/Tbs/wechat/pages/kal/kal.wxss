@@ -1,0 +1,42 @@
+/* pages/kal/kal.wxss */
+.scroll-view{
+  height: 100vh;
+}
+.kal-item{
+  position: relative;
+  height: 550rpx;
+  font-size: 0;
+  margin-bottom: 40rpx;
+}
+.kal-item-img{
+  height: 400rpx;
+  width: 100%;
+  border-radius: 5rpx 5rpx 0 0;
+}
+.kal-bottom{
+  border: 0.5rpx solid #e8e8e8;
+  border-top: none;
+  border-radius: 0 0 10rpx 10rpx;
+  padding: 40rpx 0;
+}
+.kal-title{
+  font-size: 32rpx;
+  height: 42rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0rpx 0 0 40rpx;
+}
+.kal-desc{
+  font-size: 24rpx;
+  padding: 10rpx 0 0 40rpx;
+  color: #888888;
+}
+.kal-item-sjs-avatar{
+  position: absolute;
+  bottom: 120rpx;
+  right: 30rpx;
+  border-radius: 50% 50%;
+  width: 80rpx;
+  height: 80rpx;
+}

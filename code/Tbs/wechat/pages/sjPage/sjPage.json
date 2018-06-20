@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "chooseCity": "/components/chooseCity/city",
+    "propSucess": "/components/dialog_sj/dialog"
+  }
+}

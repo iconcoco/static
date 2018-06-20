@@ -1,0 +1,91 @@
+<navigator hover-class="none" url="/pages/search/search" class="search_wrap margin-15 padding-top-15">
+  <view bingtap="toSearch" type="text" class="input-text search_icon radius-5" placeholder-class='placeholder-class' placeholder="想看什么？搜一搜"><image  class="search" src='../../images/search.png'></image></view>
+  <text class="label">想看什么？搜一搜</text>
+</navigator>
+<view scroll-y="true" class="content-wrap">
+  <!--轮播图  -->
+  <view class="swiper margin-top-15 radius-5">
+    <swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" previous-margin="20rpx" next-margin="40rpx">
+      <block wx:for="{{background}}" wx:key="{{index}}">
+        <swiper-item class="radius-5 swiper-item" bindtap="jump" data-item="{{item}}">
+            <image mode="aspectFill" class="radius-5 swiper-image" src="{{item.img_url}}" height="180px" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--热门  -->
+  <view class="hot margin-top-15 flex-row margin-15">
+    <view bindtap="tokal" class="flex-1 hot-item margin-right-20">
+        <image class="radius-5 image-hot" src="{{hotImage}}" height="180rpx" />
+      <text class="hot-txt">HOT</text>
+      <text class="hot-txt margin-top-20">本周热门案例</text>
+    </view>
+    <view bindtap="tosj" class="flex-1 hot-item">
+        <image class="radius-5 image-hot" src="{{freeImage}}" height="180rpx" />
+      <text class="hot-txt">FREE</text>
+      <text class="hot-txt margin-top-20">0元全屋设计</text>
+    </view>
+  </view>
+  <!--看设计  -->
+  <view class="view-design margin-top-30 margin-15">
+    <view>
+      <text class="view-design-txt">看设计</text>
+    </view>
+    <view>
+      <text class="view-design-sub-txt">海量家居美图，发现新家装修灵感</text>
+    </view>
+    <view class="view-design-tab flex-row margin-top-15">
+      <text class="view-design-tab-item {{item.clicked?'view-design-tab-item-active':'a'}}" wx:for="{{designList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="designTabChange">{{item.text}}
+        </text>
+      <text class="view-design-tab-more" bindtap="switchTuKu">更多</text>
+    </view>
+  </view>
+  <view class="margin-15 margin-top-15">
+    <scroll-view scroll-x="true" scroll-left="{{designScrollLeft}}" bindscrolltolower="bindscrolltolower"  class="design-scroll-view" scroll-with-animation="true">
+      <view bindtap="toTuKu" data-item="{{item}}" class="space span design-image {{designType==0?'':'hide'}}" style='width: 240rpx' wx:for="{{akj}}" wx:index="{{index}}">
+        <image mode="aspectFill" class="radius-5 image-h" src="{{item.src}}" />
+      </view>
+      <view bindtap="toTuKu" data-item="{{item}}" class="space span design-image {{designType==1?'':'hide'}}" style='width: 240rpx' wx:for="{{afg}}" wx:index="{{index}}">
+        <image mode="aspectFill" class="radius-5 image-h" src="{{item.src}}" height="150px" />
+      </view>
+      <view bindtap="toTuKu" data-item="{{item}}" class="space span design-image {{designType==2?'':'hide'}}" style='width: 240rpx' wx:for="{{ahx}}" wx:index="{{index}}">
+        <image mode="aspectFill" class="radius-5 image-h" src="{{item.src}}" height="150px" />
+      </view>
+    </scroll-view>
+  </view>
+  <view class="ad margin-15 margin-top-30" bindtap='jumpad' data-item="{{middle_advert}}">
+      <image  mode="aspectFill" class="radius-5 image-ad" src="{{middle_advert.img_url}}" height="150px" />
+  </view>
+  <view class="xgt margin-15 margin-top-40">
+    <view class="flex-row">
+      <text class="xgt-txt flex-1">{{cityName}}效果图推荐</text>
+      <navigator class="xgt-href">
+        <text class="xgt-sub-txt" bindtap="switchTuKu">更多</text>
+      </navigator>
+    </view>
+    <view class="xgt-image-wrap flex-row margin-top-30">
+      <view class="xgt-image-left">
+          <image mode="aspectFill" src='{{suites[0].img_url}}' class="xgt-image-item-1 xgt-image-href xgt-image-href-item1 radius-5" data-index="0" bindtap="jump_2"></image>
+        <view class="flex-row">
+          <image mode="aspectFill" src='{{suites[1].img_url}}' class="xgt-image-item-2 xgt-image-href xgt-image-href-item2 radius-5 span" data-index="1" bindtap="jump_2"></image>
+            <image mode="aspectFill" src='{{suites[2].img_url}}' class="xgt-image-item-3 xgt-image-href xgt-image-href-item3 radius-5 span" data-index="2" bindtap="jump_2"></image>
+        </view>
+        <view class="flex-row">
+            <image mode="aspectFill" src='{{suites[3].img_url}}' class="xgt-image-item-4 xgt-image-href xgt-image-href-item4 radius-5 span" data-index="3" bindtap="jump_2"></image>
+            <image mode="aspectFill" src='{{suites[4].img_url}}' class="xgt-image-item-5 xgt-image-href xgt-image-href-item5 radius-5 span" data-index="4" bindtap="jump_2"></image>
+        </view>
+      </view>
+      <view class="xgt-image-right flex-column">
+        <view class="xgt-image-href xgt-image-href-item6 radius-5"  data-index="5" bindtap="jump_2">
+          <image mode="aspectFill" src='{{suites[5].img_url}}' class="xgt-image-item-6"></image>
+        </view>
+        <view class="xgt-image-href xgt-image-href-item7 radius-5 flex-1" data-index="6" bindtap="jump_2">
+          <image mode="aspectFill" src='{{suites[6].img_url}}' class="xgt-image-item-7"></image>
+        </view>
+      </view>
+    </view>
+    <view class="hyp" bindtap="change_batch">
+      <image class="hyp-img" src='../../images/hyp.png'></image>
+    </view>
+  </view>
+</view>

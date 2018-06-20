@@ -1,0 +1,16 @@
+<view class='dialog {{isShow ? "hide" : ""}}'>
+    <view class="md-modal-bg" catchtouchstart ="hideDialog"></view>
+    <view class="{{index == 2? 'md-modal-inner2': 'md-modal-inner'}}">
+        <view>
+            <slot name="title"></slot>
+        </view>
+        <view>
+            <view>
+                <slot name="message"></slot>
+            </view>
+            <view catchtap="hideDialog">
+                <slot name="btnGroup"></slot>
+            </view>
+        </view>
+    </view>
+</view>

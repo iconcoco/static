@@ -1,0 +1,21 @@
+<!--pages/kal/kal.wxml-->
+<view class="refesh" wx:if="{{isRefesh}}" bindtap="hideRefesh">
+  <icon type="waiting" size="20" />
+  <text class="refesh-font">刷新中...</text>
+</view>
+<view class="kal margin-15 padding-top-15">
+  <scroll-view scroll-y="true" bindscrolltolower="bindscrolltolower" class="scroll-view">
+    <view class="kal-item" bindtap='jump' data-item="{{item}}" wx:for="{{dataList}}" wx:key="{{index}}">
+    <image  mode="aspectFill" class="kal-item-img" src="{{item.img_url}}"></image>
+    <view class="kal-bottom">
+      <view class="kal-title font-blod">
+      <text>{{item.title || '专业设计为你量身打造美家'}}</text>
+      </view>
+      <view  class="kal-desc">
+        <text>{{item.sub_title || '土拨鼠装修网'}}</text>
+      </view>
+    </view>
+    <image class="kal-item-sjs-avatar" src="{{item.designer.icon}}"></image>
+  </view>
+  </scroll-view>
+</view>

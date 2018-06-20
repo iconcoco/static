@@ -1,0 +1,135 @@
+.top-img{
+  position: relative;
+  width: 100vw;
+  height: 440rpx;
+}
+.top-img::after{
+  position: absolute;
+  top: 90%;
+  content: '';
+  width: 200vw;
+  height: 200vh;
+  background-color: white;
+  transform: rotate(-2deg);
+}
+.conent-wrap{
+  padding:0rpx 40rpx 140rpx 40rpx;
+  background-color: white;
+}
+.title{
+  font-size: 48rpx;
+  font-weight: bold;
+  width: 80%;
+}
+.sub-title{
+  margin-top: 24rpx;
+  font-size: 24rpx;
+  color: #80848f;
+}
+.sjs{
+  margin: 48rpx 0;
+  font-weight: bold;
+}
+.sjs_1{
+  margin: 70rpx 0 40rpx 0;
+  font-weight: bold;
+}
+.sjs-wrap{
+  height: 96rpx;
+}
+.avatat-img{
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50% 50%;
+  margin-right: 20rpx;
+}
+.sjs-name{
+  width: 220rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 36rpx;
+}
+.sjs-label{
+  font-size: 20rpx;
+  color: #80848f
+}
+.mfsj{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  padding: 0 20rpx;
+  align-content: center;
+  text-align: center;
+  background-color: #ff6c14;
+  color: white;
+  margin-top: 10rpx;
+}
+.jj{
+  font-size: 28rpx;
+  color: #495060;
+}
+.kjzs-txt{
+  text-align: center;
+  font-size: 24rpx;
+  color:  #495060;
+  margin: 40rpx 0 20rpx 0;
+}
+.kjzs-img{
+  width: 100%;
+  border-radius: 5px;
+  border: 1rpx solid #e8e8e8;
+}
+.slide-image{
+  border-radius: 5px;
+  width: 210rpx;
+}
+.span{
+  display: inline-block;
+}
+.scroll-view{
+  white-space: nowrap;
+  padding-bottom: 20rpx;
+}
+.slide-image{
+  width: 240rpx;
+  height: 300rpx;
+  margin-right: 20rpx;
+   box-shadow: 2px 6px 6px #e5e5e5;
+  border-radius: 5px;
+}
+.txt-center{
+  width: 240rpx;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 24rpx;
+  color:  #495060;
+  margin-top: 10rpx;
+}
+.ad{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+}
+.ad-title{
+  display: flex;
+  align-items: center;
+  padding-left: 40rpx;
+  background-color: white;
+  font-size: 32rpx;
+  color: black;
+}
+.ad-btn{
+  display: flex;
+  height: 100rpx;
+  width: 240rpx;
+  border-radius: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff6c14;
+  color: white;
+}

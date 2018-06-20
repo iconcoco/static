@@ -1,0 +1,117 @@
+<view class="conter">
+  <view class="title">
+    <image mode="aspectFill" class="img1" src="{{img1}}"></image>
+  </view>
+  <view class="section1">
+    <view class="tbs">
+      <view class="tbs-con">
+        <text class="budget">您家的装修预算</text>
+        <view class="tbs-num">
+          <image class="img2" src="{{img2}}"></image>
+        </view>
+        <view class="tbs-p clearfix">
+          <view>
+            <text>人工费： ？？？ 元</text>
+            <text>材料费： ？？？ 元</text>
+          </view>
+          <view>
+            <text>设计费： ？？？ 元</text>
+            <text>质检费： ？？？ 元</text>
+          </view>
+        </view>
+        <form bindsubmit="formSubmit">
+          <view class="form-total">
+            <view class="form-item download-arrow" catchtap='showCity'>
+              <text class='inpt-txt'  wx:if="{{position[0].province_id == 0&&!position[1].city_id == 0}}">请选择您房屋所在的城市</text>
+          <text class='inpt-txt'>{{position[0].full_name}}{{position[1].full_name}}</text>
+            </view>
+            <view class="form-item house-area">
+              <input type="digit" class="inpt-txt" name="housearea" data-index='1' bindfocus='inputFocus' bindblur='inputBlur' placeholder='{{ state1 ? " " : "请输入您的房屋面积"}}' placeholder-class="placeClass" bindinput="inptArea" value="{{formdata.housearea}}" maxlength="4">
+              </input>
+              <text class="square">㎡</text>
+            </view>
+            <view class="form-item row-index" catchtap="showHouseType">
+              <view>
+                <text id="shi">{{status1+1}}</text>室
+              </view>
+              <view>
+                <text id="ting">{{status2+1}}</text>厅
+              </view>
+              <view>
+                <text id="chu">{{status3+1}}</text>厨
+              </view>
+              <view>
+                <text id="wei">{{status4+1}}</text>卫
+              </view>
+              <view>
+                <text id="yangtai">{{status5+1}}</text>阳台
+              </view>
+            </view>
+            <view class="form-item">
+              <input type="number" class="inpt-txt" name="cellphone" data-index='2' bindfocus='inputFocus' bindblur='inputBlur' placeholder='{{ state2 ? " " : "输入手机号码，详细报价信息将发送到您的手机"}}' placeholder-class="placeClass" value="{{formdata.cellphone}}">
+              </input>
+            </view>
+            <input class="hide" name="source" value="1228"></input>
+            <input class="hide" name="city" value="{{position[1].city_id}}"></input>
+            <input class="hide" name="urlhistory" value="/pages/price/price"></input>
+            <input class="hide" name="decorate_price" value="{{decorate_price}}"></input>
+            <input class='hide' name="chcode" value="0"></input>
+            <input class='hide' name="subchannel" value="0"></input>
+            <input class='hide' name="pos" value="0"></input>
+            <input class='hide' name="channel" value="0"></input>
+            <view class="pub-btn">
+              <button formType="submit">立即计算</button>
+            </view>
+          </view>
+        </form>
+      </view>
+    </view>
+    <view class="tbs-price">
+      <image class="img3" src="{{img3}}"></image>
+    </view>
+    <view class="tbs-price">
+      <image class="img4" src="{{img4}}"></image>
+    </view>
+  </view>
+  <view class="tbs-footer">
+    <text>土拨鼠装修网 用心装好家</text>
+    <text>CopyRight @2008-2018浙ICP备08017760-1号</text>
+  </view>
+</view>
+<view class="pop  {{isWrong ? 'hide': ''}}"> {{msg}} </view>
+<choseCity id='chose_city' bind:choseCityEvent='component_city'>
+</choseCity>
+<dialog id="diaLog">
+  <view slot="title" class="house-title">您的家装预算</view>
+  <view slot="message" class="message">
+    <view class="info-pop-b">
+      <view class="info-c">
+        <view class="{{status1==index?'active':''}}" catchtap="chooseHosue" wx:for="{{info}}" wx:key="" data-key="{{index}}" data-type="1">
+          <text>{{index+1}}</text> 室
+        </view>
+      </view>
+      <view class="info-t">
+        <view class="{{status2==index?'active':''}}" catchtap="chooseHosue" wx:for="{{info}}" wx:key="" data-key="{{index}}" data-type="2">
+          <text>{{index+1}}</text> 厅
+        </view>
+      </view>
+      <view class="info-chu">
+        <view class="{{status3==index?'active':''}}" catchtap="chooseHosue" wx:for="{{info}}" wx:key="" data-key="{{index}}" data-type="3">
+          <text>{{index+1}}</text> 厨
+        </view>
+      </view>
+      <view class="info-w">
+        <view class="{{status4==index?'active':''}}" catchtap="chooseHosue" wx:for="{{info}}" wx:key="" data-key="{{index}}" data-type="4">
+          <text>{{index+1}}</text> 卫
+        </view>
+      </view>
+      <view class="info-y">
+        <view class="{{status5==index?'active':''}}" catchtap="chooseHosue" wx:for="{{info}}" wx:key="" data-key="{{index}}" data-type="5">
+          <text>{{index+1}}</text> 阳台
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="pop  {{isWrong ? 'hide': ''}}"> {{msg}} </view>
+  <view slot="btnGroup" class="btnGroup">确认</view>
+</dialog>

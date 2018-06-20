@@ -1,0 +1,181 @@
+@import "../../app.wxss"
+.choose{
+  position: relative;
+  z-index: 100;
+}
+.tab{
+  position: relative;
+  overflow-x: hidden;
+  background-color: white;
+}
+.tab-btn{
+  align-content: center;
+  justify-content: center;
+  border-bottom: 1px solid #f8f8f9;
+  background-color: white;
+}
+.dt{
+  margin-left: 40rpx;
+  color: #888888;
+  padding: 20rpx 0;
+}
+.tt{
+ color: #888888; 
+ padding: 20rpx 0;
+}
+.tab-ac{
+  border-bottom: 8rpx solid black;
+  color: black;
+}
+.tab-item{
+  display: flex;
+  flex: 1 0 0;
+  font-size: 32rpx;
+  color: black;
+    padding: 30rpx 0rpx 30rpx 30rpx;
+  justify-content: center;
+}
+.item-wrap{
+  background-color: #f8f8f9;
+  padding: 20rpx 0rpx 0 40rpx;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+.modal{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 99;
+}
+.choose-wrap{
+  position: relative;
+  z-index: 100;
+}
+.jt{
+  transform: translateY(19rpx);
+  margin-left: 10rpx;
+  width: 16rpx;
+  height: 12rpx;
+}
+.jt-ac{
+  font-size: 24rpx;
+  color: orange;
+  transform: rotate(0deg);
+  margin-top: 5rpx;
+}
+.choose-item{
+  position: relative;
+  flex: 0 0 151rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20rpx 0rpx 20rpx 0rpx;
+  margin:0 20rpx 20rpx 0;
+  background-color: white;
+}
+.colors{
+   flex: 0 0 111rpx;
+   vertical-align: top;
+  padding-left: 40rpx;
+}
+.colors_kf{
+   flex: 0 0 100rpx!important;
+   vertical-align: top!important;
+  padding-left: 55rpx!important;
+}
+.choose-item-ac{
+  border: 1rpx solid #888888;
+  background-color: black;
+  color: white;
+}
+.taotu-left{
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+.taotu-right{
+  margin-right: 40rpx;
+}
+.taotu-item{
+  margin-bottom: 40rpx;
+}
+.tuku-title{
+  width: 315rpx;
+  font-size: 32rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 20rpx 0;
+}
+.tuku-designer image{
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+}
+.tuku-designer-name{
+  font-size: 24rpx;
+  color: #888888;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+}
+.tuku-image-wrap{
+  width: 305rpx;
+  height: 472rpx;
+  overflow: hidden;
+}
+.tuku-image-wrap:nth-child(odd) {
+  margin-left: 40rpx;
+}
+.tuku-image-wrap:nth-child(even) {
+  margin-left: 40rpx;
+}
+.tuku-image{
+  width: 310rpx;
+  max-height: 432rpx;
+  border-radius: 5px;
+}
+.mt-40{
+  margin-top: 30rpx;
+}
+.title-txt{
+  width: 324rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  font-size: 32rpx;
+  color: black;
+}
+.user{
+  text-align: left;
+  padding-bottom: 20rpx;
+}
+.name-txt{
+  font-size: 24rpx;
+  color: #888888;
+}
+.name-image{
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50% 50%;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.color{
+  position: absolute;
+  left: 30rpx;
+  display: inline-block;
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  border: .5rpx solid #f8f8f9;
+}
+.taotuContent-wrap{
+  height: 90vh;
+}
+.ad-image{
+  height: 336rpx;
+  border-radius: 5px;
+}

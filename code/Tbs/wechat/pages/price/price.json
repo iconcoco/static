@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "choseCity": "/components/chooseCity/city",
+    "dialog": "/components/dialog/dialog"
+  }
+}

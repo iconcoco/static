@@ -1,0 +1,42 @@
+<view style='background-color: white;'>
+  <image mode="aspectFill" class="top-img" src='{{detailData.img_url}}'></image>
+</view>
+<view class="conent-wrap">
+  <view class="title">
+    <text>{{detailData.title}}</text>    
+  </view>
+  <view  class="sub-title">
+    <text>{{detailData.sub_title}}</text>
+  </view>
+  <view class="sjs_1"><text>设计师</text></view>
+  <view class="flex-row sjs-wrap">
+    <view  style="height: 96rpx">
+      <image mode="aspectFill" src="{{detailData.designer.icon}}" class="avatat-img"></image>
+    </view>
+    <view class="flex-1">
+      <view style="height: 44rpx"  class="sjs-name"><text>{{detailData.designer.name}}</text></view>
+      <view style="height: 20rpx"><text class="sjs-label">{{detailData.designer.position}}</text></view>
+    </view>
+    <view bindtap="toMianFeiSheJi" data-item="{{detailData}}"><text class="mfsj"  style="height: 64rpx" >找TA设计 （限免 )</text></view>
+  </view>
+  <view class="sjs_1"><text>简介</text></view>
+  <view class="jj">
+    <text>{{detailData.desc}}</text>
+  </view>
+  <view class="sjs_1"><text>空间展示</text></view>
+  <view wx:for="{{detailData.space_info}}" wx:key="{{index}}">
+    <view class="kjzs-txt">#   {{item.name}} #</view>
+    <image  class="kjzs-img"  mode="aspectFill" src='{{item.img_url}}'></image>
+  </view>
+  <view class="sjs_1"><text>或许你还想看</text></view>
+  <scroll-view scroll-x="true" class="scroll-view">
+      <view class="span" wx:for="{{detailData.recomment_case}}" wx:key="{{index}}" bindtap='toCare' data-id="{{item.id}}">
+          <image mode="aspectFill" class="slide-image"src='{{item.img_url}}'></image>
+          <view class="txt-center"><text>{{item.title}}</text></view>
+      </view>
+  </scroll-view>
+</view>
+<view class="ad flex-row">
+  <text class="flex-1 ad-title">我家装修成这样需要多少钱</text>
+  <text size="92rpx" class="ad-btn" bindtap="toPrice">立即计算</text>
+</view>

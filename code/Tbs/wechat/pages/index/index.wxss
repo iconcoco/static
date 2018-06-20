@@ -1,0 +1,191 @@
+.search_wrap{
+  position: relative;
+  flex: 84rpx 0 0;
+}
+.label{
+  position: absolute;
+  top: 55rpx;
+  left: 70rpx;
+  color: #888888;
+  font-size: 24rpx;
+}
+.content-wrap{
+  height: auto;
+  overflow-x: hidden;
+}
+.tab-wrap{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  border-top: 1rpx solid #e7e7e7;
+  background-color: white;
+}
+.tab-icon{
+  width: 38rpx;
+  height: 36rpx;
+}
+.tab-txt{
+  font-size: 24rpx;
+}
+.swiper-item{
+  text-align: center
+}
+.swiper-image{
+  width: 100%;
+  height: 300rpx;
+  margin-left: 20rpx;
+}
+.hot-item{
+  position: relative;
+}
+.image-hot{
+  width: 100%;
+  height: 360rpx;
+}
+.image-h{
+    width: 100%;
+    height: 300rpx;
+}
+.hot-txt{
+  position: absolute;
+  top: 20rpx;
+  left: 10rpx;
+  color: white;
+  font-size: 32rpx;
+}
+/*看设计  */
+.view-design{
+  border-bottom: 1px solid #e9eaec; 
+}
+.view-design-txt{
+  font-size: 52rpx;
+  font-weight: bold;
+}
+.view-design-sub-txt{
+  font-size: 24rpx;
+  color: #888888; 
+}
+.view-design-tab-item{
+  height: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-right: 60rpx;
+  padding-bottom: 20rpx;
+  margin-top: 20rpx;
+  color: #888888;
+}
+.view-design-tab-item-active{
+  color: black;
+  border-bottom: 8rpx solid black;
+}
+.view-design-tab-more{
+  flex: 1 0 0;
+  text-align: right;
+  font-size: 24rpx;
+  color: #80848f;
+  line-height: 48rpx;
+  margin-top: 20rpx;
+}
+.design-scroll-view{
+  white-space: nowrap;
+  height: 330rpx;
+  padding-right: 30rpx;
+  border-radius: 5px;
+}
+.design-image{
+  width: 100%;
+  margin-right: 20rpx;
+  height: 300rpx;
+  box-shadow: 2px 6px 8px #e5e5e5;
+  border-radius: 5px;
+}
+/*中部广告位  */
+.ad-href{
+  width: 100%;
+}
+.image-ad{
+  width: 100%;
+  height: 200rpx;
+}
+/*效果图推荐  */
+.xgt-txt{
+  font-size: 52rpx;
+  font-weight: bold;
+}
+.xgt-href{
+  padding-top: 12rpx;
+}
+.xgt-sub-txt{
+  font-size: 24rpx;
+  color: #888888;
+  overflow: hidden;
+}
+.xgt-image-left{
+  flex: 440rpx 0 0;
+  overflow: hidden;
+}
+.xgt-image-item-1{
+   width: 440rpx;
+  height:230rpx; 
+}
+.xgt-image-item-2{
+  width: 230rpx;
+  height:230rpx;
+}
+.xgt-image-item-3{
+  width: 230rpx;
+  height:230rpx;
+}
+.xgt-image-item-4{
+  width: 440rpx;
+  height:230rpx;
+}
+.xgt-image-item-5{
+  width: 440rpx;
+  height:230rpx;
+}
+.xgt-image-item-6{
+  width: 440rpx;
+  height:230rpx;
+}
+.xgt-image-item-7{
+  width: 440rpx;
+  height: 510rpx;
+}
+.xgt-image-right{
+  flex: 1 0 0;
+  margin-left: 20rpx;
+  overflow: hidden;
+}
+.xgt-image-href{
+  display: flex;
+  height: 230rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.xgt-image-href-item2{
+  margin-right: 20rpx;
+  flex: 220rpx 0 0;
+}
+.xgt-image-href-item3{
+  flex: 1 0 0;
+}
+.xgt-image-href-item4{
+  margin-right: 20rpx;
+  flex: 200rpx 0 0;
+}
+.xgt-image-href-item5{
+  flex: 1 0 0;
+}
+.hyp{
+  text-align: center;
+  height: 48rpx;
+  padding-bottom: 40rpx;
+}
+.hyp-img{
+  width: 299rpx;
+  height: 56rpx;
+  transform: scale(.5)
+}

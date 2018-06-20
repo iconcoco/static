@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/web/web",
+    "pages/tuku/tuku",
+    "pages/kal/kal",
+    "pages/sj/sj",
+    "pages/sjPage/sjPage",
+    "pages/search/search",
+    "pages/imageLibrary/imageLibrary",
+    "pages/price/price",
+    "pages/priceDetail/priceDetail",
+    "pages/kalDetail/kalDetail",
+    "pages/mianfeisheji/mianfeisheji",
+    "pages/imageSingle/imageSingle"
+  ],
+  "tabBar": {
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/01-hui@2x.png",
+        "selectedIconPath": "images/01-se@2x.png"
+      },
+      {
+        "pagePath": "pages/tuku/tuku",
+        "text": "图库",
+        "iconPath": "images/02-hui@2x.png",
+        "selectedIconPath": "images/02-se@2x.png"
+      },
+      {
+        "pagePath": "pages/kal/kal",
+        "text": "看案例",
+        "iconPath": "images/03-hui@2x.png",
+        "selectedIconPath": "images/03-se@2x.png",
+        "size": "20"
+      },
+      {
+        "pagePath": "pages/sj/sj",
+        "text": "0元设计",
+        "iconPath": "images/04-hui@2x.png",
+        "selectedIconPath": "images/04-se@2x.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "新房装修效果图",
+    "navigationBarTextStyle": "black"
+  }
+}

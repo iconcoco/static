@@ -1,0 +1,23 @@
+<!--components/imageDetail/imageDetail.wxml单图详情-->
+<scroll-view class="image-detail">
+  <image class="close" src="../../images/x@2x.png" bindtap='close'></image>
+  <view class="image-wrap">
+    <swiper indicator-dots="{{indicatorDots}}"
+     autoplay="{{autoplay}}" 
+     interval="{{interval}}" 
+     duration="{{duration}}"
+     current="{{current}}"
+     bindanimationfinish="bindanimationfinish"
+     bindchange='onSlideChangeEnd'>
+      <block wx:for="{{imageList}}" wx:index="{{index}}">
+        <swiper-item>
+          <image mode="aspectFill" src="{{item.img_url}}" class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+    <view class="ad flex-row image-bottom">
+      <text class="flex-1 ad-title">我家装修成这样需要多少钱</text>
+      <button size="92rpx" class="ad-btn" bindtap="toPrice">立即计算</button>
+    </view>
+</scroll-view>

@@ -1,0 +1,20 @@
+<!--首页发单成功之后的弹框提示-->
+<view  wx:if = "{{isShow}}" class='dialog_success'>
+	<view class='dialog_bg' catchtouchstart='closePop' ></view>
+    <view class='success_content'>
+        <!--提示的头部  -->
+        <view class='success_title'>
+           <label class='yes_icon'></label> <text>申请成功</text>
+        </view>
+        <!--提示的主要内容  -->
+        <view class='success_info'>
+				<view class='info_content'></view>
+        </view>
+        <!--提示的底部  -->
+        <view class='success_button'>
+			 		温馨提示：您已预约免费全屋设计服务。在签订合同之前不会收取任何费用，如有疑问欢迎在装修管家致电时提出。请留意0574来电！	
+        </view>
+		<!--关闭按钮  -->
+		<label class='close' catchtouchstart='closePop' >  </label>
+    </view>
+</view>
