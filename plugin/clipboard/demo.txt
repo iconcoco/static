@@ -1,0 +1,14 @@
+       var clip = new Clipboard(".img_copyUrl", {
+                    text: function(trigger) {
+                        //返回要复制的文本;
+                        return $(trigger).data("url");
+                    }
+                });
+                //实例回调
+                clip.on("success", function() {
+                    MBJ.promp("复制成功！");
+                });
+
+                clip.on('error', function(e) {
+                    MBJ.warn("出错了，请重新复制！")
+                });
