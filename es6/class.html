@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+	//在es5中 创建一个实例需要通过new 一个构造函数出才行
+	//1. ES5
+	function Person(x,y){
+		this.name = x;
+		this.age = y;
+
+	}
+	Person.prototype.log = function(){
+
+		console.log(this.name+"的年龄是"+this.age);
+
+	}
+		
+	// var j = new Person("jack","25");
+	// j.log();
+	
+	
+
+
+	//2. ES6
+	class student {
+
+		constructor(x,y){
+			this.name = x;
+			this.age = y;
+			 
+		}
+
+		log(){
+			console.log(this.name+"的年龄是"+this.age);
+
+		}
+
+		//类中的方法前面加上一个static 就相当于构造函数的静态方法
+		static show(){
+				console.log("我是静态方法");
+				console.log(this);//静态方法中的this指向的是类而不是实例;
+		}
+
+		
+	}
+
+	//2.1 es6的继承
+	// 通过extends方法 
+
+	class fun extends student{}; //声明一个fun类 继承了student方法
+
+	
+
+	var h = new student();
+	
+	//h.log();
+	//student.show(); //静态方法只能通过类来调用,不能通过实例来调用
+	
+	//h.show();  类的静态方法不能继承给实例  所以实例不能调用类的静态方法
+
+	let t = new fun("tete","5656");
+	t.log();
+
+	
+</script>

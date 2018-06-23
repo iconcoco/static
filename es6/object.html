@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+   //1. Object.is()//用于比较对象是否相等
+    let a = Object.is(NaN,NaN);
+   // console.log(a);//true
+
+    //2. Object.assign() //用来合并对象  继承  拷贝
+    //Object.assign(target,sour1,sour2)
+    let b = {a:1},
+        c = {b:21},
+        d = {c:66};
+
+    //console.log(Object.assign({},b,c,d));//{a: 1, b: 21, c: 66}
+
+    //3. Object.keys() Object.values() Object.entries()
+    var json = {
+        "name":"jack",
+        "age":"15"
+    }
+
+    for (let key of Object.keys(json)) {
+        console.log(key);//name age
+    }
+
+    for (let key of Object.values(json)) {
+        console.log(key);//jack 15
+    }
+
+    for (let key of Object.entries(json)) {
+        console.log(key);//[ "name":"jack"] ["age":"15"]
+    }
+
+    for (let [k,v] of Object.entries(json)) {
+        console.log(k);//name age
+        console.log(v);//jack 15
+    }
+
+</script>

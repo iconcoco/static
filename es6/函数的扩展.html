@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>函数的扩展</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script type="text/javascript">
+	//1.函数的参数的默认值
+  	function person(x,y="word!"){
+
+  		//1.1 函数内部再改变默认值
+  		// y = "se"; //ok
+  		// let y = "se" //报错  说明函数内部变量不能使用参数来声明
+
+		console.log(x,y);
+
+	};
+
+	//person("holle")
+
+	//2. rest参数
+	//类似Es5的 argument;形式为 (...变量名),不同argument的是  rest是一个数组,可以直接应用数组的方法
+	function pusharr(arr,...value){
+		value.forEach(item=>{
+			arr.push(item);
+		});
+
+	};
+	let a = [];
+
+	pusharr(a,1,2,3,4,5,6,7);
+
+	// console.log(a);
+
+	//3. 函数的name属性 返回函数的函数名
+	//console.log(pusharr.name); //pusharr
+
+	//4. 箭头函数
+	let f = v => v;//相当于 var f = function(v){return v};
+
+	let sum = (a,b)=>a+b; //相当于 var sum = function(a,b){return a+b};
+
+	//5. 箭头函数和rest的结合
+
+	const number = (...value) => value;
+
+	//console.log(number(55,99,44,66));//[55,99,44,66] 一个数组输出返回
+
+	//6. 箭头函数的this
+
+	/*
+		(1) this取决于箭头函数在哪儿定义，而非箭头函数执行的上下文环境。箭头函数内的this值继承自外围作用域。
+		(2) new 不可用。箭头函数不能使用 new 关键字来实例化对象，不然会报错
+		(3) this 不可变。函数内置 this 不可变，在函数体内整个执行环境中为常量
+	*/
+	window.name="rose";
+
+	let obj = {
+		name:"jay",
+		paramas:{
+			name:"jack",
+			log:()=>{
+				console.log(this);
+				console.log(this.name);
+			}
+		},
+		say:function(){
+			//let name = "eason"; 
+			console.log(this);
+			let prp= {
+				name:"sandy",
+				log:()=>{
+					console.log(this);
+				}
+			}
+
+			prp.log();
+		}
+
+	}
+	
+	// obj.paramas.log(); // window rose
+	// obj.say();
+	//7. 箭头函数不能使用new
+	//new f; 报错, 
+
+	let common = {
+		fn(key){
+			console.log(key);
+			if(key==undefined){
+				console.log('未定义');
+			}
+		}
+	}
+
+	common.fn();
+
+	
+
+
+</script>

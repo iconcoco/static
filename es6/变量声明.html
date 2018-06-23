@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>let和const</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+	//console.log(b);
+	//报错  5. 说明变量不存在与解析的情况 变量声明不会提升
+	
+	const a = 99;
+
+			//console.log(a);
+		//a=100;
+
+		//1.  报错,说明const声明的常量不能再赋值 一旦声明，常量的值就不能改变
+		//console.log(a);
+
+	let b = 100;
+		// console.log(b);
+		// b = 101; 
+		//2. let 重新赋值不会再报错
+		// console.log(b);
+
+		{
+			let c = 101
+			//console.log(c);
+			//console.log(b);
+			// 3. 自身作用域找不到的时候会向上一级作用域查找
+			//console.log(a);
+		}
+
+	//console.log(c);
+	 //报错 4.  说明let声明的变量是有作用域之分的
+
+	 {
+	 	// console.log(b);
+
+	 	// let b = 104;
+
+	 	//报错  6. 出现暂时性死区 因为在块作用域中又重新声明了变量,所以访问的时候不会再向上一层查找  跟变量不会提升一个道理
+	 }
+
+
+	// let b = 105;
+	//报错  7. 在用以作用域中 不允许重复声明变量!
+
+	//8. 结构赋值
+	let [f,j,k] = [11,56,89];
+	console.log(f);
+	console.log(j);
+	console.log(k);
+
+	/*
+	总结!
+	1.const声明的常量一旦声明不能再改变
+	2.let 可以重复赋值但是有作用域之分  外层作用域不能访问里层作用域的变量
+	3.let 不允许重复声明变量,即上面let b之后就不能再let b了
+	4.let 访问作用域先从自身找 如果找不到会向上一层找
+	5.es6 中不再存在变量提升
+	6.结构赋值
+	*/
+
+</script>
