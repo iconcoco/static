@@ -50,7 +50,9 @@ module.exports = {
     entry:{
         index:'./src/page/index/index.js',
         about:'./src/page/about/index.js',
-        vendor:['vue','jquery']
+        r:'./src/page/r-de/index.js',
+        vendor:['vue','jquery'],
+        react:['react']
     },
     output:{
         path:path.resolve(__dirname,'./dist/'),
