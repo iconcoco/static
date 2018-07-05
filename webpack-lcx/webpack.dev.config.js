@@ -52,7 +52,7 @@ module.exports = {
         about:'./src/page/about/index.js',
         r:'./src/page/r-de/index.js',
         vendor:['vue','jquery'],
-        react:['react']
+        // react:['react']
     },
     output:{
         path:path.resolve(__dirname,'./dist/'),
