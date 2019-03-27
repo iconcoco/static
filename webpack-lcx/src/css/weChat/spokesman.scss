@@ -1,0 +1,629 @@
+@import './../common/normaly.css';
+
+@function size($px){
+    @return ($px/100)*1rem;
+}
+
+$carespayColor:#f7b52c;
+
+html,body{
+    height: 100%;
+    background-color: #ebebeb;
+}
+
+.per33{
+    width: 33%;
+}
+
+.ing{
+    color: $carespayColor !important;
+}
+
+.no{
+    color: red !important;
+}
+
+.yes{
+    color: green !important;
+}
+
+button{
+    border: none;
+    outline: 0;
+}
+
+.banner{
+    max-width: size(750);
+    margin:0 auto;
+}
+.el-select-dropdown__item{
+    text-align: center;
+}
+
+//活动宣传的banner
+.banner-ad{
+    width: 100%;
+    height: size(360);
+    background: url(../../images/weChat/banner-ad.png) no-repeat center center;
+    background-size: 100% 100%;
+    position: relative;
+    z-index: 22;
+}
+
+
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 0 size(30);
+    padding-top: size(360);
+}
+.query-container{
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    background-color: #fff;
+    .handle{
+        // position: absolute;
+        width: 100%;
+        // bottom: size(10);
+        padding: 0 size(30);
+        // left: 0;
+        margin-top: size(80);
+        button{
+            width: 100%;
+            height: size(88);
+            margin-bottom: size(20);
+            font-size: size(30);
+            float: left;
+            border-radius: size(6);
+        }
+        .record{
+            background-color: #fff;
+            border: 1px solid $carespayColor;
+            color: $carespayColor;
+            &.disabled{
+                background-color: #f2f2f2;
+                border-color: #999;
+                color: #999;
+            }
+        }
+        .receive{
+            background-color: $carespayColor;
+            color: #fff;
+            &.disabled{
+                background-color: #999999;
+            }
+        }
+    }
+    //分享按钮
+    .share-link{
+        span{
+            display: inline-block;
+            width: size(47);
+            height: size(47);
+            background:url(../../images/weChat/link.png) no-repeat center center;
+            background-size: 100% 100%;
+            vertical-align: middle;
+            margin-right: size(10);
+        }
+        height: size(90);
+        width: size(270);
+        border-radius: 6px;
+        background-color: $carespayColor;
+        font-size: size(30);
+        color: #fff;
+    }
+    //推荐0
+    .rec-0{
+        padding:0 size(28);
+        padding-top: size(50);
+        p{
+            font-size: size(30);
+            color: #333333;
+            line-height: size(50);
+            margin-bottom: size(50);
+        }
+    }
+    //有效推荐
+    .eff{
+        h3{
+            line-height: size(100);
+            font-size: size(32);
+            color: #333333;
+            font-weight: normal;
+            border-bottom: 1px solid #e6e6e6;
+            text-align: left;
+            padding: 0 size(30);
+        }
+        >div{
+            padding: 0 size(30);
+        }
+        p{
+            line-height: size(90);
+            border-bottom: 1px solid #e6e6e6;
+            color: #999999;
+            font-size: size(30);
+            text-align: left;
+            b{
+                float: right;
+                color: #333;
+            }
+            span{
+                color: red;
+            }
+        }
+        .tip{
+            border-bottom: none;
+            line-height:size(40);
+            font-size: size(24);
+            margin-top: size(20);
+        }
+    }
+}
+
+.record-container{
+    background-color: #fff;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: size(20);
+    h3{
+        font-size: size(32);
+        text-align: left;
+        color: #333;
+        line-height: size(100);
+        border-bottom: 1px solid #e6e6e6;
+        font-weight: normal;
+        padding: 0 size(30);
+        position: relative;
+        z-index: 22;
+        background-color: #fff;
+    }
+    .table-container{
+        padding: 0 size(30);
+        position: relative;
+        padding-top: size(100);
+        margin-top: size(-100);
+        height: 100%;
+        overflow: hidden;
+        div{
+            padding: 0 size(30);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            top: 0;
+            left: 0;
+            padding-top: size(100);
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+    table{
+        width: 100%;
+        border-collapse:collapse;
+        &.table-title{
+            position: relative;
+            background-color: #fff;
+            z-index: 22;
+        }
+        &.page-show{
+            thead{
+                visibility: hidden;
+                th{
+                    border: none;
+                }
+            }
+        }
+        th{
+            font-size: size(30);
+            font-weight: 400;
+        }
+        td{
+            font-size: size(28);
+        }
+        
+        td,th{
+            color: #333;
+            border-bottom:  1px solid #e6e6e6;
+            height: size(88);
+        }
+        .center{
+            text-align: center;
+        }
+        .left{
+            text-align: left;
+        }
+        .right{
+            text-align: right;
+        }
+    }
+}
+
+
+.account-container{
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    >div{
+        background-color: #fff;
+    }
+    h3{
+        font-size: size(34);
+        color: #333;
+        line-height: size(100);
+        border-bottom: 1px solid #e6e6e6;
+        font-weight: normal;
+        text-align: left;
+        padding: 0 size(30);
+    }
+    .account-type{
+        line-height: size(92);
+        height: size(92);
+        padding: 0 size(30);
+        text-align: left;
+        label{
+            vertical-align: middle;
+            margin-top: size(-20);
+        }
+    }
+    button{
+        width: size(690);
+        background-color: $carespayColor;
+        color: #fff;
+        font-size: size(30);
+        height: size(90);
+        border-radius: size(6);
+        &.disabled{
+            background-color: #f2f2f2;
+            border-color: #999;
+            color: #999;
+        }
+    }
+    .alipay{
+        padding: 0 size(30);
+        font-size: size(30);
+        margin-top: size(20);
+        text-align: left;
+        p{
+            line-height: size(88);
+            color: #666;
+            position: relative;
+            border-bottom: 1px solid #e6e6e6;
+            &:last-child{
+                border-bottom: none;
+            }
+            span{
+                position: relative;
+                z-index: 2;
+                background-color: #fff;
+            }
+            .el-input{
+                float: right;
+                width: 100%;
+                height: size(88);
+                position: absolute;
+                top: 0;
+                left: 0;
+                input{
+                    text-align: right;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+//领取奖励
+.withdraw-container{
+    padding-left: 0;
+    padding-right: 0;
+    .fill-info{
+        // 奖金信息
+        .bonus-info{
+            background-color: #fff;
+            padding: 0 size(30);
+            p{
+                border-bottom: 1px solid #e6e6e6;
+                line-height: size(90);
+                color: #999;
+                font-size: size(30);
+                b{
+                    float: right;
+                    color: #333;
+                }
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+        }
+        // 提现奖金
+        .bonus-withdraw{
+            background-color: #fff;
+            margin-top: size(20);
+            padding: size(20) size(30) size(110);
+            p{
+                text-align: left;
+                font-size: size(24);
+                color: #999999;
+                line-height: size(56);
+            }
+            .bonus-input{
+                height: size(64);
+                position: relative;
+                span{
+                    position: relative;
+                    color: #333;
+                    font-size: size(40);
+                    z-index: 2;
+                }
+                .el-input{
+                    width: 100%;
+                    top: 0;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    .el-input__inner{
+                        padding-left: size(40);
+                        border-top:none;
+                        border-left:none;
+                        border-right:none;
+                        border-radius: 0;
+                    }
+                }
+            }
+            button{
+                width: 100%;
+                height: size(90);
+                background-color: $carespayColor;
+                border-radius: size(6);
+                color: #fff;
+                font-size: size(30);
+                float: left;
+                &.disabled{
+                    background-color: #f2f2f2;
+                    border-color: #999;
+                    color: #999;
+                }
+            }
+        }
+    }
+    .con-info{
+       h3{
+           font-size: size(32);
+           color: #333333;
+           line-height: size(100);
+           background-color: #fff;
+           border-bottom: 1px solid #e6e6e6;
+           text-align: left;
+           font-weight: normal;
+           padding: 0 size(30);
+       } 
+       .account-info{
+            padding: 0 size(30);
+            background-color: #fff;
+       }
+       p{
+           line-height: size(90);
+           font-size: size(30);
+           background-color: #fff;
+           border-bottom: 1px solid #e6e6e6;
+           color: #999;
+           b{
+              color: #333;
+              float: right;
+              font-weight: normal;
+           }
+       }
+       .handle{
+           background-color: #fff;
+           padding: size(20) size(30);
+           button{
+               height:size(90);
+               width: size(330);
+               font-size: size(30);
+               border-radius: size(6);
+           }
+           .modify{
+               border: 1px solid $carespayColor;
+               color: $carespayColor;
+               background-color: #fff;
+           }
+           .submit{
+               background-color: $carespayColor;
+               color: #fff;
+           }
+       }
+    }
+}
+
+// .popper__arrow{
+//     left: 50% !important;
+// }
+
+//查看收款账户信息
+.check-container{
+    padding-left: 0;
+    padding-right: 0;
+
+    h3{
+        line-height: size(100);
+        color: #333333;
+        font-size: size(32);
+        border-bottom: 1px solid #e6e6e6;
+        text-align: left;
+        background-color: #fff;
+        padding: 0 size(30);
+        font-weight: normal;
+    }
+   
+    // 查看
+    .check-page{
+        padding: 0 size(30);
+        background-color: #fff;
+        padding-bottom: size(130);
+        p{
+            line-height: size(90);
+            color: #999;
+            font-size: size(30);
+            border-bottom:1px solid #e6e6e6;
+            b{
+                color: #333;
+                float: right;
+                font-weight: normal;
+            }
+        }
+        button{
+            float: left;
+            width: 100%;
+            height: size(90);
+            color: #fff;
+            background-color: $carespayColor;
+            margin: size(20) 0;
+            border-radius: size(6);
+            font-size: size(30);
+        }
+    }
+    //编辑
+    .edit-page{
+        padding: 0 size(30);
+        padding-bottom: size(20);
+        background-color: #fff;
+        p{
+            line-height: size(90);
+            border-bottom:1px solid #e6e6ee;
+            position: relative;
+            font-size: size(30);
+            b{
+                position: relative;
+                font-weight: normal;
+                z-index: 2;
+                color: #999;
+            }
+            >.el-input{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                input{
+                    text-align: right;
+                    border: none;
+                }
+            }
+            .el-select{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                input{
+                    text-align: right;
+                    border: none;
+                    padding-right: size(60);
+                }
+            }
+        }
+        .handle{
+            margin-top:size(20);
+            button{
+                height: size(90);
+                width: size(330);
+                font-size: size(30);
+                border-radius: size(6);
+            }
+            .cancel{
+                background-color: #fff;
+                border: 1px solid $carespayColor;
+                color: $carespayColor;
+            }
+            .confirm{
+                background-color: $carespayColor;
+                color: #fff;
+                &.disabled{
+                    background-color: #f2f2f2;
+                    border-color: #999;
+                    color: #999;
+                }
+            }
+        }
+    }
+}
+
+
+//注意事项
+.carespay-notice{
+    padding: 0 size(30);
+    margin-top: size(40);
+    .notice{
+        font-size: size(24);
+        color: #666;
+        line-height: size(38);
+    }
+    li{
+        font-size: size(22);
+        color: #999999;
+        line-height: size(32);
+        text-align: left;
+        margin-bottom: size(4);
+    }
+}
+
+.success{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5) !important;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    div{
+        position: absolute;
+        width: size(360);
+        height: size(300);
+        background-color: #fff;
+        top: 50%;
+        left: 50%;
+        // margin-left: size(-150);
+        // margin-top: size(-180);
+        transform: translate(-50%,-50%);
+        border-radius: size(8);
+        padding-top: size(70);
+        text-align: center;
+    }
+    span{
+        display: inline-block;
+        width: size(100);
+        height: size(100);
+        background:url(../../images/weChat/success.png) no-repeat center center;
+        background-size: 100% 100%;
+    }
+    p{
+        font-size: size(32);
+        color: #333;
+        text-align: center;
+    }
+}
+
+.guideToBind{
+    text-align: center;
+    padding-top: size(200);
+    img{
+        width: size(285);
+        height: size(316);
+    }
+    p{
+        text-align: center;
+        margin: size(67) 0;
+        font-size: size(30);
+        color: #999;
+    }
+    button{
+        width: size(300);
+        height: size(88);
+        color: #fff;
+        font-size: size(30);
+        background-color: $carespayColor;
+    }
+}
+

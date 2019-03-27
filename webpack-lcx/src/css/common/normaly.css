@@ -1,0 +1,174 @@
+@charset "UTF-8";
+a,
+blockquote,
+body,
+button,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+section,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+
+/* input {
+    outline: 0;
+    border: none;
+    -webkit-appearance: none;
+    color: #000
+} */
+
+i{
+    font-style:normal;
+}
+
+a {
+    text-decoration: none
+}
+
+img {
+    border-style: none
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font-family: "microsoft yahei"
+}
+
+select::selection {
+    outline: 0
+}
+
+select::-ms-expand {
+    display: none
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none!important;
+    margin: 0
+}
+
+input::-webkit-input-placeholder {
+    color: #ccc
+}
+
+input:-moz-placeholder {
+    color: #ccc
+}
+
+input::-moz-placeholder {
+    color: #ccc
+}
+
+input:-ms-input-placeholder {
+    color: #ccc
+}
+
+::ms-clear,
+::ms-reveal {
+    display: none
+}
+
+input[type=number] {
+    -moz-appearance: textfield
+}
+
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
+    -webkit-appearance: button
+}
+
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner,
+button::-moz-focus-inner {
+    border-style: none;
+    padding: 0
+}
+
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring,
+button:-moz-focusring {
+    outline: ButtonText dotted 1px
+}
+
+.fr {
+    float: right
+}
+
+.fl {
+    float: left
+}
+
+.clearfix::after,
+.clearfix::before {
+    content: '';
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both
+}
+
+body,button, input, optgroup, select, textarea{
+    font-family: "Microsoft YaHei", "Source Han Sans SC", "HanHei SC", "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "微软雅黑", Arial, sans-serif;
+}
+body::-webkit-scrollbar ,
+div::-webkit-scrollbar 
+{
+    /*滚动条整体样式*/
+    width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+}
+body::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb
+ {
+/*滚动条里面小方块样式*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: #aaa;
+}
+body::-webkit-scrollbar-track,
+div::-webkit-scrollbar-track 
+{
+/*滚动条里面轨道样式*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+}

@@ -1,1 +1,0 @@
-console.log('公共的js');

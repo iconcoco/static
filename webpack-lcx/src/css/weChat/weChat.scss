@@ -1,0 +1,25 @@
+@function size($px){
+    @return ($px/100)*1rem;
+}
+
+
+.el-loading-mask{
+    width: size(270);
+    height: size(270);
+    top: 50%;
+    left:50%;
+    border-radius: size(6);
+    transform:translate(-50%,-50%);
+    .el-loading-spinner{
+        margin-top: 0 !important;
+        transform:translateY(-50%);
+        i{
+            color: #fff;
+            font-size: size(70);
+        }
+        .el-loading-text{
+            color: #fff;
+            font-size: size(28);
+        }
+    }
+}

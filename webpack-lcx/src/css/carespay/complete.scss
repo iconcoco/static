@@ -1,0 +1,179 @@
+// 完善资料--个人实名认证/ 公司法人信息完善 共用一套样式 
+// Author:Lcx
+// 641616451@qq
+.complate-name {
+    .text{
+        color: #666 !important;
+        font-size: 14px !important;
+    }
+    .fs12{
+        font-size: 12px;
+    }
+    .uploading-icon{
+        height: 100px;
+        font-size: 40px;  
+        line-height: 100px; 
+    }
+    .warning-notice{
+        font-size: 12px;
+        line-height: 26px;
+        padding: 10px 10px;
+        color: rgb(170, 170, 170);
+        background: #e5e5e5;
+    }
+    .btn {
+        padding: 25px 0;
+        padding-left: 152px;
+        >span {
+            width: 80px;
+            margin-right: 10px;
+        }
+    }
+    //省市选择
+    .select-container {
+        width: 145px !important;
+        display: inline-block;
+        .el-select{
+            width: 100%;
+        }
+        &.el-select{
+            margin-top: 6px;
+            }
+        }
+    //常驻地址
+    .nation-input {
+        width: 145px;
+    }
+    .complate-name-item {
+        padding: 20px 0 25px;
+        border-bottom: 1px solid #f1f1f1;
+        &.inner{
+            padding-bottom: 0;
+        }
+        >label {
+            display: inline-block;
+            width: 152px;
+            line-height: 42px;
+            color: #666;
+            font-size: 14px;
+        }
+        >div {
+            >p {
+                // height: 42px;
+                line-height: 42px;
+                font-size: 12px;
+                color: #999;
+            }
+            .add-input {
+                width: 296px;
+            }
+        }
+    }
+    .step {
+        ul {
+            padding-top: 10px;
+            li {
+                float: left;
+                margin-right: 38px;
+                p {
+                    font-size: 12px;
+                    color: #666;
+                    text-align: left;
+                }
+                label {
+                    display: inline-block;
+                    width: 128px;
+                    height: 96px;
+                    margin: 5px 0;
+                    cursor: pointer;
+                    // background: #FFFBF5;
+                    background: #FFFBF5 url('../../images/icon/idC.png') no-repeat center center;
+                    background-size: 80px 80px;
+                    border: 1px dashed #f5f5f5;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        vertical-align: top;
+                        background-color: #FFFBF5;
+                    }
+                    &.l-3 {
+                        position: relative;
+                        .example {
+                            position: absolute;
+                            left: 100%;
+                            top: 0;
+                            display: none;
+                            width: auto;
+                            height: auto;
+                            z-index: 2;
+                        }
+                        &:hover {
+                            .example {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+                .el-upload-list__item-status-label{
+                    width: auto;
+                    background: none;
+                    margin: 0;
+                }
+                a {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    .inner-box{
+        margin-bottom: 20px;
+        .title{
+            float: left;
+            display: inline-block;
+            width: 80px;
+            line-height: 42px;
+            color: #666;
+            font-size: 12px;
+        }
+        .rules{
+            width: 150px;
+        }
+       >div{
+        float: left;
+            >p {
+                height: 42px;
+                line-height: 42px;
+                font-size: 12px;
+                color: #999;
+            }
+        }
+    }
+    .add-button{
+        text-align: center;
+        font-size: 28px !important;
+        color: #333 !important;
+        border: 1px dashed #666;
+        margin-bottom: 20px;
+        cursor: pointer;
+        &:hover{
+            box-shadow: 0 0 14px 0 #ccc;
+        }
+    }
+    .delete-button{
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        margin-top: 20px;
+        border: 1px dashed #666;
+        cursor: pointer;
+        &:hover{
+            box-shadow: 0 0 14px 0 #ccc;
+        }
+    }
+    
+    form .el-form-item__error{
+        padding-left: 0px;
+    }
+}

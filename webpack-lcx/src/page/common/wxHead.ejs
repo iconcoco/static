@@ -1,0 +1,12 @@
+<script>
+        var scr = window.screen.width;
+        scr > 500 && (scr = 500);
+        document.querySelector('html').style.fontSize = scr / 7.5 + 'px';
+        // 当页面加载时即可获取当前设备的宽度，以设计rem的值
+        window.onresize = function() {
+            var scr = window.screen.width;
+            scr > 500 && (scr = 500);
+            document.querySelector('html').style.fontSize = scr / 7.5 + 'px';
+        }
+</script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>

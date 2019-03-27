@@ -1,0 +1,693 @@
+@import './normaly.css';
+@import './theme.scss';
+
+html,
+body {
+    height: 100%;
+    background-color: #f4f5f9;
+    // overflow-x: hidden;
+    color: #666;
+}
+
+.banner {
+    max-width: 1196px;
+    min-width: 1000px;
+    margin: 0 auto;
+}
+
+.AdminPlate{
+    margin-bottom:10px;
+    padding: 0 40px;
+}
+
+.cares-color {
+    color: $--color-primary-one !important;
+}
+
+.cares-yes{
+    color: $--color-primary-success;
+}
+
+.ing{
+    color: $--color-primary-two !important;
+}
+
+.yes{
+    color: $--color-primary-success !important;
+}
+
+.no{
+    color: $--color-primary-danger !important;
+}
+
+.ING{
+    color: #999 !important;
+}
+
+.new-fn{
+    display: inline-block;
+    width: 24px;
+    height: 13px;
+    background: url(./../../images/carepay/new.png) no-repeat center center;
+    background-size: 100%;
+}
+
+.cares-icon{
+    display: inline-block;
+    width: 81px;
+    height: 53px;
+    background: url('./../../images/login/cares_logo.png') no-repeat center center;
+    background-size: 100% 100%;
+}
+
+//按钮
+.cares-button{
+    display: inline-block;
+    height: 32pxpx;
+    line-height: 32pxpx;
+    padding: 0 15px;
+    background-color: $--color-primary-two;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: 14px;
+    border-radius: 16px;
+    &:hover{
+        // background-color: $--color-primary-two-hover;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+}
+
+.cares-button-primary{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 15px;
+    background-color: $--color-primary-two;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: 14px;
+    vertical-align: middle;
+    border-radius: 16px;
+    text-align: center;
+    &:hover{
+        box-shadow: 0 4px 4px $--color-primary-two-hover;
+    }
+
+    &.pain{
+        height: 30px;
+        line-height: 30px;
+        border-radius: 15px;
+        background-color: #fefefe;
+        color: $--color-primary-two;
+        border:1px solid $--color-primary-two;
+        &:hover{
+            box-shadow: 0 3px 8px $--color-primary-two-hover;
+        }
+    }
+}
+
+.cares-button-success{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 15px;
+    background-color: $--color-primary-success;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: 14px;
+    vertical-align: middle;
+    border-radius: 16px;
+    text-align: center;
+    &:hover{
+        box-shadow: 0 3px 10px rgba(104, 170, 104,.7);
+    }
+
+    &.pain{
+        background-color: #fff;
+        color: $--color-primary-success;
+        border:1px solid $--color-primary-success-hover;
+        &:hover{
+            box-shadow: 0 3px 10px rgba(104, 170, 104,.4);
+        }
+    }
+}
+
+.cares-button-danger{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 15px;
+    background-color: $--color-primary-danger;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: 14px;
+    vertical-align: middle;
+    border-radius: 16px;
+    text-align: center;
+    &:hover{
+        // background-color: $--color-primary-danger-hover;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+
+    &.pain{
+        background-color:#fff;
+        color: #333;
+        border:1px solid #e5e5e5;
+        &:hover{
+            color: #fff;
+            border-color:$--color-primary-danger; 
+            background-color:$--color-primary-danger;
+        }
+    }
+}
+
+.cares-button-info{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 15px;
+    background-color: #aaa;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: 14px;
+    vertical-align: middle;
+    border-radius: 16px;
+    text-align: center;
+    &:hover{
+        // background-color: $--color-primary-two-hover;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+
+    &.pain{
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #ccc;
+    }
+}
+
+
+//亚马逊的图片logo
+.amazon-logo {
+    display: inline-block;
+    width: 69px;
+    height: 21px;
+    background: url('../../images//carepay/amazon.png') no-repeat center center;
+    background-size: 100%;
+    vertical-align: middle;
+}
+
+.ebay-logo {
+    display: inline-block;
+    width: 50px;
+    height: 21px;
+    background: url('../../images//carepay/ebay.png') no-repeat center center;
+    background-size: 100%;
+    vertical-align: middle;
+}
+
+.wish-logo {
+    display: inline-block;
+    width: 67px;
+    height: 25px;
+    background: url('../../images//carepay/wish.png') no-repeat center center;
+    background-size: 100%;
+    vertical-align: middle;
+}
+
+.AE-logo {
+    display: inline-block;
+    width: 100px;
+    height: 26px;
+    background: url('../../images//carepay/AE.png') no-repeat center center;
+    background-size: 100%;
+    vertical-align: middle;
+}
+
+//注册登录页
+.cares-login-header {
+    height: 83px;
+    line-height: 83px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.cares-logo {
+    display: inline-block;
+    width: 225px;
+    height: 43px;
+    background: url('./../../images/login/logo.png') no-repeat center center;
+    background-size: 100%;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.toBackLogin {
+    font-size: 14px;
+    color: #666;
+    margin-right: 10px;
+    &:hover {
+        color: $--color-primary-three;
+    }
+}
+
+
+//每个组件内部的一个标题
+.banner-module-title {
+    font-size: 16px;
+    color: #666;
+    height: 80px;
+    font-weight: normal;
+    line-height: 80px;
+    border-bottom: 1px solid #F1F1F1;
+}
+//定义账号中心中每一个组件标题以及小标题(帮助中心)
+.personal-module-title{
+    font-size: 16px;
+    color: #666;
+    height: 92px;
+    font-weight: normal;
+    border-bottom: 1px solid #eee;
+}
+
+//边框8px圆角
+.border-radius-8 {
+    border-radius: 8px;
+}
+
+.per10 {
+    width: 10%;
+}
+
+.per20 {
+    width: 20%;
+}
+
+.per25 {
+    width: 25%;
+}
+
+.per30 {
+    width: 30%;
+}
+
+.per40 {
+    width: 40%;
+}
+
+.per50 {
+    width: 50%;
+}
+
+.hide {
+    display: none;
+}
+
+table{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+form {
+    .form-item {
+       
+        &.line {
+            border-bottom: 1px solid #f1f1f1;
+        }
+        >span {
+            display: inline-table;
+            min-width: 84px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #666;
+            margin-right: 10px;
+            // margin-right: 34px
+            &.bold{
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+        >.item {
+            display: inline-block;
+            font-size: 14px;
+            color: #333;
+        }
+    }
+}
+
+//3. 更多图标
+.cares-more {
+    display: inline-block;
+    position: relative;
+    &:hover {
+        ul {
+            display: block;
+        }
+    }
+    span {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        background-color: #eee;
+        text-align: center;
+    }
+    ul {
+        position: absolute;
+        width: 94px;
+        top: 0;
+        left: 100%;
+        background-color: #eee;
+        display: none;
+        li {
+            height: 28px;
+            line-height: 28px;
+        }
+    }
+}
+
+//修改loading进度条颜色
+#nprogress {
+    .bar{
+        background:$--color-primary-two;
+    }
+    .peg{
+        box-shadow:0 0 10px $--color-primary-two, 0 0 5px $--color-primary-two;
+    }
+    .spinner-icon{
+        border-top-color:$--color-primary-two;
+        border-left-color:$--color-primary-two;
+    }
+
+}
+
+.carespay-container .el-form-item__content{
+    background-color: transparent;
+}
+
+.is-error{
+    .cares-input{
+        border-color: $--color-primary-danger;
+    }
+}
+
+.cares-input{
+    outline: none;
+    appearance: none ;
+    border-radius: 4px;
+    appearance: none ;
+    height: 32px;
+    width: 100%;
+    border: none;
+    border: 1px solid #dcdfe6;
+    padding-left: 8px;
+    color: #606266;
+    font-size: 14px;
+    &:focus{
+        border-color: $--color-primary-two;
+        box-shadow: 0 0 12px 0px $--color-primary-two-hover;
+    }
+    &:hover{
+        // border-color: #c0c4cc;
+        border-color: $--color-primary-two;
+    }
+    &.error{
+        border-color: $--color-primary-danger;
+    }
+}
+
+.cares-model-close{
+    display: inline-block;
+    width: 21px;
+    height: 30px;
+    background: url('./../../images/carepay/model-close.png') no-repeat center center;
+}
+
+.text-page{
+    h2{
+        text-align: center;
+        line-height: 60px;
+    }
+    a{
+        color: blue;
+    }
+    p{
+        // text-indent: 2em;
+        line-height: 28px;
+        font-size: 14px;
+        text-align: justify;
+        text-justify:inter-ideograph;
+    }
+    div{
+        font-size: 14px;
+        line-height: 28px;
+    }
+    h3{
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .company-name{
+        text-align: right;
+        margin-top: 20px;
+    }
+}
+
+//尾部
+.cares-login-footer {
+    margin: 0 auto;
+    .about {
+        // margin-bottom: 
+        text-align: center;
+        li {
+            // float: left;
+            display: inline-block;
+            padding: 0 perce(20, 1920);
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #666;
+            a {
+                color: #666;
+            }
+        }
+    }
+    .copyright {
+        text-align: center;
+        line-height: 60px;
+        height: 60px;
+        color: #666;
+        font-size: 12px;
+        a {
+            color: #666;
+            &:hover {
+                color: $--color-primary-three;
+            }
+        }
+    }
+}
+
+.success-fadeIn{
+    opacity: 0;
+    animation: sucessFadeIn 1s .5s  ease forwards;
+}
+
+@keyframes sucessFadeIn {
+    0% {  opacity: 0; }
+    100% {  opacity: 1; }
+}
+
+
+.success-icon{
+    display:inline-block;
+    width:38px;
+    height:38px;
+    vertical-align:middle;
+    background:url('./../../images/carepay/chenggong.svg') no-repeat center center;
+    background-size:100% 100%;
+}
+
+.success-email-icon{
+    display:inline-block;
+    width:38px;
+    height:38px;
+    vertical-align:middle;
+    background:url('./../../images/carepay/mail-success.svg') no-repeat center center;
+    background-size:100% 100%;
+}
+
+.error-icon{
+    display:inline-block;
+    width:38px;
+    height:38px;
+    vertical-align:middle;
+    background:url('./../../images/carepay/error.svg') no-repeat center center;
+    background-size:100% 100%;
+}
+
+.infor-icon{
+    display:inline-block;
+    width:38px;
+    height:38px;
+    vertical-align:middle;
+    background:url('./../../images/carepay/infor.svg') no-repeat center center;
+    background-size:100% 100%;
+}
+
+.miaobiao-icon{
+    display:inline-block;
+    width:24px;
+    height:24px;
+    vertical-align:middle;
+    background:url('./../../images/icon/miaobiao.svg') no-repeat center center;
+    background-size:100% 100%;
+}
+
+.phone-icon{
+    display:inline-block;
+    width:36px;
+    height:36px;
+    vertical-align:middle;
+    background:url('./../../images/icon/phone.svg') no-repeat center center;
+    background-size:24px 24px;
+}
+
+.cares-wechatCode{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background:url('./../../images/carepay/code.png') no-repeat center center;
+    background-size:100% 100%;
+}
+
+.loading-icon{
+    display:inline-block;
+    width:38px;
+    height:38px;
+    vertical-align:middle;
+    background:url('./../../images/carepay/loading.svg') no-repeat center center;
+    background-size:100% 100%;
+    animation: routateInfinity  2s linear infinite;
+}
+
+@keyframes routateInfinity{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.point{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right:5px;
+    &.no{
+        background-color: $--color-primary-danger;
+    }
+    &.yes{
+        background-color: $--color-primary-success;
+    }
+    &.ING{
+        background-color: #999;
+    }
+}
+
+//输入密码框的睁眼与闭眼
+.psw-icon{
+    display: inline-block;
+    height:20px;
+    width:20px;
+    line-height:32px;
+    text-align:center;
+    color:#aaa;
+    cursor: pointer; 
+
+    // position: absolute;
+    // top:0;
+    // right: 10px;
+    // z-index: 5;
+    &.close{
+        background:url('../../images/login/u105.svg') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    &.open{
+        background:url('../../images/login/u106.svg') no-repeat center center;
+        background-size: 100% 100%;
+    }
+}
+
+
+//固定在右侧的电话
+.fixInTheRight{
+    position: fixed;
+    right: 10px;
+    bottom: 20%;
+    z-index: 100;
+    &:hover{
+        .code-container{
+            visibility: visible;
+            opacity: 1;
+            z-index: 100;
+        }
+    }
+    >span{
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 0 20px 0  rgba(0,0,0,0.1);
+    }
+    .code-container{
+        padding: 10px;
+        position: absolute;
+        right: 100%;
+        
+        top: 50%;
+        margin-top: -90px;
+
+        background-color: #fff;
+        box-shadow: 0 0 20px 0  rgba(0,0,0,0.3);
+
+        visibility: hidden;
+        opacity: 0;
+        z-index: -100;
+        transition: all .5s;
+        &::before{
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            left: 100%;
+            top: 50%;
+            background-color: #fff;
+            
+            box-shadow: 0 18px 20px 0  rgba(0,0,0,0.3);
+            transform: rotate(45deg);
+            margin-left: -4px;
+            
+        }
+        p{
+            font-size: 14px;
+            color: #999;
+        }
+        .cares-wechatCode{
+            margin-top: 10px;
+        }
+    }
+}
+
+//@at-root
+.authenNotice{
+    background-color: #ffecec;
+    font-size: 12px;
+    margin-left: 20px;
+    padding: 5px;
+}

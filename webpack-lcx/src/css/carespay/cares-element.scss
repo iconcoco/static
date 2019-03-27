@@ -1,0 +1,243 @@
+//element-ui在后台项目中使用UI的变更
+//Author:Lcx
+//641616451@qq
+@import './../common/theme.scss';
+$carescolor:$--color-primary-two;
+//1.select
+.el-select {
+    height: 32px;
+    line-height: 32px;
+    .el-input {
+        width: 100%;
+        height: 100%;
+        input {
+            height: 100% !important;
+            line-height: 32px;
+            font-size: 14px;
+        }
+        //获取焦点的时候
+        &.is-focus {
+            .el-input__inner {
+                border-color: $carescolor;
+                box-shadow: 0 0 12px 0px $--color-primary-two-hover;
+            }
+        }
+    }
+    .el-input__inner:focus {
+        border-color: $carescolor;
+        box-shadow: 0 0 12px 0px $--color-primary-two-hover;
+    }
+}
+
+.el-select-dropdown__item.selected {
+    //select下拉选择
+    color: $carescolor;
+    font-weight: 700;
+}
+
+//2.checkbox
+.el-checkbox {
+    //选中的时候
+    &.is-checked {
+        .el-checkbox__inner {
+            background-color: $carescolor;
+            border-color: $carescolor;
+        }
+    }
+    .el-checkbox__input.is-checked+.el-checkbox__label {
+        color: #666;
+    }
+    .el-checkbox__input.is-focus .el-checkbox__inner {
+        border-color: $carescolor;
+        box-shadow: 0 0 12px 0px $--color-primary-two-hover;
+    }
+    .el-checkbox__inner:hover {
+        border-color: $carescolor;
+    }
+}
+
+//3.radio
+.el-radio {
+    .el-radio__input.is-checked .el-radio__inner {
+        background-color: $carescolor;
+        border-color: $carescolor;
+    }
+    .el-radio__input.is-disabled.is-checked .el-radio__inner{
+        background-color: #f5f7fa;
+        border-color: #e4e7ed;
+    }
+    .el-radio__inner:hover {
+        border-color: $carescolor;
+    }
+    .el-radio__input.is-checked+.el-radio__label {
+        color: #666;
+    }
+}
+
+.el-radio:focus{
+    .el-radio__input .el-radio__inner{
+        box-shadow: none !important;
+    }
+}
+
+//4.input
+.el-input {
+    width: 170px;
+    height: 32px;
+    line-height: 32px;
+    .el-input__inner {
+        width: 100%;
+        height: 100%;
+        line-height: 32px;
+        padding: 0;
+        padding-left: 8px;
+        font-size: 14px;
+    }
+}
+
+.el-input.is-active .el-input__inner,
+.el-input__inner:focus,
+.el-input__inner:hover {
+    border-color: $carescolor !important;
+}
+
+.el-input__inner:focus{
+    box-shadow: 0 0 12px 0px $--color-primary-two-hover;
+}
+
+.el-input__inner.error {
+    border-color: $--color-primary-danger;
+}
+
+//5.button
+.el-button {
+    height: 38px;
+    color: #fff;
+    line-height: 38px;
+    padding: 0;
+    a {
+        color: #fff;
+    }
+}
+
+//6.message
+.el-message {
+    // min-width:auto;
+    min-width: 180px !important;
+    background-color: #fff !important;
+    border: none !important;
+    box-shadow: 5px 5px 30px rgba(0,0,0,.1)
+}
+
+//7.message-box
+.el-message-box{
+    .el-message-box__btns{
+        button{
+            min-width: 70px;
+            height: 32px;
+            line-height: 32px;
+            color: #333;
+        }
+        .el-button--primary {
+            color: #fff;
+        }
+    }
+}
+
+//8. loading
+.el-loading-mask{
+    height: 60px;
+    background-color: rgba(0,0,0,.2);
+//     .el-loading-spinner .el-icon-loading{
+//         color: #fff;
+//     }
+//     .el-loading-text{
+//         color: #fff;
+//     }
+}
+
+//9. form
+.el-form{
+    .el-form-item__label,
+    .el-form-item__content{
+        line-height: 30px;
+    }
+    .el-form-item{
+        &.line{
+            border-bottom: 1px solid #f1f1f1;
+        }
+    }
+}
+
+//9.1 输入框上面含有文字   获取验证码或者手机归属地
+.el-fix-input{
+    position: relative;
+    .fix-txt{
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        top:1px;
+        font-size: 12px;
+    }
+}
+
+//10. upload
+.el-upload-dragger{
+    // width: 100%;
+    &:hover{
+        border-color:$carescolor;
+    }
+}
+
+
+
+//组件离开和进入的动画
+.fade-enter-active {
+    transition: all .8s ease;
+  }
+  .fade-leav,.fade-leave-active {
+      opacity: 0;
+  //   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .fade-enter, .fade-leave-to
+  // .fade-enter
+  /* .slide-fade-leave-active for below version 2.1.8 */ {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  .fadeIn{
+    animation: fadeIn .8s ease;
+    transition: all .8s ease;
+  }
+
+  @keyframes fadeIn {
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.fadeOut{
+    transition: all .4s ease;
+    opacity: 0;
+    z-index: -5;
+    // animation: fadeOut .5s ease;
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(30px);
+        z-index: -5;
+    }
+}
+

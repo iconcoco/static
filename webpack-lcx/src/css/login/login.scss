@@ -1,0 +1,86 @@
+@import '../common/normaly.css';
+@import '../common/theme.scss';
+$caresColor:$--color-primary-three;
+
+@function perce($a, $b) {
+    @return ($a/$b)*100%;
+}
+
+.banner{
+    min-width: auto;
+}
+
+//尾部
+.cares-login-footer {
+    margin: 0 auto;
+    .about {
+        // margin-bottom: 
+        text-align: center;
+        li {
+            // float: left;
+            display: inline-block;
+            padding: 0 perce(20, 1920);
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #666;
+            a {
+                color: #666;
+            }
+        }
+    }
+    .copyright {
+        text-align: center;
+        line-height: 60px;
+        height: 60px;
+        color: #666;
+        font-size: 12px;
+        a {
+            color: #666;
+            &:hover {
+                color: $caresColor;
+            }
+        }
+    }
+}
+
+//定义表单
+form {
+    .form-item {
+        padding-bottom: 30px;
+        position: relative;
+        &.line {
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .el-input {
+            height: 38px;
+        }
+        >span {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 38px;
+            line-height: 38px;
+            color: #666;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        .item {
+            width: 100%;
+            padding-left: 85px;
+            position: relative;
+        }
+    }
+}
+
+
+
+
+
+@media screen and (max-width:768px) {
+    //小屏幕的时候
+    .cares-mini-no {
+        display: none;
+    }
+}
