@@ -2,14 +2,23 @@
     <div class="fadeIn">
         <div class="all-app-container">
             <ul class="clearfix">
-                <li class="active">
+
+                <li class="active" @click="eventRouterTo('FastArrival')">
+                    <span class="icon">
+                        <i class="i-4"></i>
+                    </span>
+                    <div class="icon-text">
+                        <h3><span>闪提宝</span> <span class="new">NEW</span></h3>
+                        <p>资金周转，快人一步</p>
+                    </div>
+                </li>
+                <li class="active" @click="eventRouterTo('AutoPay')">
                     <span class="icon">
                         <i></i>
                     </span>
                     <div class="icon-text">
-                        <h3><span>自动提现</span> <span class="new">NEW</span></h3>
+                        <h3><span>自动提现</span></h3>
                         <p>资金入账，自动提现</p>
-                        <a href="javascript:;" class="cares-button-primary" @click="eventRouterTo">立即设置</a>
                     </div>
                 </li>
                 <li class="not-allowed">
@@ -40,46 +49,62 @@
 
 export default {
     methods:{
-        eventRouterTo(){
-            this.$router.push({name:'AutoPay'})
+        eventRouterTo(name){
+            this.$router.push({name})
         }
     }
 }
+
+
 </script>
 
 
 <style lang="scss" scoped>
+@import './../../../../css/common/theme.scss';
 
 .all-app-container{
     min-height: 500px;
 }
 ul{
     padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    // display: flex;
+    // justify-content: space-between;
+    // flex-wrap: wrap;
     li{
-        // float: left;
         width: 277px;
         height: 138px;
-        border: 1px solid #e5e5e5;
         transition: all .3s;
-        // margin-right: 30px;
-        margin-bottom: 20px;
+        margin: 0 40px;
+        margin-bottom: 40px;
         background-color: #fff;
-        border-radius: 8px;
+        border-radius: 4px;
         overflow: hidden;
-        // &:nth-child(3n){
-        //     margin-right: 0;
-        // }
+        box-shadow: 0 2px 5px 0px rgba(0,0,0,.08);
+        position: relative;
+        float: left;
+
+        &::before{
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: $--color-primary-one;
+        }
         &.active{
+            cursor: pointer;
             &:hover{
                 box-shadow: 0 0 10px rgba(0,0,0,.2);
             }
         }
         &.not-allowed{
-            background-color: #f1f1f1;
+            background-color: #f5f5f5;
             cursor: not-allowed;
+
+            &::before{
+                background-color: #ccc;
+            }
         }
 
         .icon{
@@ -96,11 +121,16 @@ ul{
                  background: url('./../../../../images/carepay/css_sprites.png') no-repeat;
                  background-position: -8px -89px;
                  vertical-align: middle;
+                 margin-top: -30px;
                  &.i-2{
                      background-position: -10px -10px;
                  }
                  &.i-3{
                      background-position: -90px -9px;
+                 }
+                 &.i-4{
+                     height: 63px;
+                     background-position: -90px -89px;
                  }
              }
         }
@@ -116,7 +146,7 @@ ul{
                 font-size: 16px;
                 font-weight: 400;
                 margin-bottom: 15px;
-                color: #444;
+                color: #333;
                 span{
                     vertical-align: middle;
                 }
@@ -135,7 +165,11 @@ ul{
             }
             p{
                 font-size: 14px;
-                margin-bottom: 15px;
+                color: #999;
+            }
+
+            a{
+                margin-top: 10px;
             }
         }
     }

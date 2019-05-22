@@ -31,6 +31,7 @@ export const downloadfile = `/general/download?fileId=`;
 export const login = params => Axios.post('/user/login',params);
 export const loginByPhone = params => Axios.post('/user/loginByPhone',params);
 export const sendLoginCode = params => Axios.post('/user/sendLoginCode',params);
+export const getLoginAD = params => Axios.get('/swiper/getLoginAD',{params});
 //2.注册
 export const register = params => Axios.post('/user/register',params);
 //3.注册验证码
@@ -53,8 +54,10 @@ export const isFristLogin = params => Axios.post('/user/isFristLogin',params);
 
 //三、商户后台页面
 
-//1.注销账号
+//1.退出账号
 export const logout = () => Axios.post('/logout');
+//1.1 获取全局底部广告
+export const getFixBottomAD = () => Axios.get('/swiper/getFixBottomAD');
 
 //账号总览首页
 //3.1.1  获取消息列表
@@ -106,6 +109,10 @@ export const addEnterprise = params => Axios.post('/applicant/store/addEnterpris
 export const importWishOrder = params => Axios.post('/store/importWishOrder',params);
 //3.0.3 商户后台--首页是否可以访问自动提现的页面
 export const AutoPayIsAvailable = params => Axios.post('/autoWithdraw/isAvailable',params);
+//3.0.3 商户后台--首页是否可以访问自动提现的页面
+export const getAllPlatformCode = params => Axios.post('/main/getAllPlatformCode',params);
+//3.0.3 商户后台--首页是否可以访问自动提现的页面
+export const getStoreStatusCount = params => Axios.post('/main/getStoreStatusCount',params);
 
 
 
@@ -133,6 +140,10 @@ export const queryExchangeRateAll = params => Axios.post('/main/queryExchangeRat
 export const existExpStatement = params => Axios.post('/statement/existExpStatement',params);
 //3.2.8  导出数据之前先请求看看有没有数据
 export const existExprotWithdrawList = params => Axios.post('/withdraw/existExprotWithdrawList',params);
+//3.2.8  导出数据之前先请求看看有没有数据
+export const existVatDetailList = params => Axios.post('/vatrecord/existVatDetailList',params);
+//3.2.8  导出数据之前先请求看看有没有数据
+export const exprotVatDetailList = '/vatrecord/exprotVatDetailList';
 
 
 //3.3.1  提现管理--获取提现记录列表(提现记录)
@@ -155,6 +166,8 @@ export const statementList = params => Axios.post('/statement/statementList',par
 export const expStatement = '/statement/expStatement';
 //3.4.2  账单明细--获取所有店铺的名称
 export const queryAllStroe = params => Axios.post('/store/queryAllStroe',params);
+//3.4.2  账单明细--获取付款信息
+export const vatrecordGetVatDetailList = params => Axios.get('/vatrecord/getVatDetailList',{params});
 
 
 //3.5.1  账号中心--获取商户详情信息
@@ -207,3 +220,56 @@ export const saveUrlDataLog = params => Axios.post('/url/save/data/log',params);
 export const queryAutoWithdrawStore =params => Axios.post('/autoWithdraw/queryAutoWithdrawStore',params);
 //5.2 设置自动提现
 export const updateAutoWithdraw =params => Axios.post('/autoWithdraw/updateAutoWithdraw',params,{JSON:true});
+
+
+//六、闪提宝
+//6.1 
+export const getflashWithdrawNotice = params=> Axios.get('/flashWithdraw/getSelfNotice',{params});
+//6.2 免费申请闪提宝
+export const getflashWithdrawConpon = params=> Axios.post('/flashWithdraw/receive',params);
+//6.2 
+export const getFlashWithdrawStore = params=> Axios.get('/flashWithdraw/getFlashWithdrawStore',{params});
+//6.2  开通闪提宝
+export const bindFlashWithdraw = params=> Axios.post('/flashWithdraw/bind',params);
+//6.2  关闭闪提宝
+export const unBindFlashWithdraw = params=> Axios.post('/flashWithdraw/unBind',params);
+//6.2  关闭闪提宝
+export const getFlashWithdrawStatistics = params=> Axios.get('/flashWithdraw/getStatistics',{params});
+
+//七、 VAT
+//7.1
+export const vatrecordGetList = params => Axios.get('/vatrecord/getList',{params});
+//7.1
+export const vatrecordGetStatistics = params => Axios.get('/vatrecord/getStatistics',{params});
+//7.1 注册vat预计费用
+export const vatrecordGetPayMoney = params => Axios.get('/vatrecord/getPayMoney',{params});
+//7.1 注册vat
+export const vatrecordSave = params => Axios.post('/vatrecord/save',params);
+//7.1 确认支付信息
+export const vatrecordConfirmPay = params => Axios.post('/vatrecord/confirmPay',params);
+
+//7.6  vat申报
+export const findDeclarationModelList = params => Axios.post('/declaration/findDeclarationModelList',params);
+//7.6  vat申报
+export const vatFindStatusCount = params => Axios.post('/declaration/findStatusCount',params);
+//7.6  vat申报步骤一 上传资料
+export const declarationUpdateData = params => Axios.post('/declaration/updateData',params);
+//7.6  vat申报步骤3 确认税金正常还是异常
+export const declarationCalcPay = params => Axios.post('/declaration/calcPay',params);
+//7.9  上传支付回执
+export const declarationUploadPay= params => Axios.post('/declaration/uploadPay',params);
+//7.9  上传支付回执
+export const declarationFindCountryCode= params => Axios.post('/declaration/findCountryCode',params);
+
+
+//7.10  vat缴税 列表
+export const queryPaytaxList= params => Axios.post('/vatPaytax/queryPaytaxList',params);
+//7.10  vat缴税 税局列表
+export const queryTaxBureauList= params => Axios.post('/vatPaytax/queryTaxBureauList',params);
+//7.10  vat缴税 申请缴税
+export const vatPaytaxApply= params => Axios.post('/vatPaytax/apply',params);
+//7.10  vat缴税 查询可疑代缴金额
+export const customerAmountByCurrency= params => Axios.post('/main/customerAmountByCurrency',params);
+//7.10  vat缴税 查询可疑代缴金额
+export const vatPaytaxPay= params => Axios.post('/vatPaytax/pay',params);
+

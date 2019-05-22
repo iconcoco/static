@@ -87,8 +87,8 @@
                     margin: 5px 0;
                     cursor: pointer;
                     // background: #FFFBF5;
-                    background: #FFFBF5 url('../../images/icon/idC.png') no-repeat center center;
-                    background-size: 80px 80px;
+                    background: #FFFBF5 url('../../images/carepay/idCard-F.png') no-repeat center center;
+                    background-size: 100%;
                     border: 1px dashed #f5f5f5;
                     img{
                         width: 100%;
@@ -96,8 +96,21 @@
                         vertical-align: top;
                         background-color: #FFFBF5;
                     }
+                    &.l-2{
+                        background-image: url('../../images/carepay/idCard-N.png');
+                    }
+                    &.l-company{
+                        background-image: url('../../images/carepay/enterparise.png');
+                    }
+                    &.hk-company{
+                        background-image: url('../../images/carepay/company.png');
+                    }
+                    &.hk-register{
+                        background-image: url('../../images/carepay/register.png');
+                    }
                     &.l-3 {
                         position: relative;
+                        background-image: url('../../images/carepay/idCard-H.png');
                         .example {
                             position: absolute;
                             left: 100%;

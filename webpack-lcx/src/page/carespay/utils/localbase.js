@@ -70,7 +70,6 @@ import {
 
  //3. 获取实名认证信息
  export const queryPersonInfo = async ()=>{
-
     let data = store.state.base.personInfo;
     if(data){
         //有缓存
@@ -85,7 +84,8 @@ import {
             });
             return res.data
         }else{
-            Message.error(res.msg);
+            // console.log(Message.error)
+            Message.error(res.msg || '');
         }
         
     };
@@ -345,5 +345,19 @@ import {
         code:'IN',
         platformCode:'YD',
     },
- ]
+ ];
+
+ export const AllNationCode = [
+        {
+            nation:'波兰',
+            code:'PL',
+            platformCode:'EU',
+        },
+        {
+            nation:'捷克',
+            code:'CZ',
+            platformCode:'EU',
+        },
+        ...NationCode
+ ];
 

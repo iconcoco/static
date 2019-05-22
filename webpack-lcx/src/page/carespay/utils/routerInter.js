@@ -37,8 +37,10 @@ RM.beforeEach((to,from,next)=>{
         case 'Cash':                    //提现页面
         case 'AddShop':                 //添加店铺
         case 'RealName':                //账户中心--实名认证展示
+        case 'VATapply':                //vat申请
+        case 'VATreport':                //vat申报
+        case 'VATpay':                  //vat 缴税
         {
-
              queryPersonInfo().then(res=>{
 
                 if(res){
@@ -104,8 +106,12 @@ RM.beforeEach((to,from,next)=>{
                                     next()
                                 ):(
                                     store.commit('changeAppModel',{
-                                        name:'AppAutoPayPop',
+                                        name:'APPWARNINGPOP',
                                         value:true
+                                    }),
+                                    store.commit('changeAppModel',{
+                                        name:'APPWARNINGTYPE',
+                                        value:0
                                     })
                                 )
                             }else{

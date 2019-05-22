@@ -1,5 +1,5 @@
 <template>
-    <div class="fadeIn">
+    <div class="fadeIn" v-show="DONE==4">
         <div class="AdminPlate index-notice"  v-if="msgInfo.length" :style="`height:${showAllNews?40*msgInfo.length+'px':'40px'}`">
             <span 
             v-if="msgInfo.length>1"
@@ -197,6 +197,8 @@ export default {
 
             msgInfo:[],
 
+            DONE:0
+
         }
     },
     created(){
@@ -205,6 +207,7 @@ export default {
 
         //消息盒子
         messageInfo().then(res=>{
+            this.DONE++
            if(res.code==0){
                this.msgInfo  = res.data;
            }else{
@@ -212,10 +215,8 @@ export default {
            }
         });
         AmountInfoByPlatform().then(res=>{
+            this.DONE++
             if(res.code==0){
-                
-                // if(!Object.keys(res.data).length) return;
-
                 this.AccountInfoStore = res.data;
 
                 let CurrencyInfo = {}; //{ used: }
@@ -242,7 +243,6 @@ export default {
                     CurrencyInfo[item.currency].balance += Number(item.balance);
                 });
 
-            //    this.AccountInfo = CurrencyInfo;
                for (const key in CurrencyInfo) {
                   this.AccountInfo[key] = CurrencyInfo[key];
                };
@@ -253,6 +253,7 @@ export default {
         });
         //获取实时汇率
         queryExchangeRateAll().then(res=>{
+            this.DONE++
             if(res.code==0){
                 this.ExchangeRate = res.data;
             }else{
@@ -263,6 +264,7 @@ export default {
     mounted(){
            //2018-12-17 流程优化增加banner轮播广告图
         queryIndexBanner().then(res=>{
+            this.DONE++
             if(res.code==0){
                 this.bannerAD = res.data;
                 setTimeout(()=>{

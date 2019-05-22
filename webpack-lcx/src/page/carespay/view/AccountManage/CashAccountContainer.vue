@@ -44,8 +44,8 @@
         <el-popover class="caras-reminder" v-model="onlyOne">
             <div class="popover-content">
                 <div class="reminder-header">
-                    <i class="gantanhao"></i>
                     <h2>温馨提示</h2>
+                    <i class="warning-icon"></i>
                 </div>
                 <p>您当前只有一个人民币（CNY）提现账户</p>
                 <p>请先添加其他人民币（CNY）提现账户，审</p>
@@ -416,19 +416,6 @@
             height: 440px;
             overflow: hidden;
        }
-        .reminder-header{
-            background-color: #EDEDED;
-            height: 196px;
-            margin-bottom: 36px;
-        }
-        .gantanhao{
-            display: inline-block;
-            width: 74px;
-            height: 74px;
-            background: url('../../../../images/carepay/gantanhao.png') no-repeat center center;
-            background-size: 100% 100%;
-            margin: 26px 0 10px;
-        }
         p{
             line-height: 30px;
         }

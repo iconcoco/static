@@ -3,10 +3,10 @@
         <div class="introduction">
             <img src="./../../../../images/ac/autopay.png" alt="自动提现">
             <a class="toDue" href="javascript:;" @click="bindShowModel">查看详细说明</a>
+            <p class="btn-contianer">
+                <span @click="bindToOpenAutoPay" class="cares-button-primary pain">立即开通</span>
+            </p>
         </div>
-
-        <p class="btn-contianer"><span @click="bindToOpenAutoPay" class="cares-button-primary">立即开通</span></p>
-
 
         <AdminModel v-model="showModel" class="__auto-container">
             <div class="auto-intoduc-container">
@@ -60,24 +60,31 @@ export default {
         img
         {
             width: 100%;
+            vertical-align: top;
         }
         .toDue{
             position: absolute;
-            bottom: 60px;
-            left: 50%;
-            margin-left: -36px;
+            top: 292px;
+            left: 185px;
             font-size: 12px;
-            color: #333;
-            border-color: #333;
+            color: #fff;
+            border-color: #fff;
         }
     }
 
     .btn-contianer{
         text-align: center;
         padding-bottom: 20px;
-        a{
-            display: inline-block;
-
+        position: absolute;
+        top: 284px;
+        left: 80px;
+        .cares-button-primary{
+            border: none;
+            height: 36px;
+            line-height: 36px;
+            border-radius: 18px;
+            font-weight: bold;
+            font-size: 16px;
         }
     }
 

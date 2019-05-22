@@ -153,6 +153,7 @@
         sendUpdateAccountVerifycode,        //编辑验证码
         sendAddAccountVerifycode,           //请求验证码
         addAccount,                         //添加提现账户
+        queryAllStroe,                         //添加提现账户
         queryBranch,                        //查询支行
         updateEnterpriseAccount,
         updatePersonalAccount,

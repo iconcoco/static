@@ -1,9 +1,6 @@
 <template>
     <div class="fadeIn">
-        <div>
-            <h2 class="banner-module-title">自动提现</h2>
-            <component v-show="ING" :is="componentId" @transToEvent="eventDuFn" :status="status"></component>
-        </div>
+        <component :class="{fullPage:componentId=='AutoPayIntro'}" v-show="ING" :is="componentId" @transToEvent="eventDuFn" :status="status"></component>
     </div>
 </template>
 
@@ -21,6 +18,7 @@ export default {
         }
     },
     created(){
+        this.status = this.$route.query.tab || '0';
         queryAutoWithdrawStore({isAutoWithdraw:1}).then(res=>{
             this.ING = true;
             if(res.code==0){
@@ -42,3 +40,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .fullPage{
+        padding: 0;
+    }
+</style>

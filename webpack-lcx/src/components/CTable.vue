@@ -27,8 +27,11 @@
                 tr{
                     background-color: #fff;
                     border-bottom: 1px solid #F8F8F8;
+                    transition: all .5s;
                     &:hover{
-                        background-color: #F2F8FC;
+                        // rgba(234, 105, 0, .05);
+                        background-color: #f0f0f0;
+                        // background-color: rgba(242, 248, 252,.5);
                     }
                 }
             }

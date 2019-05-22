@@ -60,69 +60,60 @@ body {
     background-size: 100% 100%;
 }
 
-//按钮
-.cares-button{
-    display: inline-block;
-    height: 32pxpx;
-    line-height: 32pxpx;
-    padding: 0 15px;
-    background-color: $--color-primary-two;
-    color: #fff;
-    cursor: pointer;
-    transition: all .2s;
-    font-size: 14px;
-    border-radius: 16px;
-    &:hover{
-        // background-color: $--color-primary-two-hover;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-    }
-}
 
-.cares-button-primary{
+@mixin cares-button-base {
     display: inline-block;
     height: 32px;
     line-height: 32px;
     padding: 0 15px;
-    background-color: $--color-primary-two;
-    color: #fff;
     cursor: pointer;
     transition: all .2s;
     font-size: 14px;
     vertical-align: middle;
     border-radius: 16px;
     text-align: center;
+    border:none;
+}
+
+.cares-button-primary{
+    background: linear-gradient(to right,$--color-primary-one,$--color-primary-two);
+    color: #fff;
+    @include cares-button-base;
+    &:active,
+    &:focus,
     &:hover{
-        box-shadow: 0 4px 4px $--color-primary-two-hover;
+        background: linear-gradient(to right,$--color-primary-one,$--color-primary-two);
+        color: #fff;
+        box-shadow: 0 2px 5px $--color-primary-one-hover;
+    }
+    &:active{
+        opacity: 0.75;
     }
 
     &.pain{
         height: 30px;
         line-height: 30px;
         border-radius: 15px;
-        background-color: #fefefe;
-        color: $--color-primary-two;
-        border:1px solid $--color-primary-two;
+        background: #fefefe;
+        color: $--color-primary-one;
+        border:1px solid $--color-primary-one;
         &:hover{
-            box-shadow: 0 3px 8px $--color-primary-two-hover;
+            box-shadow: 0 2px 5px $--color-primary-one-hover;
+        }
+        &:active{
+            background: $--color-primary-one;
+            opacity: 0.75;
+            color: #fff;
         }
     }
 }
 
 .cares-button-success{
-    display: inline-block;
-    height: 32px;
-    line-height: 32px;
-    padding: 0 15px;
+    @include cares-button-base;
     background-color: $--color-primary-success;
     color: #fff;
-    cursor: pointer;
-    transition: all .2s;
-    font-size: 14px;
-    vertical-align: middle;
-    border-radius: 16px;
-    text-align: center;
     &:hover{
-        box-shadow: 0 3px 10px rgba(104, 170, 104,.7);
+        box-shadow: 0 2px 5px rgba(104, 170, 104,.7);
     }
 
     &.pain{
@@ -130,57 +121,40 @@ body {
         color: $--color-primary-success;
         border:1px solid $--color-primary-success-hover;
         &:hover{
-            box-shadow: 0 3px 10px rgba(104, 170, 104,.4);
+            box-shadow: 0 2px 5px rgba(104, 170, 104,.4);
         }
     }
 }
 
 .cares-button-danger{
-    display: inline-block;
-    height: 32px;
-    line-height: 32px;
-    padding: 0 15px;
+    @include cares-button-base;
     background-color: $--color-primary-danger;
     color: #fff;
-    cursor: pointer;
-    transition: all .2s;
-    font-size: 14px;
-    vertical-align: middle;
-    border-radius: 16px;
-    text-align: center;
     &:hover{
-        // background-color: $--color-primary-danger-hover;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        box-shadow: 0 2px 5px $--color-primary-danger-hover
+    }
+    &:active{
+        opacity: 0.75;
     }
 
     &.pain{
         background-color:#fff;
-        color: #333;
-        border:1px solid #e5e5e5;
-        &:hover{
+        color: $--color-primary-danger; 
+        border:1px solid $--color-primary-danger; 
+        &:active{
+            background-color:$--color-primary-one;
             color: #fff;
-            border-color:$--color-primary-danger; 
-            background-color:$--color-primary-danger;
         }
     }
 }
 
 .cares-button-info{
-    display: inline-block;
-    height: 32px;
-    line-height: 32px;
-    padding: 0 15px;
+    @include cares-button-base;
     background-color: #aaa;
     color: #fff;
-    cursor: pointer;
-    transition: all .2s;
-    font-size: 14px;
-    vertical-align: middle;
-    border-radius: 16px;
-    text-align: center;
     &:hover{
         // background-color: $--color-primary-two-hover;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
     &.pain{
@@ -192,40 +166,28 @@ body {
 
 
 //亚马逊的图片logo
-.amazon-logo {
+@mixin logoImg($width,$height,$url) {
     display: inline-block;
-    width: 69px;
-    height: 21px;
-    background: url('../../images//carepay/amazon.png') no-repeat center center;
+    width: $width*1px;
+    height: $height*1px;
+    background: url($url) no-repeat center center;
     background-size: 100%;
     vertical-align: middle;
+}
+.amazon-logo {
+    @include logoImg(69,21,'../../images/carepay/amazon.svg');
 }
 
 .ebay-logo {
-    display: inline-block;
-    width: 50px;
-    height: 21px;
-    background: url('../../images//carepay/ebay.png') no-repeat center center;
-    background-size: 100%;
-    vertical-align: middle;
+    @include logoImg(50,21,'../../images/carepay/ebay.svg');
 }
 
 .wish-logo {
-    display: inline-block;
-    width: 67px;
-    height: 25px;
-    background: url('../../images//carepay/wish.png') no-repeat center center;
-    background-size: 100%;
-    vertical-align: middle;
+    @include logoImg(67,25,'../../images/carepay/wish.svg');
 }
 
 .AE-logo {
-    display: inline-block;
-    width: 100px;
-    height: 26px;
-    background: url('../../images//carepay/AE.png') no-repeat center center;
-    background-size: 100%;
-    vertical-align: middle;
+    @include logoImg(100,26,'../../images/carepay/AE.png');
 }
 
 //注册登录页
@@ -237,13 +199,8 @@ body {
 }
 
 .cares-logo {
-    display: inline-block;
-    width: 225px;
-    height: 43px;
-    background: url('./../../images/login/logo.png') no-repeat center center;
-    background-size: 100%;
+    @include logoImg(225,43,'../../images/carepay/logo.png');
     margin-left: 10px;
-    vertical-align: middle;
 }
 
 .toBackLogin {
@@ -502,76 +459,55 @@ form {
 }
 
 
-.success-icon{
+@mixin systom-icon($width,$height,$url) {
     display:inline-block;
-    width:38px;
-    height:38px;
+    width:$width*1px;
+    height:$height*1px;
     vertical-align:middle;
-    background:url('./../../images/carepay/chenggong.svg') no-repeat center center;
+    background:url($url) no-repeat center center;
     background-size:100% 100%;
+}
+
+.success-icon{
+    @include systom-icon(38,38,'./../../images/carepay/chenggong.svg');
 }
 
 .success-email-icon{
-    display:inline-block;
-    width:38px;
-    height:38px;
-    vertical-align:middle;
-    background:url('./../../images/carepay/mail-success.svg') no-repeat center center;
-    background-size:100% 100%;
+    @include systom-icon(38,38,'./../../images/carepay/mail-success.svg');
 }
 
 .error-icon{
-    display:inline-block;
-    width:38px;
-    height:38px;
-    vertical-align:middle;
-    background:url('./../../images/carepay/error.svg') no-repeat center center;
-    background-size:100% 100%;
+    @include systom-icon(38,38,'./../../images/carepay/error.svg');
 }
 
 .infor-icon{
-    display:inline-block;
-    width:38px;
-    height:38px;
-    vertical-align:middle;
-    background:url('./../../images/carepay/infor.svg') no-repeat center center;
-    background-size:100% 100%;
+    @include systom-icon(38,38,'./../../images/carepay/infor.svg');
 }
 
 .miaobiao-icon{
-    display:inline-block;
-    width:24px;
-    height:24px;
-    vertical-align:middle;
-    background:url('./../../images/icon/miaobiao.svg') no-repeat center center;
-    background-size:100% 100%;
+    @include systom-icon(38,38,'./../../images/icon/miaobiao.svg');
 }
 
 .phone-icon{
-    display:inline-block;
-    width:36px;
-    height:36px;
-    vertical-align:middle;
-    background:url('./../../images/icon/phone.svg') no-repeat center center;
-    background-size:24px 24px;
+    @include systom-icon(36,36,'./../../images/icon/phone.png');
+    background-size:66px;
 }
 
 .cares-wechatCode{
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    background:url('./../../images/carepay/code.png') no-repeat center center;
-    background-size:100% 100%;
+    @include systom-icon(100,100,'./../../images/carepay/weChatCode.png');
+}
+
+.flash-icon{
+    @include systom-icon(20,20,'./../../images/icon/flash.png');
 }
 
 .loading-icon{
-    display:inline-block;
-    width:38px;
-    height:38px;
-    vertical-align:middle;
-    background:url('./../../images/carepay/loading.svg') no-repeat center center;
-    background-size:100% 100%;
+    @include systom-icon(38,38,'./../../images/carepay/loading.svg');
     animation: routateInfinity  2s linear infinite;
+}
+
+.warning-icon{
+    @include systom-icon(95,106,'./../../images/carepay/温馨提示.png');
 }
 
 @keyframes routateInfinity{
@@ -653,9 +589,8 @@ form {
         top: 50%;
         margin-top: -90px;
 
-        background-color: #fff;
         box-shadow: 0 0 20px 0  rgba(0,0,0,0.3);
-
+        background-color: #fff;
         visibility: hidden;
         opacity: 0;
         z-index: -100;
@@ -690,4 +625,69 @@ form {
     font-size: 12px;
     margin-left: 20px;
     padding: 5px;
+}
+
+//服务条款的model
+.cares-service-model{
+    .modal-container{
+       width: 640px;
+       left: 50%;
+       margin-left: -320px; 
+       padding: 26px 55px 100px;
+        color: #333;
+       h3{
+           line-height: 90px;
+           text-align: center;
+           font-weight: normal;
+           letter-spacing: 1px;
+           font-size: 24px;
+       }
+       //板块之间的间距
+       .block{
+           margin-bottom: 15px;
+       }
+       //重要内容
+       .importance{
+           background-color: #FDF0E5;
+           padding: 10px 2em;
+           line-height: 22px;
+           font-size: 14px;
+           
+       }
+       .block>p,
+       >p{
+           font-size: 14px;
+           text-indent: 2em;
+           line-height: 22px;
+       }
+
+       //操作按钮
+       .btn{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            height: 80px;
+            width: 90%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 14px;
+            span{
+                margin-bottom: 5px;
+                min-width: 80px;
+                cursor: pointer;
+            }
+       }
+    }
+}
+
+.null{
+    text-align: center;
+    padding: 40px 0;
+    img{
+        margin-bottom: 20px;
+    }
+    p{
+        color: #333;
+        font-size: 12px;
+    }
 }

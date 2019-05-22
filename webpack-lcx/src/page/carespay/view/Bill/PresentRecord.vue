@@ -23,7 +23,7 @@
                         <tr v-else v-for="(item,index) in dataArr" :key="index">
                             <td>{{item.applyDate}}</td>
                             <td>
-                                <p>{{item.storeName}}</p>
+                                <p>{{item.storeName}}<span v-if="item.isFlashWithdraw==1" title="闪提宝店铺"  class="flash-icon"></span></p>
                                 <p class="ING Subtxt">{{item.platformName}}</p>
                             </td>
                             <td>{{item.nationalName}}</td>

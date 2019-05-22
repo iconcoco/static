@@ -1,5 +1,11 @@
 <template>
-    <div>
+    <div :class="{hasBottomAd:$route.name != 'FastArrival' && isHasBottomAd}">
+        <!-- <div class="windowNotice" v-if="rooper">
+            <b class="close" @click="closeRooper('rooper')"></b>
+            <div class="banner">
+                <span>尊敬的客户您好：为更好地服务广大客户，我司需要对系统进行优化升级，升级时间为本周四（3月28日）晚22：00－次日6：00，届时将暂停提现服务。请您提前安排好提现计划，对此带来的不便敬请谅解，谢谢。</span>
+            </div>
+        </div> -->
         <header class="cares-header">
             <div class="banner clearfix">
                 <!-- 左边logo部分 -->
@@ -9,15 +15,23 @@
                             <img src="./../../images/carepay/logo.png" alt="carespay" />
                         </router-link>
                     </h1>
-                    <p class="lo-manu">
-                        <router-link to="/index">账户总览</router-link>
-                        <router-link to="/storemanage">店铺管理</router-link>
-                        <router-link v-if="isHasStore" to="/checkdetaile">明细查询</router-link>
-                        <span>|</span>
-                        <router-link to="/AutoPay">自动提现</router-link>
-                        <!-- <router-link to="/FastArrival">极速达</router-link> -->
-                        <router-link to="/AllApp">全部应用</router-link>
-                    </p>
+                    <ul class="mainTab">
+                        <li><router-link to="/index">账户总览</router-link></li>
+                        <li><router-link to="/storemanage">店铺管理</router-link></li>
+                        <li v-if="isHasStore"><router-link to="/finance">明细查询</router-link></li>
+                        <li><span></span></li>
+                        <li style="height:38px;">
+                            <router-link to="/vat">VAT</router-link>
+                            <ul class="innerTab">
+                                <li><router-link to="/vat/apply">VAT注册</router-link></li>
+                                <li><router-link to="/vat/report">VAT报税</router-link></li>
+                                <!-- <li><router-link to="/vat/payTax">VAT缴税</router-link></li> -->
+                            </ul>
+                        </li>
+                        <li><router-link to="/AutoPay">自动提现</router-link></li>
+                        <li><router-link to="/FlashWithdraw">闪提宝</router-link></li>
+                        <li><router-link to="/AllApp">全部应用</router-link></li>
+                    </ul>
                 </div>
                 <!-- 右边菜单部分 -->
                 <div class="fr">
@@ -55,16 +69,11 @@
                         <li>
                             <span>账号中心</span><i></i>
                             <div class="sub-menu">
-                                <!-- <b class="cares-icon-per"></b>  -->
-                                <p><router-link to="/Pesonal"> 个人中心</router-link></p>
-                                <!-- <b class="cares-icon-conpon"></b> -->
-                                <p><router-link to="/Pesonal/Coupon?isactive=3"> 我的优惠券</router-link></p>
-                                <!-- <b class="cares-icon-authenty"></b> -->
-                                <p><router-link to="/Pesonal/realname?isactive=1"> 实名认证</router-link></p>
-                                <!-- <b class="cares-icon-bank"></b> -->
-                                <p><router-link to="/cashaccount"> 提现账户</router-link></p>
-                                <!-- <b class="cares-icon-logout"></b> -->
-                                <p @click="bindLayoutAccount" style="border:none;"> 安全退出</p>
+                                <p><router-link to="/Pesonal"><b class="cares-icon-per"></b> 个人中心</router-link></p>
+                                <p><router-link to="/Pesonal/Coupon?isactive=3"><b class="cares-icon-conpon"></b> 我的优惠券</router-link></p>
+                                <p><router-link to="/Pesonal/realname?isactive=1"><b class="cares-icon-authenty"></b> 实名认证</router-link></p>
+                                <p><router-link to="/cashaccount"><b class="cares-icon-bank"></b> 提现账户</router-link></p>
+                                <p @click="bindLayoutAccount" style="border:none;"> <b class="cares-icon-logout"></b> 安全退出</p>
                             </div>
                         </li>
                     </ul>
@@ -79,29 +88,49 @@
        <div class="caras-reminder">
            <el-popover placement="top-start" v-model="$store.state.RealNamePop">
                 <div class="popover-content">
-                    <i class="weixiao"></i>
                     <h2>温馨提示</h2>
+                    <i class="not-name-authenty"></i>
                     <p>您尚未进行实名认证，请先完善信息。</p>
                     <p class="pop-button">
-                        <span @click="bindPopcancel" class="cares-button-danger pain">知道了</span>
-                        <span @click="bindPopconfirm" class="cares-button-primary">去完善</span>
+                        <span @click="bindPopconfirm" class="cares-button-primary">去完善</span><br/>
+                        <span @click="bindPopcancel" class="ING">知道了</span>
                     </p>
                 </div>
             </el-popover>
        </div>
 
-       <AdminModel v-model="$store.state.AppAutoPayPop" class="app-autopay-model">
+        <AdminModel v-model="STORESTATE.APPWARNINGPOP" class="app-autopay-model">
             <div class="AutoPay-model">
-                <i class="weixiao"></i>
                 <h2>温馨提示</h2>
-                <p>您需要完成</p>
-                <p>1）实名认证</p>
-                <p>2）绑定一个需要提现人民币至大陆的亚马逊店铺</p>
-                <p>3）添加一张中国大陆的银行卡</p>
-                <p>审核通过后方可使用自动提现服务</p>
-                <p class="pop-button">
-                    <span class="cares-button-primary pain" @click="bindCloseAutoPayTip">知道了</span>
-                </p>
+                <i class="warning-icon"></i>
+                <template v-if="STORESTATE.APPWARNINGTYPE==1 || STORESTATE.APPWARNINGTYPE==2">
+                    <p>您需要完成</p>
+                    <ul>
+                        <li>1）实名认证</li>
+                        <li>2）至少绑定1个亚马逊店铺</li>
+                    </ul>
+                    <p class="pop-button">
+                        <span @click="bindPopconfirm" v-if="STORESTATE.APPWARNINGTYPE==1" class="cares-button-primary">立即完善实名信息</span>
+                        <span @click="()=>{ 
+                                this.bindCloseAutoPayTip();
+                                return bindToAddStore()
+                            }" v-if="STORESTATE.APPWARNINGTYPE==2" 
+                        class="cares-button-primary">立即绑定店铺</span>
+                        <br/><span class="ING" @click="bindCloseAutoPayTip">知道了</span>
+                    </p>
+                </template>
+                <template v-else>
+                    <p>您需要完成</p>
+                    <ul>
+                        <li>1）实名认证</li>
+                        <li>2）绑定一个需要提现人民币至大陆的亚马逊店铺</li>
+                        <li>3）添加一张中国大陆的银行卡</li>
+                    </ul>
+                    <p>审核通过后方可使用自动提现服务</p>
+                    <p class="pop-button">
+                        <span class="cares-button-primary" @click="bindCloseAutoPayTip">知道了</span>
+                    </p>
+                </template>
             </div>
        </AdminModel>
 
@@ -136,8 +165,8 @@
                 <span @click="bindToCloseModel" class="cares-model-close"></span>
                 <h2>完善邮箱信息</h2>
                 <p>
-                    <span>当前账号</span>
-                    <span class="cares-color" style="width:auto;">+86 {{form.phoneNo}}</span>
+                    <span>当前账号：</span>
+                    <span style="width:auto;color:#333;font-weight:bold;">+86 {{form.phoneNo}}</span>
                 </p>
 
                 <p>
@@ -146,7 +175,9 @@
                 <p class="nt">作为您的登录邮箱</p>
                 <p class="nt">找回密码以及其他验证操作也将通过邮件发送到此邮箱</p>
                 
-                <div class="btn-container cares-button-primary" @click="bindSendEmail">发送验证邮件</div>
+                <div class="btn-container" >
+                    <span class="cares-button-primary" @click="bindSendEmail">发送验证邮件</span>
+                </div>
             </div>
 
             <div v-else class="fill-email-ending">
@@ -169,13 +200,25 @@
             <span class="phone-icon"></span>
             <div class="code-container">
                 <p>客户服务</p>
-                <p class="cares-color">400-887-020</p>
+                <p class="cares-color">400-887-0201</p>
                 <span class="cares-wechatCode"></span>             
             </div>
         </div>
-
         <!-- 试图容器 -->
         <router-view id="Loading" class="banner carespay-container" @transToApp="bindToReceiveParams"></router-view>
+        <!-- 底部广告-->
+        <div class="fixInTheBottom"  v-if="$route.name != 'FastArrival'  && isHasBottomAd">
+            <span class="el-icon-error close" @click="closeRooper('isHasBottomAd')"></span>
+            <div class="banner content">
+                <span class="img-left"></span>
+                <div>
+                    <p class="title"> <i></i> <span>闪提宝</span>Amazon — 出账即可提款</p>
+                    <p class="descript">180天闪提宝免费特权<span>活动时间：{{flashWithdraw.startTime | formatData}}~{{flashWithdraw.endTime | formatData}}</span></p>
+                    <router-link to="/FlashWithdraw"  class="cares-button-primary pain">抢先领取</router-link>
+                </div>
+                <span class="img-right"></span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -183,6 +226,7 @@
 <script>
 
     import { 
+        getflashWithdrawNotice,
         queryFreeWithdraw,
         emptyMessage,
         updateMessageInfo,
@@ -190,10 +234,11 @@
         queryProvince,
         queryAllStroe,
         isFristLogin,
+        getFixBottomAD,
         logout              //安全退出
     } from './../../js/api.js';
 
-    import { cookie } from "./../../js/common.js";
+    import { cookie,formatTimer } from "./../../js/common.js";
 
     import DOMAIN from '../../js/domain.js';
 
@@ -230,25 +275,33 @@
     export default {
         data(){
           return{
-              isHasStore:false,
-              isShowAd:false,
-              cusomerInfo:null,
+                isHasStore:false,
+                isHasBottomAd:false,
+                isShowAd:false,
+                cusomerInfo:null,
               //2018-12-14 流程优化
-              timer:{
-                  d:"--",
-                  h:"--",
-                  m:"--",
-                  s:"--"
-              },
+                timer:{
+                    d:"--",
+                    h:"--",
+                    m:"--",
+                    s:"--"
+                },
                 noticeBox:[],
 
                 //绑定邮箱
+                rooper:true,
                  AjaxIng:false,
                 sendEmainEnding:false,
                 isToFillEmail:false,
                 form:{
                     phoneNo:'',
                     email:''
+                },
+
+                flashWithdraw:{
+                    startTime:'',
+                    endTime:'',
+                    activatDay:'',
                 },
           }  
         },
@@ -289,24 +342,48 @@
                 }, false)
              };
 
-
              _valt.init(this);
 
             //2018-12-17 用户首次登陆提示3000免费提现额度
-            let _this = this;
-             setTimeout(function(){
-
+            setTimeout(()=>{
                 isFristLogin().then(res=>{
                     if(res.code==0){
-                        res.data==0 && _this.bindCheckShowAd();
+                        res.data==0 && this.USERFIRSTLOGIN();
                     }
                 });
-                 
             },500); 
 
         },
         methods:{
-            
+            //用户首次登录
+            USERFIRSTLOGIN(){
+                //1.判断是否展示3000免费额度广告
+                this.bindCheckShowAd();
+                //2.是否展示页面底部广告
+                this.isShowBottomAd();
+            },
+
+            isShowBottomAd(){
+                getflashWithdrawNotice({type:1}).then(res=>{
+                    if(res.code==0){
+                        //如果可以领取才能展示广告图
+                        if(res.data && res.data.isShow){
+                            this.flashWithdraw.activatDay = res.data.activatDay
+                            return getFixBottomAD()
+                        };
+                    }else{
+                        this.$Message.error(res.code);
+                    }
+                }).then(res=>{
+                    if(!res) return;
+
+                    if(res.code==0){
+                        res.data && (this.isHasBottomAd = true,Object.assign(this.flashWithdraw,res.data));
+                    }else{
+                        this.$Message.error(res.code);
+                    }
+                });
+            },
             //退出登录
             bindLayoutAccount(){
                 logout().then(res=>{
@@ -320,7 +397,8 @@
             },
             //实名提示弹窗确认
             bindPopconfirm(){
-                this.$store.commit('changeModleState',false);
+                this.bindPopcancel();
+                this.bindCloseAutoPayTip();
                 location.hash = "/Complete_Account";
             },
             //跳转到提现账户中心
@@ -474,7 +552,7 @@
                 this.isToFillEmail = false;
                 this.sendEmainEnding = false;
             },
-             bindToReWrite(){
+            bindToReWrite(){
                 this.sendEmainEnding = false;
             },
             //点击当前消息盒子
@@ -508,15 +586,29 @@
             //
             bindCloseAutoPayTip(){
                 this.$store.commit('changeAppModel',{
-                    name:'AppAutoPayPop',
+                    name:'APPWARNINGPOP',
                     value:false
                 });
             },
 
             bindAuthentiConfirm(){
                 location.hash="/Pesonal/realname?isactive=1";
+            },
+
+            closeRooper(prop){
+                this[prop] = false;
             }
 
+        },
+        computed:{
+            STORESTATE(){
+                return this.$store.state;
+            }
+        },
+        filters:{
+            formatData(value){
+                return formatTimer(value,true)
+            }
         }
     }
 </script>
@@ -547,7 +639,7 @@
             background-color: #fff;
             // background: #fff url('../../../../images/carepay/ad_bg.png') no-repeat center center;
             border-radius: 8px;
-            padding: 40px 60px; 
+            padding: 60px 60px 40px; 
             h2{
                 width: 100%;
                 text-align: center;
@@ -555,7 +647,7 @@
                 color: #333;
                 font-weight: normal;
                 // font-size: 20px;
-                margin-bottom: 40px;
+                margin-bottom: 60px;
             }
             .line{
                 width: 100%;
@@ -571,9 +663,10 @@
             p{
                 width: 100%;
                 margin:  0 auto;
-                 text-align: left;
-                margin-bottom:30px;
+                text-align: left;
+                margin-bottom:10px;
                 color: #666;
+                font-size: 14px;
                 .el-input{
                     width: 100%;
                 }
@@ -586,10 +679,10 @@
             }
             .btn-container{
                 text-align: center;
-                margin-top: 60px;
+                margin-top: 40px;
             }
             .cares-button-primary{
-                width: 100%;
+                width: 50%;
                 text-align: center;
             }
     }
@@ -652,25 +745,159 @@
         width: 400px;
         border-radius: 8px;
         text-align: center;
+        padding-top: 65px;
         padding-bottom: 20px;
         h2{
            font-size: 20px;
            font-weight: normal;
-           margin-bottom: 30px;
+           color: #333;
+           margin-bottom: 20px;
         }  
-        p{
+        p,ul{
             width: 82%;
-           
-             font-size: 15px;
-             color: #666;
-              margin: 0 auto;
-             margin-bottom: 5px;
-             text-align: left;
+            font-size: 14px;
+            color: #333;
+            margin: 0 auto;
+            margin-bottom: 5px;
+            text-align: left;
          }
+
+        ul{
+            margin: 20px auto;
+            color: $--color-primary-one;
+        }
+
          .pop-button{
              margin-top: 40px;
              text-align: center;
          }
+    }
+
+    .windowNotice{
+        background-color: #ea5413;
+        padding-top:5px;
+        padding-bottom:5px;
+        color: #fff;
+        position: relative;
+        .banner{
+            overflow: hidden;
+            span{
+                display: inline-block;
+                min-width: 100%;
+                transform: translate(100%);
+                font-size: 14px;
+                animation: rooper  20s linear infinite;
+                white-space: nowrap;
+            }
+        }
+        .close{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            margin-top: -10px;
+            cursor: pointer;
+            background: url('../../images/icon/close.svg') no-repeat center center;
+            background-size: 100% 100%;
+        }
+    }
+
+    .hasBottomAd{
+        padding-bottom: 160px;
+    }
+
+    .fixInTheBottom{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 99;
+        width: 100%;
+        height: 70px;
+        background: linear-gradient(to bottom,#FFA213,#FFC430);
+        .close{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: 6px;
+            right: 6px;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .content{
+            position: relative;
+            div{
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 100px;
+                color: #fff;
+                margin-top: 9px;
+                position: relative;
+                .title{
+                    vertical-align: middle;
+                    i{
+                        display: inline-block;
+                        width: 27px;
+                        height: 30px;
+                        vertical-align: middle;
+                        background: url('./../../images/carepay/闪提宝-白.png') no-repeat center center;
+                        background-size: 100% 100%;
+                    }
+                    span{
+                        font-size: 24px;
+                        font-weight: bold;
+                        letter-spacing: 2px;
+                        margin-right: 10px;
+                        vertical-align: middle;
+                    }
+                }
+                .descript{
+                    font-size: 14px;
+                    margin-top: 5px;
+                    span{
+                        margin-left: 20px;
+                    }
+                }
+
+                .cares-button-primary{
+                    position: absolute;
+                    right: -200px;
+                    top: 14px;
+                    border:none;
+                }
+            }
+        }
+
+        .img-left{
+            display: inline-block;
+            width: 227px;
+            height: 96px;
+            margin-top: -26px;
+            // margin-left: -100px;
+            background: url('./../../images/carepay/app底部图片.png') no-repeat 0 0;
+        }
+
+        .img-right{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            display: inline-block;
+            width: 79px;
+            height: 57px;
+            background: url('./../../images/carepay/app底部图片.png') no-repeat -1184px -39px;
+        }
+    }
+
+    @keyframes rooper {
+        0%{
+            transform: translate(100%);
+        }
+        100%{
+            transform: translate(-100%);
+        }
     }
 </style>
 
@@ -684,6 +911,7 @@
         background-color: #fff;
         margin-bottom: 10px;
          min-width: 1000px;
+         border-bottom: 1px solid #F8F8F8;
     }
     // logo部分
     .logo{
@@ -696,27 +924,47 @@
         }
     }
     // logo下方的tab切换
-    .lo-manu{
-        >span{
-            margin-right:35px;
-            color:#e5e5e5;
-        }
-        a{
-            display: inline-block;
-            font-size: 15px;
-            margin-right: 35px;
-            color: #666;
-            position: relative;
-            &:hover,&.router-link-active{
-                color: $--color-primary-one;
-                // color: #333;
-                // font-weight:bold;
-            }
+    .mainTab{
 
-            span{
-                position: absolute;
-                right:-20px;
-                top:-5px;
+        .innerTab{
+            background-color:#fff;
+            position: absolute;
+            top :100%;
+            left:50%;
+            width :100px;
+            z-index: 10;
+            margin-left:-50px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            display: none;
+            a{
+                display: inline-block;
+                padding:10px 10px;
+            }
+        }
+       
+        >li{
+            float: left;
+            font-size: 16px;
+            margin-right: 35px;
+            position: relative;
+            &:hover{
+                .innerTab{
+                    display: block;
+                }
+            }
+            a{
+                color: #666;
+                &:hover,&.router-link-active{
+                    color: $--color-primary-one;
+                }
+            }
+           
+            >span{
+                display: inline-block;
+                width:1px;
+                height:20px;
+                background-color:#ddd;
+                vertical-align: middle;
             }
         }
     }
@@ -791,9 +1039,8 @@
             // border: 1px solid #f5f5f5;
             box-shadow:0 0 10px 0 rgba(0,0,0,.1);
             p{
-                padding-left:30px;
-                height: 40px;
-                line-height: 40px;
+                height: 50px;
+                line-height: 50px;
                 cursor: pointer;
                 font-size: 14px;
                 color: #333;
@@ -830,19 +1077,24 @@
                     margin-bottom:-7px;
                 }
                 .cares-icon-per{
-                    background:url('./../../images/icon/下拉-个人中心.png')  no-repeat center center;
+                    background:url('./../../images/icon/下拉-个人中心.svg')  no-repeat center center;
+                        background-size: 28px;
                 }
                 .cares-icon-conpon{
-                    background:url('./../../images/icon/下拉-优惠券.png')  no-repeat center center;
+                    background:url('./../../images/icon/下拉-优惠券.svg')  no-repeat center center;
+                        background-size: 28px;
                 }
                 .cares-icon-authenty{
-                    background:url('./../../images/icon/下拉-实名认证.png')  no-repeat center center;
+                    background:url('./../../images/icon/下拉-实名认证.svg')  no-repeat center center;
+                        background-size: 28px;
                 }
                 .cares-icon-bank{
-                    background:url('./../../images/icon/下拉-提现账户.png')  no-repeat center center;
+                    background:url('./../../images/icon/下拉-提现账户.svg')  no-repeat center center;
+                        background-size: 28px;
                 }
                 .cares-icon-logout{
-                    background:url('./../../images/icon/下拉-安全退出.png')  no-repeat center center;
+                    background:url('./../../images/icon/下拉-安全退出.svg')  no-repeat center center;
+                        background-size: 28px;
                 }
             }
             a{
@@ -974,33 +1226,40 @@
             box-shadow: 0;
             border:0;
            .popover-content{
-               width: 320px;
-               height: 340px;
+               width: 400px;
+               height: 410px;
                position: absolute;
                top: 100px;
                left: 50%;
-               margin-left: -160px;
+               margin-left: -200px;
                border-radius: 8px;
                background-color: #fff;
                text-align: center;
+               padding-top:65px;
                h2{
                    font-size: 20px;
                    font-weight: normal;
-                   margin-bottom: 50px;
+                   color:#333;
+                   margin-bottom:10px;
+               }
+               i{
+                   margin-bottom:30px;
                }
                p{
                    font-size: 14px;
-                   color: #666;
+                   color: #333;
                }
                .pop-button{
                    position: absolute;
                    bottom: 40px;
                    width: 100%;
                     span{
-                        width: 80px;
-                        height: 34px;
-                        line-height: 34px;
+                        width: 160px;
+                        height: 30px;
+                        line-height: 30px;
                         margin-right:10px;
+
+                        cursor: pointer;
                     }
                }
                .el-button{
@@ -1019,11 +1278,11 @@
         }
     }
 
-    .weixiao{
+    .not-name-authenty{
          display: inline-block;
-         width: 74px;
-         height: 74px;
-         background: url('../../images/carepay/wxiao_img.png') no-repeat center center;
+         width: 102px;
+         height: 100px;
+         background: url('../../images/carepay/完善信息.png') no-repeat center center;
          background-size: 100% 100%;
          margin: 26px 0 10px;
      }
@@ -1036,7 +1295,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 60;
+        z-index: 100;
         background-color: rgba(0,0,0,.5);
         &.active{
             display: block;
@@ -1116,9 +1375,17 @@
             p{
                 font-size:14px;
             }
-
-            .cares-button-primary{
-                width:80px;
+           
+            .pop-button{
+                 .cares-button-primary{
+                    font-size:14px;
+                    width:160px;
+                }
+                span{
+                    cursor: pointer;
+                    font-size:12px;
+                    margin-bottom:10px;
+                }
             }
         }
     }

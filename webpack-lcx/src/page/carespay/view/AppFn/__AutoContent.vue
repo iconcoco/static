@@ -1,38 +1,41 @@
 <template>
-    <div class="fadeIn AutoPayContainer">
+    <div class="fadeIn AutoPayContainer appFnContainer">
+        <h2 class="banner-module-title">自动提现</h2>
         <div class="auto-tab">
             <span @click="bindSlectTab(1)" :class="{active:activeTab==1}">已开通店铺</span>
             <span @click="bindSlectTab(0)" :class="{active:activeTab==0}">未开通店铺</span>
         </div>
         <!-- 已开通 -->
-        <div v-if="HASSTORE && activeTab==1">
+        <div v-if="HASSTORE && activeTab==1" class="fadeIn">
 
             <div class="plat-form-item" v-for="(item,key) in STORES_" :key="key">
                 <p class="logo-title" v-if="key=='BM'"> <span class="amazon-logo"></span>北美站 </p>
                 <p class="logo-title" v-if="key=='EU'"> <span class="amazon-logo"></span>欧洲站 </p>
                 <p class="logo-title" v-if="key=='YD'"> <span class="amazon-logo"></span>印度站 </p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th> <el-checkbox :disabled="!item.length" v-model="platCheck[key]" @change="bindPlatCheckChange(key)"></el-checkbox> </th>
-                            <th class="per20">店铺名</th>
-                            <th class="per40">提现账户</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(innerItem,index) in item" :key="index"> 
-                            <td>  <el-checkbox :label="innerItem.actualStoreId"  v-model="slectBox"></el-checkbox> </td>
-                            <td> {{innerItem.storeName}} </td>
-                            <td> {{innerItem.autoWithdrawAccountNumber}} </td>
-                            <td> 
-                                <span class="cares-button-primary pain"  @click="bindToUpDataAutoPay(innerItem.actualStoreId,innerItem.autoWithdrawAccountId,key)">
-                                    <i class="el-icon-edit-outline"></i>
-                                </span> 
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <CTable>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> <el-checkbox :disabled="!item.length" v-model="platCheck[key]" @change="bindPlatCheckChange(key)"></el-checkbox> </th>
+                                <th class="per20">店铺名</th>
+                                <th class="per40">提现账户</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(innerItem,index) in item" :key="index"> 
+                                <td>  <el-checkbox :label="innerItem.actualStoreId"  v-model="slectBox"></el-checkbox> </td>
+                                <td> {{innerItem.storeName}}<span v-if="innerItem.isFlashWithdraw==1" title="闪提宝店铺"  class="flash-icon"></span></td>
+                                <td> {{innerItem.autoWithdrawAccountNumber}} </td>
+                                <td> 
+                                    <span class="cares-button-primary pain"  @click="bindToUpDataAutoPay(innerItem.actualStoreId,innerItem.autoWithdrawAccountId,key)">
+                                        <i class="el-icon-edit-outline"></i>
+                                    </span> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </CTable>
             </div>
 
 
@@ -45,26 +48,28 @@
         </div>
 
         <!-- 未开通 -->
-        <div v-if="HASSTORE && activeTab==0" class="unOpening">
+        <div v-if="HASSTORE && activeTab==0" class="unOpening fadeIn">
 
             <div class="plat-form-item" v-for="(item,key) in STORES_" :key="key">
                 <p class="logo-title" v-if="key=='BM'"> <span class="amazon-logo"></span>北美站 </p>
                 <p class="logo-title" v-if="key=='EU'"> <span class="amazon-logo"></span>欧洲站 </p>
                 <p class="logo-title" v-if="key=='YD'"> <span class="amazon-logo"></span>印度站 </p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="per10"> <el-checkbox :disabled="!item.length" v-model="platCheck[key]" @change="bindPlatCheckChange(key)"></el-checkbox> </th>
-                            <th>店铺名</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr  v-for="(innerItem,index) in item" :key="index"> 
-                            <td>  <el-checkbox :label="innerItem.actualStoreId"  v-model="slectBox"></el-checkbox> </td>
-                            <td> {{innerItem.storeName}} </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <CTable>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="per40"> <el-checkbox :disabled="!item.length" v-model="platCheck[key]" @change="bindPlatCheckChange(key)"></el-checkbox> </th>
+                                <th>店铺名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  v-for="(innerItem,index) in item" :key="index"> 
+                                <td>  <el-checkbox :label="innerItem.actualStoreId"  v-model="slectBox"></el-checkbox> </td>
+                                <td> {{innerItem.storeName}} <span v-if="innerItem.isFlashWithdraw==1" title="闪提宝店铺"  class="flash-icon"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </CTable>
             </div>
 
              <div class="handle-nav">
@@ -75,7 +80,7 @@
         </div>
 
         <!-- kong  -->
-        <div v-if="!ING && !HASSTORE" class="empty">
+        <div v-if="!ING && !HASSTORE" class="empty fadeIn">
              <img src="../../../../images/carepay/empty.png" alt="暂无内容">
              <p v-if="activeTab==1">暂无已开通店铺...</p>
              <p v-if="activeTab==0">暂无未开通店铺...</p>
@@ -153,11 +158,14 @@
 
 <script>
 
+import './../../../../css/carespay/activeFnContent.scss';
+
 import { 
     hideNumberCode
 } from '../../../../js/common.js';
 
 import AdminModel from './../../../../components/adminModel.vue';
+import CTable from './../../../../components/CTable.vue';
 
 import {queryAutoWithdrawStore,updateAutoWithdraw} from './../../../../js/api.js';
 
@@ -202,7 +210,8 @@ export default {
     },
     props:['status','data'],
     components:{
-        AdminModel
+        AdminModel,
+        CTable
     },
     created(){
         this.activeTab = this.status;
@@ -210,7 +219,7 @@ export default {
          //提现银行卡
         queryAccountModleData().then(res=>{
             res.forEach(account=>{
-                (account.status==2 && account.currency=='CNY') && this.holdInfoList.push(account);
+                (account.status==2 && account.channelType=='A') && this.holdInfoList.push(account);
             });
         });
     },
@@ -416,205 +425,14 @@ export default {
         padding-bottom: 20px;
     }
 
-    .auto-tab{
-        text-align: center;
-        margin-top: 10px;
-        span{
-            display: inline-block;
-            color: #666;
-            font-size: 16px;
-            height: 30px;
-            line-height: 30px;
-            padding: 0 10px;
-            border-bottom: 2px solid #fff;
-            cursor: pointer;
-            &.active{
-                color: $--color-primary-three;
-                border-color: $--color-primary-three;
-            }
-        }
-    }
-
-    .handle-nav{
-        margin-top: 50px;
-        height: 50px;
-        line-height: 50px;
-        background-color: #F8F8F8;
-        padding: 0 20px;
-        font-size: 14px;
-        p{
-            display: inline-block;
-            margin-left: 20px;
-            span{
-                color: $--color-primary-three;
-            }
-        }
-       
-        .btn{
-            margin-top: 10px;
-            display: inline-block;
-            padding: 0 20px;
-            border-radius: 4px;
-            height: 30px;
-            line-height: 30px;
-            color: $--color-primary-two;
-            border: 1px solid $--color-primary-two;
-            // transition: all .3s;
-            &:hover{
-                color:#fff;
-                background-color: $--color-primary-two;
-                border-color: $--color-primary-two;
-            }
-
-            &.disabled{
-                color:#fff;
-                background-color: #ccc;
-                border-color: #ccc;
-            }
-        }
-    }
-
-    .plat-form-item{
-        margin: 20px 0 0 0;
-        .logo-title{
-            font-size: 14px;
-            vertical-align: middle;
-            span{
-                margin-right: 5px;
-            }
-        }
-    }
-
-    .unOpening{
-        .plat-form-item{
-            width: 50%;
-            margin: 20px auto 0;
-        }
-    }
-  
-    table{
-        width: 100%;
-        margin: 10px 0;
-        thead{
-            background-color: #F8F8F8;
-        }
-        th,td{
-            text-align: center;
-             height: 40px;
-            line-height: 40px;
-            font-size: 14px;
-        }
-    }
-
-    .clause-content,.close-auto-pay-model{
-        width: 490px;
-        padding: 20px;
-        color:#333;
-        h3{
-            text-align: center;
-            font-size: 16px;
-            margin-bottom: 15px;
-         }
-        p{
-            font-size: 14px;
-            text-indent: 2em;
-            margin-bottom: 15px;
-            line-height: 22px;
-            text-align: justify;
-            text-justify:inter-ideograph;
-            color: #666;
-            span{
-                margin-right: 15px;
-                text-decoration: underline;
-            }
-        } 
-        div{
-            text-align: center;
-            span{
-                margin-right: 10px;
-            }
-        }
-    }
 
     .close-auto-pay-model{
          width: 400px;
         min-height: 100px;
     }
-
-
-    .auto-content-model{
-        width: 400px;
-        min-height: 200px;
-        color: #333;
-         h3{
-            text-align: center;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        p{
-            font-size: 14px;
-            // text-indent: 2em;
-            // margin-bottom: 15px;
-            line-height: 22px;
-            text-align: center;
-            color: #666;
-            position: absolute;
-            width: 100%;
-            bottom: 15px;
-            left: 0;
-            span{
-                padding: 0 20px;
-                margin-right: 10px;
-            }
-        }
-        ul{
-            margin-bottom: 15px;
-            li{
-                line-height: 22px;
-                // text-indent: 2em;
-                font-size: 14px;
-                 text-align: justify;
-                 text-justify:inter-ideograph;
-                 color: #666;
-                 margin-bottom: 20px;
-                 label{
-                    display: inline-block;
-                    width: 120px;
-                    text-align: right;
-                }
-                .cares-color{
-                    margin-right: 15px;
-                    text-decoration: underline;
-                }
-            }
-        }
-        
-    }
-
-    .empty{
-        text-align: center;
-        padding: 70px 0 20px;
-        img{
-            width: 100px;
-        }
-        p{
-            font-size: 14px;
-            color: #aaa;
-            margin-top: 10px;
-        }
-    }
 </style>
 
 <style lang="scss">
-    .AutoPayContainer{
-        //修改element的样式
-
-        table{
-            .el-checkbox__label{
-                display: none;
-            }
-        }
-    }
 
     .__auto-content-admin-model{
         &.clause{

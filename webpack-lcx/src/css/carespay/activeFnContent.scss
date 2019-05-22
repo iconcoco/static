@@ -1,0 +1,200 @@
+@import '../common/theme.scss';
+
+.appFnContainer{
+
+    //tab选择开通与未开通
+    .auto-tab{
+        text-align: center;
+        margin-top: 10px;
+        span{
+            display: inline-block;
+            color: #666;
+            font-size: 16px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            border-bottom: 2px solid #fff;
+            cursor: pointer;
+            &.active{
+                color: $--color-primary-one;
+                border-color: $--color-primary-one;
+            }
+        }
+    }
+
+
+    .plat-form-item{
+        margin: 20px 0 0 0;
+        .logo-title{
+            font-size: 14px;
+            vertical-align: middle;
+            span{
+                margin-right: 5px;
+            }
+        }
+    }
+
+    //未开通
+    .unOpening{
+        .plat-form-item{
+            width: 50%;
+            margin: 20px auto 0;
+        }
+    }
+
+    //操作底部全选
+    .handle-nav{
+        margin-top: 50px;
+        height: 50px;
+        line-height: 50px;
+        background-color: #F8F8F8;
+        padding: 0 20px;
+        font-size: 14px;
+        p{
+            display: inline-block;
+            margin-left: 20px;
+            span{
+                color: $--color-primary-three;
+            }
+        }
+       
+        .btn{
+            margin-top: 10px;
+            display: inline-block;
+            padding: 0 20px;
+            border-radius: 4px;
+            height: 30px;
+            line-height: 30px;
+            color: $--color-primary-two;
+            border: 1px solid $--color-primary-two;
+            // transition: all .3s;
+            &:hover{
+                color:#fff;
+                background-color: $--color-primary-two;
+                border-color: $--color-primary-two;
+            }
+
+            &.disabled{
+                color:#fff;
+                background-color: #ccc;
+                border-color: #ccc;
+            }
+        }
+    }
+
+    //表格
+    table{
+        // width: 100%;
+        // margin: 10px 0;
+        // thead{
+        //     background-color: #F8F8F8;
+        // }
+        // th,td{
+        //     text-align: center;
+        //      height: 40px;
+        //     line-height: 40px;
+        //     font-size: 14px;
+        // }
+
+        .el-checkbox__label{
+            display: none;
+        }
+    }
+
+    .empty{
+        text-align: center;
+        padding: 70px 0 20px;
+        img{
+            width: 225px;
+        }
+        p{
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 10px;
+        }
+    }
+
+
+    //模态框
+    .auto-content-model{
+        width: 400px;
+        min-height: 200px;
+        color: #333;
+         h3{
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        p{
+            font-size: 14px;
+            // text-indent: 2em;
+            // margin-bottom: 15px;
+            line-height: 22px;
+            text-align: center;
+            color: #666;
+            position: absolute;
+            width: 100%;
+            bottom: 15px;
+            left: 0;
+            span{
+                padding: 0 20px;
+                margin-right: 10px;
+            }
+        }
+        ul{
+            margin-bottom: 15px;
+            li{
+                line-height: 22px;
+                // text-indent: 2em;
+                font-size: 14px;
+                 text-align: justify;
+                 text-justify:inter-ideograph;
+                 color: #666;
+                 margin-bottom: 20px;
+                label:not(.el-radio){
+                    display: inline-block;
+                    width: 120px;
+                    text-align: right;
+                }
+                .cares-color{
+                    margin-right: 15px;
+                    text-decoration: underline;
+                }
+            }
+        }
+        
+    }
+
+    //模态框条款内容
+    .clause-content,
+    .close-auto-pay-model{
+        width: 490px;
+        padding: 20px;
+        color:#333;
+        h3{
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 15px;
+         }
+        p{
+            font-size: 14px;
+            text-indent: 2em;
+            margin-bottom: 15px;
+            line-height: 22px;
+            text-align: justify;
+            text-justify:inter-ideograph;
+            color: #666;
+            span{
+                margin-right: 15px;
+                text-decoration: underline;
+            }
+        } 
+        div{
+            text-align: center;
+            span{
+                margin-right: 10px;
+            }
+        }
+    }
+
+}

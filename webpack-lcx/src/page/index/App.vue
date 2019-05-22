@@ -14,7 +14,7 @@
             <span class="phone-icon"></span>
             <div class="code-container">
                 <p>客户服务</p>
-                <p class="cares-color">400-887-020</p>
+                <p class="cares-color">400-887-0201</p>
                 <span class="cares-wechatCode"></span>             
             </div>
         </div>
@@ -75,6 +75,10 @@ export default {
 
 
 <style lang="scss" scoped>
+
+    .cares-login-header{
+        border-bottom: 1px solid #f5f5f5;
+    }
       @media screen and (max-width:370px) {
           .toBackLogin.help{
               height: 30px;

@@ -127,7 +127,7 @@ module.exports = {
     devServer: {
         //设置基本目录
         contentBase: path.resolve(__dirname, './dist'),
-        host: '192.168.10.80',
+        host: '192.168.10.82',
         compress: true,
         port: '1005',
         // 允许开发服务器访问本地服务器的包JSON文件，防止跨域
@@ -141,8 +141,8 @@ module.exports = {
         proxy: {
             '/': {
             //   target: 'http://192.168.10.79:8080/', //zhou
-                // target: 'http://192.168.10.118:8080', //yongfu
-                // target: 'http://192.168.10.101:8080/', //pengfei
+                // target: 'http://192.168.10.59:8080', //yongfu
+                // target: 'http://192.168.10.112:8090/', //bing
                 // target: 'http://192.168.10.210:18081',  //开发环境 
                 // target:"http://10.10.100.11:18081",  //测试
                 target:"https://testuser.carespay.com/",  //测试

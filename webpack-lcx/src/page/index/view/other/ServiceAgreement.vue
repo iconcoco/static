@@ -52,7 +52,7 @@
         <p>CaresPAY服务能够为您收取来自电商平台的资金。您声明通过CaresPAY服务的结算资金未违反您与电商平台之间的协议。<b>CaresPAY服务仅限于CaresPAY批准的电商平台，任何未经CaresPAY批准的电商平台汇入款项将被拒收且过程中产生的任何费用应由您承担。</b>CaresPAY拥有批准电商平台的自主决定权。</p>
         <div>如果您希望在某一电商平台使用CaresPAY服务，则应：</div>
         <div> <b>●</b> 在CaresPAY服务平台提供电商平台店铺授权信息以进行审核。</div>
-        <div> <b>●</b> 审核通过后，将配置的CaresPAY服务凭证填写至电商平台，以作为店铺资金汇入CaresPAY银行账户的凭证。CaresPAY服务不支持现金、信用卡付款、电汇或支票形式的汇入款项。CaresPAY保留在任何时候拒收部分或全部来款的权利。您也无权允许电商平台从CaresPAY银行账户中扣除款项。</div>
+        <div> <b>●</b> 审核通过后，将配置的CaresPAY服务凭证填写至电商平台，以作为店铺资金汇入CaresPAY银行账户的凭证。CaresPAY服务不支持现金、信用卡付款、电汇或支票形式的汇入款项。CaresPAY保留在任何时候拒收部分或全部来款的权利。您也无权允许电商平台从CaresPAY银行账户中扣除款项，如果平台主动从CaresPAY银行账户扣除款项，需要经过您的同意，且需要您支付相应的退款费用。</div>
         <div> <b>●</b> 汇入款项及交易明细将显示在您的CaresPAY账号中。CaresPAY将合理地努力通知您汇入CaresPAY银行账户的汇入款项资金。若五（5）个工作日内未收到汇入款项通知，请联系CaresPAY客服以申请内部调查。</div>
         <p>CaresPAY已在官方网站 <a href="http://www.carespay.com/">www.carespay.com</a> 和您的CaresPAY账号中告知其收费标准。 <b>CaresPAY可不时自行决定更改CaresPAY服务的收费</b> 。CaresPAY服务还可以以退款、降低收费和资励的形式进行促销。如果您对于任何收费有任何问题或不明白之处，请联系CaresPAY客服。</p>
         <br> 

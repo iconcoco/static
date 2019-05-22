@@ -1,43 +1,58 @@
 <template>
     <div class="login-content fadeIn banner">
-        <div class="bg cares-mini-no"></div>
-        
-            <div class="login-form">
-                <ul class="clearfix">
-                    <li @click="bindChangeLoginType(1)" :class="{active:loginType==1}">手机或邮箱登录</li>
-                    <li @click="bindChangeLoginType(2)" :class="{active:loginType==2}">短信验证码登录</li>
-                </ul>
-                <!-- <h2>登 录</h2> -->
-                <el-form :model="form" v-show="loginType==1" >
-                    <div  v-if="loginType==1" class="fadeIn">
+        <!-- <div class="bg cares-mini-no"></div> -->
+        <div class="cares-mini-no swiper-container">
+            <ul class="tbs-swiper clearfix">
+                <li class="tbs-swiper-items" v-for="(item,index) in indexAd" :key="index">
+                   <a :href="item.advertisementUrl">
+                        <img :src="`/general/publicDown?fileId=${item.advertisementImg}`" :alt="item.advertisementName">
+                   </a>
+                </li>
+            </ul>
+            <div class="tbs-sign"></div>
 
-                        <el-form-item name="userName">
+            <div class="arrow">
+                <a href="javascript:;" class="pre"><span class="el-icon-arrow-left"></span></a>
+                <a href="javascript:;" class="next"><span class="el-icon-arrow-right"></span></a>
+            </div>
+        </div>
+        
+        <div class="login-form" :class="{error:PSWLOGINERROR.error}">
+            <ul class="clearfix tabMenu">
+                <li @click="bindChangeLoginType(1)" :class="{active:loginType==1}">手机或邮箱登录</li>
+                <li @click="bindChangeLoginType(2)" :class="{active:loginType==2}">短信验证码登录</li>
+            </ul>
+            <!-- <h2>登 录</h2> -->
+            <el-form :model="form" v-show="loginType==1" >
+                <div  v-if="loginType==1" class="fadeIn">
+
+                    <el-form-item name="userName">
                                 <!-- <i class="i-user"></i> -->
                                 <input class="cares-input" @input="bindInputChange(`userName`)" name="userName" maxlength="25" @blur="bindFormBlur('userName')" v-model="form.userName" placeholder="手机号/邮箱" />
-                        </el-form-item>
+                    </el-form-item>
 
-                        <el-form-item name="passWord">
+                    <el-form-item name="passWord">
                                 <i :class="`${password=='password'?'i-c-eye':'i-o-eye'}`" @click="bindChangePswType"></i>
                                 <input class="cares-input" @input="bindInputChange(`passWord`)" v-model="form.passWord" @keyup.enter="bindLoginConfirm"  @blur="bindFormBlur('passWord')" :type="password" name="passWord" placeholder="密码" />
-                                <router-link style="top:100%;" class="cares-color" to="/regist/forgot">忘记密码？</router-link>
-                        </el-form-item>
+                                <router-link style="top:100%;" class="ING" to="/regist/forgot">忘记密码？</router-link>
+                    </el-form-item>
 
-                        <el-form-item v-if="PSWLOGINERROR.error" name="imgverifyCode" class="verifyCode">
+                    <el-form-item v-if="PSWLOGINERROR.error" name="imgverifyCode" class="verifyCode">
                                 <input class="cares-input"   @blur="bindFormBlur('imgverifyCode')" v-model="form.verifyCode" name="imgverifyCode"  placeholder="请输入图片验证码" type="text">
                                 <img @click="bindChangeImgAddr" :src="IMGARR.PSW" alt="验证码" class="fr" />
-                        </el-form-item>
+                    </el-form-item>
 
-                        <p v-if="PSWLOGINERROR.error && PSWLOGINERROR.data !=0" class="error-txt">当日登录密码累计输错6次，账户将会被锁定，次日凌晨自动解锁，剩余{{PSWLOGINERROR.data}}次。</p>
-                        <p v-if="!PSWLOGINERROR.error && PSWLOGINERROR.data ==0" class="error-txt">当日登录失败次数超限，次日凌晨自动解锁。如需解锁请联系客服。</p>
+                    <p v-if="PSWLOGINERROR.error && PSWLOGINERROR.data !=0" class="error-txt">当日登录密码累计输错6次，账户将会被锁定，次日凌晨自动解锁，剩余{{PSWLOGINERROR.data}}次。</p>
+                    <p v-if="!PSWLOGINERROR.error && PSWLOGINERROR.data ==0" class="error-txt">当日登录失败次数超限，次日凌晨自动解锁。如需解锁请联系客服。</p>
 
-                        <span @click="bindLoginConfirm"  class="cares-button-primary">确认登录</span>
-                        
-                        <p>还没有账号？ <router-link class="cares-color" to="/regist">立即注册</router-link> </p>
-                     </div>
-                </el-form>
+                    <span @click="bindLoginConfirm"  class="cares-button-primary">确认登录</span>
+                    
+                    <p>还没有账号？ <router-link class="cares-color" to="/regist">立即注册</router-link> </p>
+                </div>
+            </el-form>
 
-                <el-form  :model="phoneForm" v-show="loginType==2" >
-                    <div  v-if="loginType==2" class="fadeIn">
+            <el-form  :model="phoneForm" v-show="loginType==2" >
+                <div  v-if="loginType==2" class="fadeIn">
                         <el-form-item name="phoneNo">
                             <input type="number" class="cares-input" v-model="phoneForm.phoneNo" name="phoneNo" @blur="bindFormBlur('phoneNo',true)" maxlength="11" placeholder="手机号">
                             <span>中国大陆</span>
@@ -59,14 +74,16 @@
                         <span @click="bindLoginByPhone"  class="cares-button-primary">确认登录</span>
 
                         <p>还没有账号？ <router-link class="cares-color" to="/regist">立即注册</router-link> </p>
-                    </div>
-                </el-form>
+                </div>
+            </el-form>
 
-            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import $ from 'jquery';
+    import './../../../js/lib/fadeSwiper.js';
 
     import VERICATION from './../../../js/verification.js';
     import { removeClass } from './../../../js/common.js';
@@ -75,6 +92,7 @@
         login,
         loginByPhone,
         sendLoginCode,
+        getLoginAD
      } from '../../../js/api.js';
     import DOMAIN from '../../../js/domain.js';
 
@@ -108,9 +126,18 @@
                     flag:true
                 },
 
-                
+                indexAd:[],
 
             }
+        },
+        created(){
+            getLoginAD().then(res=>{
+                if(res.code){
+                    this.indexAd = res.data;
+                }else{
+                    this.$Message.error(res.code);
+                }
+            })
         },
         watch: {
            loginType(){
@@ -123,13 +150,22 @@
                     removeClass(nodes[i],'is-error');
                     nodes[i].querySelector('.el-form-item__error').remove();
                 }
+           },
+           indexAd(n){
+                if(n.length<2) return
+                setTimeout(()=>{
+                      $('.swiper-container').fadeSwiper({
+                      speed: 500,
+                      looper: 3000
+                  });
+                },1500);
            }
         },
         mounted(){
             let dom = document.getElementById('toBackLogin');
             dom.style.display = 'none';
         },
-         destroyed(){
+        destroyed(){
             let dom = document.getElementById('toBackLogin');
             dom.style.display = 'block';
         },
@@ -292,61 +328,137 @@
     @function perce($a, $b) {
         @return ($a/$b)*100%;
     }
+    .swiper-container{
+       
+        width: 60%;
+        height: 100%;
+        position: relative;
+        .tbs-swiper{
+            // position: absolute;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            // top: 0;
+            // left: 0;
+            li{
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: absolute;
+                display: none;
+                &:first-child{
+                    display: block;
+                }
+                a{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    vertical-align: top;
+                }
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        &:hover{
+            .arrow{ 
+                display:block; 
+                .next{
+                    right:20px;
+                    opacity: 1;
+                }
+                .pre{
+                    left:20px;
+                    opacity: 1;
+                }
+            }
+            
+        }
+        .arrow{
+            // display:none;
+            >a{
+                position: absolute;
+                width:36px;
+                height:36px;
+                line-height: 36px;
+                border-radius:50%;
+                top:50%;
+                margin-top:-18px;
+                z-index: 2;
+                font-size:22px;
+                color:#fff;
+                background-color: rgba(0,0,0,0.1);
+                text-align: center;
+                transition: all .2s;
+                opacity: 0;
+                &:hover{
+                    background-color: rgba(0,0,0,0.5);
+                }
+            }
+            .next{
+                right:0px;
+            }
+            .pre{
+                left:0px;
+            }
+        
+        }
+    }
     .login-content{
         margin: 50px auto;
         // margin-top: 0px;
-        height: 550px;
+        height: 420px;
         position: relative;
-        max-width: 1100px;
-         border-radius:8px;
+        max-width: 1000px;
+         border-radius:4px;
          overflow: hidden;
          box-sizing:content-box;
-        .bg{
-            background:url('../../../images/login/loginbg.png') no-repeat left center;
-            // background:url('../../../images/ac/f3000.png') no-repeat left center;
-            background-size:1100px 550px;
-            // background-size:100% 100%;
-            height: 550px;
-            // margin-right: 320px;
-        }
 
-          ul{
-                padding: 20px 0;
-                margin-bottom: 20px;
-                li{
-                    float: left;
-                    width: 50%;
-                    color: #ddd;
-                    height: 40px;
-                    line-height: 40px;
-                    border-bottom: 1px solid #ddd;
-                    cursor: pointer;
-                    text-align: center;
-                    font-size: 14px;
-                    &:hover{
-                        color: #333;
-                    }
-                    &.active{
-                        border-width: 2px;
-                        color: $--color-primary-one;
-                        border-color: $--color-primary-one; 
-                    }
+        ul.tabMenu{
+            padding: 20px 0;
+            margin-bottom: 20px;
+            li{
+                float: left;
+                width: 50%;
+                color: #999;
+                height: 40px;
+                line-height: 40px;
+                border-bottom: 1px solid #999;
+                cursor: pointer;
+                text-align: center;
+                font-size: 16px;
+                &:hover{
+                    color: #333;
+                }
+                &.active{
+                    border-width: 2px;
+                    font-weight: bold;
+                    color: $--color-primary-one;
+                    border-color: $--color-primary-one; 
                 }
             }
+        }
         .login-form{
             background-color: #fff;
             // width: perce(394, 1190);
-            width: 340px;
-            min-height: 374px;
-            top: 50%;
-            right: 90px;
-            margin-top: -187px;
+            width: 400px;
+            height: 100%;
+            top:0;
+            right: 0;
+            z-index: 5;
             position: absolute;
-            padding: 0 40px;
-            border-radius: 4px;
+            padding: 40px 60px 20px;
 
-            padding-bottom: 20px;
+            &.error{
+                padding-top: 20px;
 
+                .cares-button-primary{
+                    margin-top: 15px;
+                }
+            }
             h2{
                 color: #666;
                 padding: 20px 0;
@@ -469,6 +581,34 @@
         }
     }
    }
+
+    .login-content{
+
+        .tbs-sign{
+                position: absolute;
+                width: 100%;
+                bottom: 0px;
+                height: 1px;
+                // line-height: 12px;
+                text-align: center;
+                z-index: 20;
+                background-color:transparent;
+                a{
+                    display: inline-block;
+                    width: 26px;
+                    height: 2px;
+                    margin: 0 5px;
+                    margin-top:-10px;
+                    //    background-color: rgba(255,255,255,.5);
+                    background-color: rgba(255,255,255,.3);
+                    vertical-align:top;
+                    &.active{
+                        background-color:#fff;
+                    }
+                }
+            }
+
+    }
 
 </style>
 

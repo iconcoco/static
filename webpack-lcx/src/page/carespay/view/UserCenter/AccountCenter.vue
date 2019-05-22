@@ -84,9 +84,7 @@
         <section class="cares-safeSet">
             <!--安全设置标题-->
             <div class="safe-title personal-module-title">
-                <h2>
-                    安全设置
-                </h2>
+                <h2> 安全设置</h2>
             </div>
 
             <!--修改密码-->
@@ -104,7 +102,7 @@
                 </div>
                 <!--右边按钮-->
                 <div class="right-button">
-                    <router-link to="/Pesonal/modifypassword" class="cares-button-primary pain">修改密码</router-link>
+                    <router-link to="/Pesonal/modifypassword">修改密码</router-link>
                 </div>
             </div>
 
@@ -123,7 +121,7 @@
                 </div>
                 <!--右边按钮-->
                 <div class="right-button">
-                    <router-link to="/Pesonal/modifyphone" class="cares-button-primary pain">修改手机</router-link>
+                    <router-link to="/Pesonal/modifyphone">修改手机</router-link>
                 </div>
             </div>
 
@@ -155,7 +153,7 @@
                 </div>
                 <!--右边按钮-->
                 <div class="right-button">
-                    <router-link to="/Pesonal/modifyemail" v-if="form.email && form.status==1" class="cares-button-primary pain"> 修改邮箱</router-link>
+                    <router-link to="/Pesonal/modifyemail" v-if="form.email && form.status==1"> 修改邮箱</router-link>
                 </div>
             </div>
         </section>    
@@ -262,7 +260,7 @@
                             display: inline-block;
                             width: 20px;
                             height: 20px;
-                            background: url('./../../../../images/carepay/nvip.svg') no-repeat center center;
+                            background: url('./../../../../images/carepay/vip.svg') no-repeat center center;
                             background-size: 100% 100%;
                             vertical-align: middle;
                             margin-top: -4px;
@@ -380,6 +378,8 @@
                 a{
                     // height: 34px;
                     // line-height: 34px;
+                    color: $--color-primary-one;
+                    font-size: 14px;
                     width: 100px;
                     border-radius: 19px;
                 }

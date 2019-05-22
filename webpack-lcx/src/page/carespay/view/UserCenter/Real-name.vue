@@ -25,8 +25,8 @@ import {
 
 //2018-11-28  实名认证的组件
 
-import AuthenticationPersonal from '../StoreManage/AuthenticationPersonal.vue';         //大陆个人
-import AuthenticationCompany from '../StoreManage/AuthenticationCompany.vue';         //大陆个人
+import AuthenticationPersonal from '../Authentication/AuthenticationPersonal.vue';         //大陆个人
+import AuthenticationCompany from '../Authentication/AuthenticationCompany.vue';         //大陆个人
 
 export default {
     data(){

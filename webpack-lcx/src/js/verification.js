@@ -72,10 +72,17 @@ class Verify {
             "PAYPALBILL":           this.T_EMPTY.bind(this),            //paypalBill
             "CURRENCY":             this.T_EMPTY.bind(this),            //币种
             "NATION":               this.T_EMPTY.bind(this),            //国家
+            "TAXBUREAUACCOUNTNAME":               this.T_EMPTY.bind(this),            //国家
+            "TAXBUREAUBIC":               this.T_EMPTY.bind(this),            //国家
+            "TAXBUREAUBANKNAME":               this.T_EMPTY.bind(this),            //国家
+            "TAXBUREAUROUTING":               this.T_EMPTY.bind(this),            //国家
+
+            "COUNTRYCODE":               this.T_EMPTY.bind(this),            //国家
             "PAYPALACCOUNT":        this.T_EMPTY.bind(this),            //paypal账号
             "PAYPALNAME":           this.T_EMPTY.bind(this),               //paypal账户名
 
             "BANKNUMBER":           this.T_BANKNUMBER.bind(this),         //提现账户中心银行卡号
+            "TAXBUREAUACCOUNT":           this.T_BANKNUMBER.bind(this),         //提现账户中心银行卡号
             "ACCESSKEY":            this.T_ACCESSKEY.bind(this),            //修改店铺访问编码
             "SELLERID":             this.T_SELLERID.bind(this),            //修改店铺卖家编号
             "SECRETKEY":            this.T_SECRETKEY.bind(this),            //修改店铺密钥
@@ -98,6 +105,10 @@ class Verify {
             "ADDRESS":              this.T_EMPTY.bind(this),         //详细地址
             "BRANCHPROVINCECODE":   this.T_EMPTY.bind(this),         //提现账户中心支行省份选择
             "BRANCHCITYCODE":       this.T_EMPTY.bind(this),         //提现账户中心城市选择
+
+            "FRONTAMOUNT":          this.T_TAXMONEY.bind(this),         //缴税
+            "REFERENCENO":          this.T_EMPTY.bind(this),         //缴税
+            "TAXNO":          this.T_EMPTY.bind(this),         //缴税
         };  
 
         //返回验证结果  布尔值
@@ -232,6 +243,46 @@ class Verify {
         if (!this.VALUE.trim()) {
             this.flag = false;
             switch (this.NAME.toUpperCase()) {
+                case 'REFERENCENO':
+                    {
+                        this.msg = `请输入参考号`;
+                    }
+                    break;
+                case 'TAXNO':
+                    {
+                        this.msg = `请输入增值税注册号`;
+                    }
+                    break;
+                // case 'FRONTAMOUNT':
+                //     {
+                //         this.msg = `请输入缴税金额`;
+                //     }
+                //     break;
+                case 'COUNTRYCODE':
+                    {
+                        this.msg = `请选择税局机构`;
+                    }
+                    break;
+                case 'TAXBUREAUACCOUNTNAME':
+                    {
+                        this.msg = `请填写账户名称`;
+                    }
+                    break;
+                case 'TAXBUREAUBIC':
+                    {
+                        this.msg = `请填写银行BIC号`;
+                    }
+                    break;
+                case 'TAXBUREAUBANKNAME':
+                    {
+                        this.msg = `请填写银行名称`;
+                    }
+                    break;
+                case 'TAXBUREAUROUTING':
+                    {
+                        this.msg = `请填写路由号`;
+                    }
+                    break;
                 case 'HKBIZCERTIFICATION':
                     {
                         this.msg = `请上传商户登记证`;
@@ -582,6 +633,22 @@ class Verify {
             this.msg = '请填写店铺链接'
         }
 
+
+        //返回验证结果
+        return this.Result(this.flag, this.msg); 
+    }
+
+    T_TAXMONEY(){
+
+        if(!(this.VALUE.trim())){
+            this.flag = false;
+            this.msg = '请输入金额'
+        }
+
+        if((this.VALUE.trim()) > this.FN){
+            this.flag = false;
+            this.msg = '账户资金不足，无法代理缴费，请预留足额店铺资金后，再申请代缴费'
+        }
 
         //返回验证结果
         return this.Result(this.flag, this.msg); 

@@ -13,8 +13,11 @@ import serviceAgreement from './../view/other/ServiceAgreement.vue';            
 import privacyAgreement from './../view/other/privacyAgreement.vue';            //保密协议
 import amazonMWS from './../view/other/amazonMWS.vue';            //3个key
 import exportOrder from './../view/other/exportOrder.vue';            //3个key
+import flashWithdrawIntro from './../view/other/flashWithdrawIntro.vue';            //3个key
+import VATmaterial from './../view/other/VATmaterial.vue';            //vat所需资料
 
 import ebayAuthorization from './../view/ebayAuthorization.vue';  //2018-10-25 增加ebay渠道获取ebay的验证结果
+
 
 
 
@@ -27,8 +30,8 @@ export default [
     { path: '/amazonMWS', component: amazonMWS },
     { path: '/ebayAuthorization', component: ebayAuthorization },
     { path: '/exportOrder', component: exportOrder },
-    
-
+    { path: '/flashWithdrawIntro', component: flashWithdrawIntro },
+    { path: '/vat/:code', component: VATmaterial },
 
     { path: '/activeEmail', component: ActiveEmail },
     { path: '/404', component: page404 },

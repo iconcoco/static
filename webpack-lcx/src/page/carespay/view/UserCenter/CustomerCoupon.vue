@@ -50,7 +50,7 @@
             <!-- 空空如也 -->
              <div v-if="!AJAXING &&(ADSTATUS==2||ADSTATUS==3)" class="empty">
                  <!-- <span></span> -->
-                  <img class="error_img_1" src="../../../../images/carepay/404.png" alt="404">
+                  <img class="error_img_1" src="../../../../images/carepay/无优惠券.png" alt="无优惠券">
                  <p>暂无优惠券可领取...</p>
              </div>
         </div>

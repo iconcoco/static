@@ -22,6 +22,10 @@ $carescolor:$--color-primary-two;
                 box-shadow: 0 0 12px 0px $--color-primary-two-hover;
             }
         }
+
+        .el-select__caret{
+            vertical-align: top;
+        }
     }
     .el-input__inner:focus {
         border-color: $carescolor;
@@ -37,37 +41,38 @@ $carescolor:$--color-primary-two;
 
 //2.checkbox
 .el-checkbox {
+    margin-right: 0px;
     //选中的时候
     &.is-checked {
         .el-checkbox__inner {
-            background-color: $carescolor;
-            border-color: $carescolor;
+            background-color: $--color-primary-one;
+            border-color: $--color-primary-one;
         }
     }
     .el-checkbox__input.is-checked+.el-checkbox__label {
         color: #666;
     }
     .el-checkbox__input.is-focus .el-checkbox__inner {
-        border-color: $carescolor;
-        box-shadow: 0 0 12px 0px $--color-primary-two-hover;
+        border-color: $--color-primary-one;
+        box-shadow: 0 0 12px 0px $--color-primary-one-hover;
     }
     .el-checkbox__inner:hover {
-        border-color: $carescolor;
+        border-color: $--color-primary-one;
     }
 }
 
 //3.radio
 .el-radio {
     .el-radio__input.is-checked .el-radio__inner {
-        background-color: $carescolor;
-        border-color: $carescolor;
+        background-color: $--color-primary-one;
+        border-color: $--color-primary-one;
     }
     .el-radio__input.is-disabled.is-checked .el-radio__inner{
         background-color: #f5f7fa;
         border-color: #e4e7ed;
     }
     .el-radio__inner:hover {
-        border-color: $carescolor;
+        border-color: $--color-primary-one;
     }
     .el-radio__input.is-checked+.el-radio__label {
         color: #666;
@@ -110,15 +115,13 @@ $carescolor:$--color-primary-two;
 }
 
 //5.button
-.el-button {
-    height: 38px;
-    color: #fff;
-    line-height: 38px;
-    padding: 0;
-    a {
-        color: #fff;
-    }
-}
+// .el-button {
+//     color: #fff;
+//     background-color:$--color-primary-three; 
+//     a {
+//         color: #fff;
+//     }
+// }
 
 //6.message
 .el-message {
@@ -144,6 +147,17 @@ $carescolor:$--color-primary-two;
     }
 }
 
+.el-message-box .el-message-box__btns button{
+    color:$--color-primary-one;
+}
+.el-textarea__inner:focus{
+    border-color: $--color-primary-one;
+}
+.el-message-box__headerbtn:focus .el-message-box__close, 
+.el-message-box__headerbtn:hover .el-message-box__close{
+    color:$--color-primary-one;
+}
+
 //8. loading
 .el-loading-mask{
     height: 60px;
@@ -155,6 +169,7 @@ $carescolor:$--color-primary-two;
 //         color: #fff;
 //     }
 }
+
 
 //9. form
 .el-form{
@@ -189,6 +204,11 @@ $carescolor:$--color-primary-two;
     }
 }
 
+
+.el-upload--picture-card:hover, .el-upload:focus {
+    border-color: $--color-primary-one;
+    color: $--color-primary-one;
+}
 
 
 //组件离开和进入的动画
@@ -241,3 +261,18 @@ $carescolor:$--color-primary-two;
     }
 }
 
+.el-date-editor.el-input,
+.el-date-editor.el-input__inner,
+.el-cascader,
+.el-input,
+{
+   width: 100%;
+   height: 32px;
+   line-height: 32px;
+   .el-range__close-icon,
+   .el-range__icon,
+   .el-range-separator
+   {
+       line-height: 24px;;
+   }
+}

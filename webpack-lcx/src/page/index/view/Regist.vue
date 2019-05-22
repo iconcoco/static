@@ -247,7 +247,9 @@ import DOMAIN from '../../../js/domain.js';
                     this.form.strength = this.bindIptKeydown();
 
                     //发送注册请求
-                    register(this.form).then(res=>{
+                    let forData = Object.assign({},this.form);
+                    forData.salePhone = forData.referrer;
+                    register(forData).then(res=>{
                         this.AjaxIng = false;
                         if(res.code==0){//注册成功
                             this.showConsummate = true; //完善页面

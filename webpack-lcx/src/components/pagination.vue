@@ -7,7 +7,7 @@
 
         <div class="p-container clearfix">
              <template v-if="total>15">
-                <a href="javascript:;" class="pre" v-if="current!=1" @click="bindchosepage(current-1)"></a>
+                <a href="javascript:;" class="pre el-icon-arrow-left" v-if="current!=1" @click="bindchosepage(current-1)"></a>
 
                 <!-- 如果当前的页码距离靠前 -->
                 <template v-if="current<=8">
@@ -39,27 +39,27 @@
                     <a href="javascript:;" v-for="n in atLast" :key="n" @click="bindchosepage(n)" :class="{active:n==current}">{{n}}</a>
                 </template>
 
-                <a href="javascript:;" class="next" @click="bindchosepage(current+1)" v-if="current!=total"></a>
+                <a href="javascript:;" class="next el-icon-arrow-right" @click="bindchosepage(current+1)" v-if="current!=total"></a>
             </template>
 
             <template v-else>
                 <template v-if="total==1">
-                    <a href="javascript:;" class="pre"></a>
+                    <a href="javascript:;" class="pre el-icon-arrow-left"></a>
                     <a class="active" href="javascript:;">1</a>
-                    <a href="javascript:;" class="next"></a>
+                    <a href="javascript:;" class="next el-icon-arrow-right"></a>
                 </template>
                 
                 <template v-else>
-                    <a href="javascript:;" class="pre"  v-if="current!=1" @click="bindchosepage(current-1)"></a>
+                    <a href="javascript:;" class="pre el-icon-arrow-left"  v-if="current!=1" @click="bindchosepage(current-1)"></a>
                     <a v-for="n in total" :key="n" :class="{active:n==current}"  @click="bindchosepage(n)" href="javascript:;">{{n}}</a>
-                    <a href="javascript:;" class="next"  @click="bindchosepage(current+1)"  v-if="current!=total"></a>
+                    <a href="javascript:;" class="next el-icon-arrow-right"  @click="bindchosepage(current+1)"  v-if="current!=total"></a>
                 </template>
                 
             </template>
         </div>
 
         <div class="jumper">
-            <span>跳至</span>
+            <span>跳至：</span>
             <input class="cares-input" type="Number" @change="jumpToPage" v-model="jump">
             <span>页</span>
         </div>
@@ -205,13 +205,13 @@
             a:hover{
                 // background-color: #f7f5ef;
                 // font-weight: bold;
-                color:  $--color-primary-two;
+                color:  $--color-primary-one;
+                border-color: $--color-primary-one;
             }
             a.active{
-                // color: #fff;
-                // border-color: $--color-primary-two;
-                // background-color: $--color-primary-two;
-                color: $--color-primary-two;
+                color: #fff;
+                border-color: $--color-primary-one;
+                background-color: $--color-primary-one;
             }
 
             a,span{
@@ -220,9 +220,9 @@
                 height: 30px;
                 line-height: 30px;
                 text-align: center;
-                // border:1px solid #ddd;
+                border:1px solid #e5e5e5;
                 // background-color: #fafafa;
-                color: #999;
+                color: #333;
                 float: left;
                 // margin-left: -1px;
                 font-size: 14px;
@@ -235,18 +235,12 @@
                 border: 0;
                 margin-left: 0px;
             }
-            .pre{
-                background: url('./../images/carepay/arrow-left-o.svg') no-repeat center center;
-                background-size: 50% 50%;
+            .pre,.next{
+                font-size: 18px;
                 &:hover{
-                background-image: url('./../images/carepay/arrow-left-o-hover.svg') ;
-                }
-            }
-            .next{
-                background: url('./../images/carepay/arrow-right-o.svg') no-repeat center center;
-                background-size: 50% 50%;
-                &:hover{
-                background-image: url('./../images/carepay/arrow-right-o-hover.svg') ;
+                    color: #666;
+                    background-color: #fafafa;
+                    border-color: #e5e5e5;
                 }
             }
         }

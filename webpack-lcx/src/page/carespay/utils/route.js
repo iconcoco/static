@@ -1,15 +1,15 @@
 
 import AdminIndex from './../view/index/adminIndex.vue';
 /*** 店铺管理模块 ***/
-import StoreManage from './../view/StoreManage/StoreManage.vue';//首页店铺管理
-import ShopDetail from './../view/StoreManage/StoreDetaile.vue';//店铺详情
-import AddStore from './../view/StoreManage/AddStore.vue';//添加绑定店铺
-import Complete_Account from './../view/StoreManage/Complete_Account.vue';      //完善账户类型选择
+import StoreManage from './../view/Store/StoreManage.vue';//首页店铺管理
+import ShopDetail from './../view/Store/StoreDetaile.vue';//店铺详情
+import AddStore from './../view/Store/AddStore.vue';//添加绑定店铺
+import Complete_Account from './../view/Authentication/Complete_Account.vue';      //完善账户类型选择
 import Complete_bankAccount from './../view/AccountManage/AddCashAccount.vue';  //完善资料后添加银行卡账户
-import Cash from './../view/StoreManage/Withdrawal.vue'; //可提现的店铺
+import Cash from './../view/AccountManage/Withdrawal.vue'; //可提现的店铺
 
-import AuthenticationPersonal from './../view/StoreManage/AuthenticationPersonal.vue';
-import AuthenticationCompany from './../view/StoreManage/AuthenticationCompany.vue';
+import AuthenticationPersonal from './../view/Authentication/AuthenticationPersonal.vue';
+import AuthenticationCompany from './../view/Authentication/AuthenticationCompany.vue';
 
 /*** 提现账号管理模块 ***/
 import CashAccountContainer from './../view/AccountManage/CashAccountContainer.vue';    
@@ -29,12 +29,16 @@ import InvitationFriend from './../view/UserCenter/InvitationFriend.vue';//邀�
 import CustomerCoupon from './../view/UserCenter/CustomerCoupon.vue';//我的优惠券
 
 /*** 明细查询模块 ***/
-import CheckDetaile from './../view/Bill/CheckDetaile.vue';
+import FinanceContainer from './../view/Bill/FinanceContainer.vue';
 
 /***  全部应用&自动提现 ** */
 import AutoPay from './../view/AppFn/AutoPay.vue';
 import FastArrival from './../view/AppFn/FastArrival.vue';
 import AllApp from './../view/AppFn/AllApp.vue';
+import VAT from './../view/VAT/VAT.vue';
+import ApplayBox from './../view/VAT/Apply/ApplayBox.vue';
+import ReportBox from './../view/VAT/BEForm/ReportBox.vue';
+import PayTaxBox from './../view/VAT/PayTax/PayTaxBox.vue';
 
 /**Other**/ 
 
@@ -59,7 +63,12 @@ let routes = [
     //自动支付
     { path: "/AutoPay",name:'AutoPay',component:AutoPay },
     //极速达
-    { path: "/FastArrival",name:'FastArrival',component:FastArrival },
+    { path: "/FlashWithdraw",name:'FastArrival',component:FastArrival },
+    //VAT
+    { path: "/vat",name:'VAT',component:VAT },
+    { path: "/vat/apply",name:'VATapply',component:ApplayBox },
+    { path: "/vat/report",name:'VATreport',component:ReportBox },
+    { path: "/vat/payTax",name:'VATpay',component:PayTaxBox },
     //全部应用
     { path: "/AllApp",name:'AllApp',component:AllApp },
     //广告
@@ -86,7 +95,7 @@ let routes = [
 
 
      /*** 明细查询  ***/
-    {path: '/checkdetaile',name:'bill', component: CheckDetaile},
+    {path: '/finance',name:'bill', component: FinanceContainer},
 
     /*** 提现账户模块 ***/
     { path: '/cashaccount', name:'CashAccountContainer', component: CashAccountContainer },

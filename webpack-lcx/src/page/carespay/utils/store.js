@@ -9,7 +9,9 @@ let config = {
         cityData:{},                //城市列表的数据缓存
         RealNamePop:false,
         AuthentyIsError:false,        //实名认证是失败的
-        AppAutoPayPop:false,
+        APPWARNINGPOP:false,           //温馨提示的弹窗
+        APPWARNINGTYPE:0,           //温馨提示的类型 0.自动提现  1.闪提宝-实名认证  2.闪提宝-绑定店铺 
+
         notifyData:[],
 
         BankCark:{},                //银行卡id对应的详细信息 

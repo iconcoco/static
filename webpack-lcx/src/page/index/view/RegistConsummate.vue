@@ -49,7 +49,7 @@
                 <li>2. 检查邮箱中的垃圾邮件</li>
                 <li>3. 若仍未收到，请尝试<span @click="bindReSendEmail" class="cares-color">重新发送</span></li>
             </ul>
-            <span @click="bindToAdmin" class="cares-button-primary pain">进入首页</span>
+            <span @click="bindToAdmin" class="cares-button-primary">进入首页</span>
         </div>
     </div>
 </transition>

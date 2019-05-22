@@ -89,6 +89,7 @@ export default {
         top: 100px;
         border-radius:6px;
         padding: 10px;
+        // transform: translateX(-50%);
     }
 
 @keyframes adminFadeOut {
