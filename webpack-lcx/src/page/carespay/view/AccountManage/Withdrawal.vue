@@ -33,6 +33,7 @@
                 <h3 v-if="code=='WISH'" class="wish-logo"></h3>
                 <h3 v-if="code=='AE'" class="AE-logo"></h3>
                 <h3 v-if="code=='EBAY'" class="ebay-logo"></h3>
+                <h3 v-if="code=='ETSY'" class="etsy-logo"></h3>
                 <CTable>
                     <table>
                             <thead>
@@ -146,6 +147,7 @@
                                 <span v-if="key=='EBAY'" class="ebay-logo"></span>
                                 <span v-if="key=='WISH'" class="wish-logo"></span>
                                 <span v-if="key=='AE'" class="AE-logo"></span>
+                                <span v-if="key=='ETSY'" class="etsy-logo"></span>
 
                                 <span v-if='key=="BM"'>北美站</span>
                                 <span v-if='key=="YD"'>印度站</span>
@@ -234,12 +236,14 @@
                 flag :{                 //是否要展开查看不可提现店铺
                     BM:false,
                     EBAY:false,
+                    ETSY:false,
                     WISH:false,
                     AE:false
                 },                      //是否展开不可提现店铺
                 platCheckAll:{          //全选
                     BM:false,
                     EBAY:false,
+                    ETSY:false,
                     WISH:false,
                     AE:false
                 },
@@ -254,6 +258,9 @@
 
                 WISH_withdrawArr:[],
                 WISH_unwithdrawArr:[],
+                
+                ETSY_withdrawArr:[],
+                ETSY_unwithdrawArr:[],
 
 
 
@@ -278,6 +285,8 @@
 
 
                 LOADING:false,
+
+                ING:false,
                 
             }
         },
@@ -404,7 +413,11 @@
                     data.forEach(item=>{
                         //1. 确认平台
                         Pname = item.platformCode;
+                        
                         if(['EU','YD'].indexOf(item.platformCode)>-1){Pname = 'BM'; };
+
+                         //2019-6-10 如果是etsy平台，都将变为正常店铺
+                        if(item.platformCode == 'ETSY') item.type = 1;
 
                         //2. 区分可以提现的店铺
                          item.type==1 ? (
@@ -516,7 +529,8 @@
                 
                 //3. 体现金额是否超过50
                 if(flag && this.cashTotal>=50){
-                // if(flag && this.cashTotal>=0){
+                    if(this.ING) return;
+                    this.ING = true;
 
                     //1. 遍历获取提现的店铺ID和金额
                     let SOTRE_SELECT = [];
@@ -537,6 +551,7 @@
                     previewWithdraw({
                         withdraws:JSON.stringify(SOTRE_SELECT)  //提现的数据
                     }).then(res=>{
+                        this.ING = false;
                         if(res.code==0){
                             this.withdrawList = SOTRE_SELECT;
                             this.withdrawRateData = res.data;

@@ -11,7 +11,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(item,index) in data" :key="index">
+                    <tr v-if="data.length==0" class="empty">
+                        <td colspan="4">暂无数据</td>
+                    </tr>
+                    <tr v-else v-for="(item,index) in data" :key="index">
                         <td>{{formatTimer(item.createTime)}}</td>
                         <td>
                             <span v-if="item.type==1">注册+首年申报</span>

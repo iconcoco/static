@@ -23,7 +23,7 @@ import ebayAuthorization from './../view/ebayAuthorization.vue';  //2018-10-25 å
 
 export default [
     { path: '/', redirect: '/login' },
-    { path: '/login', component: Login },
+    { path: '/login', component:Login },
     { path: '/weChatLogin', component: weChatLogin },
     { path: '/serviceAgreement', component: serviceAgreement },
     { path: '/privacyAgreement', component: privacyAgreement },

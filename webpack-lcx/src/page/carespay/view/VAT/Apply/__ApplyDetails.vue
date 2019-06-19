@@ -96,7 +96,7 @@
 
             <div class="form-item" v-if="DATA.isApply || DATA.status == 2">
                 <span>所需材料</span><div class="item">
-                    <a :href="`${DOMAIN.login}#/vat/${form.nation}`" target="__blank" class="cares-color">点击查看</a>
+                    <a href="javascript:;" @click="()=>{ meterial = true; }" class="cares-color">点击查看</a>
                 </div>
             </div>
 
@@ -168,12 +168,17 @@
             :buttonEvent="serviceButtonEvent"
          ></VatService>
 
+         <VATMATERIAL 
+            v-model="meterial"
+            :Nation="form.nation"
+         ></VATMATERIAL>
+
     </div>
 </template>
 
 <script>
 import domain from './../../../../../js/domain.js'
-import {NationCode} from './../../../utils/localbase.js';
+import {AllNationCode} from './../../../utils/localbase.js';
 import verification from './../../../../../js/verification.js';
 // import AdminModel from './../../../../../components/adminModel.vue';
 
@@ -188,21 +193,10 @@ import {
         queryCustomerInfo,      //客户信息
     } from './../../../utils/localbase.js';
 
+import VATMATERIAL from './../../../../index/view/other/VATmaterial.vue';
+
 export default {
     data(){
-        let AllNationCode = NationCode.concat([
-            {
-                nation:'波兰',
-                code:'PL',
-                platformCode:'EU',
-            },
-            {
-                nation:'捷克',
-                code:'CZ',
-                platformCode:'EU',
-            },
-        ]);
-
         return {
             form:{
                 nation:'GB',
@@ -216,7 +210,7 @@ export default {
                 marketPrice:0
             },
 
-
+            meterial:false,
             flag:false,
             isRead:false,
             DOMAIN:domain,
@@ -360,7 +354,8 @@ export default {
         }
     },
     components:{
-        VatService
+        VatService,
+        VATMATERIAL
     }
 }
 </script>

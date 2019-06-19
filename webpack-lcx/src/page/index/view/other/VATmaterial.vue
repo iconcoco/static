@@ -1,9 +1,9 @@
 <template>
-    <div class="vat-container">
+    <div class="vat-container" :class="{fadeIn:flag}">
         <div class="content">
             <p class="handle-btn">
                 <!-- <span>下载文档</span> -->
-                <a :href="DOMAIN.carespay" class="cares-color">返回CaresPAY</a>
+                <a href="javascript:;" @click="changeStatus" class="cares-color">返回CaresPAY</a>
             </p>
             <h2 class="banner-module-title">
                 VAT注册资料清单
@@ -317,16 +317,31 @@
 </template>
 
 <script>
-import domain from './../../../../js/domain.js';
 export default {
     data(){
         return {
             NT:'',
-            DOMAIN:domain
+            flag:false
         }
     },
+    props:['value','Nation'],
+    watch:{
+        value(bol){
+            this.flag = bol
+        },
+        Nation(code){
+            this.NT = code;
+        },
+    },
     created(){
-        this.NT = this.$route.params.code || 'GB'
+        this.flag = this.value;
+        this.NT = this.Nation;
+    },
+    methods:{
+        changeStatus(){
+            this.flag = false;
+            this.$emit('input',false);
+        }
     }
 }
 </script>
@@ -340,7 +355,13 @@ export default {
     left: 0;
     background-color: rgba(0,0,0,.5);
     overflow-y: scroll;
-    z-index: 200;
+    z-index: -60;
+    opacity: 0;
+    transition: all .5s;
+    &.fadeIn{
+       z-index: 200; 
+       opacity: 1;
+    }
     .content{
         background-color: #fff;
         position: absolute;

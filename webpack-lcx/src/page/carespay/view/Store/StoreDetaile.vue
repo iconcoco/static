@@ -15,11 +15,15 @@
         </div>
 
         <!-- 北美与欧洲站 -->
-        <template v-if="['BM','EU',].indexOf(pageData.platformCode)>-1">
+        <template v-if="['BM','EU','ETSY'].indexOf(pageData.platformCode)>-1">
              <!-- 账号信息 -->
             <div class="account-info" v-for="(item,key,index) in storeInfo.nation" :key="index">
-                <h3 class="banner-module-title">
-                {{nationName(key)}}站店铺收款账户信息
+
+                <h3 class="banner-module-title" v-if="pageData.platformCode=='ETSY'">
+                    etsy店铺收款账户信息
+                </h3>
+                <h3 class="banner-module-title" v-else>
+                    {{nationName(key)}}站店铺收款账户信息
                 </h3>
 
                 <div class="account-item">
@@ -92,7 +96,7 @@
             </div>
 
             <!-- 店铺信息 -->
-            <div class="account-info">
+            <div class="account-info" v-if="pageData.platformCode != 'ETSY'">
                 <h3 class="banner-module-title">
                     店铺基本信息
                 </h3>

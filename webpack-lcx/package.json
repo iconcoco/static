@@ -4,8 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "set type=dev&&webpack-dev-server --progress --open --config webpack.dev.config.js",
-        "build": "set type=build&&webpack --progress --config webpack.pro.config.js"
+        "local": "webpack-dev-server --progress --open --config webpack.dev.config.js",
+        "build": "set type=build&&webpack --progress --config webpack.pro.config.js",
+        "test": "set type=test&&webpack --progress --config webpack.pro.config.js",
+        "dev": "set type=dev&&webpack --progress  --config webpack.pro.config.js",
+        "prod": "set type=build&&webpack --progress --config webpack.pro.config.js"
     },
     "browserslist": [
         "defaults",

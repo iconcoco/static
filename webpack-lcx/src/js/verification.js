@@ -105,6 +105,7 @@ class Verify {
             "ADDRESS":              this.T_EMPTY.bind(this),         //详细地址
             "BRANCHPROVINCECODE":   this.T_EMPTY.bind(this),         //提现账户中心支行省份选择
             "BRANCHCITYCODE":       this.T_EMPTY.bind(this),         //提现账户中心城市选择
+            "ETSYACCOUNT":       this.T_EMPTY.bind(this),         //提现账户中心城市选择
 
             "FRONTAMOUNT":          this.T_TAXMONEY.bind(this),         //缴税
             "REFERENCENO":          this.T_EMPTY.bind(this),         //缴税
@@ -426,6 +427,11 @@ class Verify {
                 case 'PAYPALNAME':
                     {
                         this.msg = '请填写PayPal账户姓名';
+                    }
+                    break;
+                case 'ETSYACCOUNT':
+                    {
+                        this.msg = '请填写账户名';
                     }
                     break;
             }

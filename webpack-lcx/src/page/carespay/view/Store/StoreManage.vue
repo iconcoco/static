@@ -11,6 +11,7 @@
                     <span v-if="['BM','EU','YD'].indexOf(code)>-1" class="amazon-logo"></span> 
                     <span v-if="code=='EBAY'" class="ebay-logo"></span> 
                     <span v-if="code=='AE'" class="AE-logo"></span> 
+                    <span v-if="code=='ETSY'" class="etsy-logo"></span> 
                     <span v-if="code=='WISH'" class="wish-logo"></span> 
                     <template v-if="code=='BM'">北美站</template>
                     <template v-if="code=='EU'">欧洲站</template>
@@ -129,6 +130,7 @@
                                 <template v-else>预入账金额</template>
                             
                             </th>
+
                             <th v-if="platformCode=='EBAY'">PayPal可转出金额</th>
                             <th v-if="['AE','WISH'].indexOf(platformCode)>-1">待处理金额状态</th>
 
@@ -155,7 +157,7 @@
                             {{FormatPrice(item.ebaySettleAmount/100)}}
                             <span  @click="bindRefreshPaypal(item.storeId,1)"  class="el-icon-refresh refresh-icon"></span>
                         </td>
-                            <td v-if="['AE','WISH'].indexOf(platformCode)>-1">
+                        <td v-if="['AE','WISH'].indexOf(platformCode)>-1">
                                 <label class="status-text">
                                     <span class="cares-color" v-if="item.orderImportStatus==0"> <i class="point ING"></i> 未上传店铺订单</span>
                                     <span class="ING" v-if="item.orderImportStatus==1"><i class="point ING"></i> 店铺订单导入中</span>
@@ -184,7 +186,7 @@
                                         </template>
                                     </div>
                                 </label>
-                            </td>
+                        </td>
 
                         <td>{{FormatPrice(item.frozen)}}</td>
                         <td>{{FormatPrice(item.balance)}}</td>
@@ -219,11 +221,11 @@
                             <td><span v-for="(code,index) in item.national.split('/')" :key="index">{{nationName(code)}}<i v-if="index != item.national.split('/').length-1">/</i> </span></td>
                             <td>{{item.currency}}</td>
 
-                                <td v-if="platformCode=='EBAY'">
-                                    {{FormatPrice(item.ebaySettleAmount/100)}}
-                                    <span v-if="item.status==2" @click="bindRefreshPaypal(item.storeId,2)" class="el-icon-refresh refresh-icon"></span>
-                                    <span v-else style="opacity:0;" class="el-icon-refresh refresh-icon"></span>
-                                </td>
+                            <td v-if="platformCode=='EBAY'">
+                                {{FormatPrice(item.ebaySettleAmount/100)}}
+                                <span v-if="item.status==2" @click="bindRefreshPaypal(item.storeId,2)" class="el-icon-refresh refresh-icon"></span>
+                                <span v-else style="opacity:0;" class="el-icon-refresh refresh-icon"></span>
+                            </td>
 
                             <td v-html="item.context"></td>
                             <td class="handle">
@@ -257,10 +259,10 @@
                         <td class="handle">
                                 <router-link class="shopdetail el-icon-more" :to="`/shopdetail/${item.id}`"></router-link>
                                 <router-link class="bindshop" :to="`/addshop?type=2&id=${item.id}`">
-                                    <template v-if="['BM','EU','YD'].indexOf(platformCode)>-1">
+                                    <template v-if="['BM','EU','EBAY','YD'].indexOf(platformCode)>-1">
                                         店铺绑定
                                     </template>
-                                    <template v-if="['WISH','AE','EBAY'].indexOf(platformCode)>-1">
+                                    <template v-if="['WISH','AE','ETSY'].indexOf(platformCode)>-1">
                                         编辑店铺
                                     </template>
                                 </router-link>
@@ -469,7 +471,9 @@
             dueShop(list){
                 
                 list && list.forEach((item,index)=>{
-                    
+                    //2019-6-10 如果是etsy平台，都将变为正常店铺
+                    if(item.platformCode == 'ETSY') item.type = 1;
+
                     switch(item.type){
                         case 1:{ this.storeDone.push(item) }break;
                         case 2:{ this.storeIng.push(item) } break;
@@ -610,6 +614,9 @@
             },
 
             spiceTableData(Data,index){
+
+                if(!Data) return;
+                
                 //Data 源数据  index 当前第几页
                 let PageSize = this.PageData.pageSize;  //每页几条
 

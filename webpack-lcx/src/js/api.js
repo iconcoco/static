@@ -113,6 +113,8 @@ export const AutoPayIsAvailable = params => Axios.post('/autoWithdraw/isAvailabl
 export const getAllPlatformCode = params => Axios.post('/main/getAllPlatformCode',params);
 //3.0.3 商户后台--首页是否可以访问自动提现的页面
 export const getStoreStatusCount = params => Axios.post('/main/getStoreStatusCount',params);
+//3.0.3 商户后台--获取etsy授权页面接口
+export const getEtsyAuthorizeUrl = params => Axios.post('/store/getEtsyAuthorizeUrl',params);
 
 
 

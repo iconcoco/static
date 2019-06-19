@@ -4,10 +4,11 @@
             <h2 class="banner-module-title">所属平台</h2>
             <ul v-if="!ISEDIT">
                 <li> <label :class="{active:PLATFORMCODE=='BM'  }" for="P_BM"><span  class="amazon-logo"></span> 北美站</label> </li>
-                <li> <label :class="{active:PLATFORMCODE=='EU'  }" for="P_EU"><span  class="amazon-logo"></span> 欧洲站</label> </li>
+                <!-- <li> <label :class="{active:PLATFORMCODE=='EU'  }" for="P_EU"><span  class="amazon-logo"></span> 欧洲站</label> </li> -->
                 <li> <label :class="{active:PLATFORMCODE=='YD'  }" for="P_YD"><span  class="amazon-logo"></span> 印度站</label> </li>
                 <li> <label :class="{active:PLATFORMCODE=='EBAY'}" for="P_EBAY"><span  class="ebay-logo"></span></label> </li>
                 <li> <label :class="{active:PLATFORMCODE=='WISH'}" for="P_WISH"><span  class="wish-logo"></span> </label> </li>
+                <!-- <li> <label :class="{active:PLATFORMCODE=='ETSY'}" for="P_ETSY"><span  class="etsy-logo"></span> </label> </li> -->
             </ul>
             <ul v-else>
                 <li> <label v-if="PLATFORMCODE=='BM'  " :class="{active:PLATFORMCODE=='BM'  }" for="P_BM"><span  class="amazon-logo"></span> 北美站</label> </li>
@@ -15,6 +16,7 @@
                 <li> <label v-if="PLATFORMCODE=='YD'  " :class="{active:PLATFORMCODE=='YD'  }" for="P_YD"><span  class="amazon-logo"></span> 印度站</label> </li>
                 <li> <label v-if="PLATFORMCODE=='EBAY'" :class="{active:PLATFORMCODE=='EBAY'}" for="P_EBAY"><span  class="ebay-logo"></span></label> </li>
                 <li> <label v-if="PLATFORMCODE=='WISH'" :class="{active:PLATFORMCODE=='WISH'}" for="P_WISH"><span  class="wish-logo"></span> </label> </li>
+                <!-- <li> <label v-if="PLATFORMCODE=='ETSY'" :class="{active:PLATFORMCODE=='ETSY'}" for="P_ETSY"><span  class="etsy-logo"></span> </label> </li> -->
             </ul>
 
             <input type="radio" v-model="PLATFORMCODE"  value="BM" id="P_BM" />
@@ -22,6 +24,7 @@
             <input type="radio" v-model="PLATFORMCODE"  value="YD" id="P_YD" />
             <input type="radio" v-model="PLATFORMCODE"  value="EBAY" id="P_EBAY" />
             <input type="radio" v-model="PLATFORMCODE"  value="WISH" id="P_WISH" />
+            <!-- <input type="radio" v-model="PLATFORMCODE"  value="ETSY" id="P_ETSY" /> -->
         </div>
 
         <div class="fill-form-container">
@@ -49,6 +52,7 @@
                         <span class="cares-color" v-if="PLATFORMCODE =='EBAY'">eBay</span>
                         <span class="cares-color" v-if="PLATFORMCODE =='WISH'">Wish</span>
                         <span class="cares-color" v-if="PLATFORMCODE =='AE'  ">AliExpress</span>
+                        <span class="cares-color" v-if="PLATFORMCODE =='ETSY'  ">ETSY</span>
                         店铺收款完善信息
                     </p>
                 </h2>
@@ -70,6 +74,9 @@
 
                     :wishAuthTokenCode="wishAuthToken"
                     :wishAuthLink="wishAuthLink"
+
+                    :etsyAuthLink="etsyAuthLink"
+                    :etsyAddflag="etsyAddflag"
                     ></component>
                 </el-form>
 
@@ -98,8 +105,9 @@ import Amazon from './__Add_Amazon.vue';
 import Ebay from './__Add_Ebay.vue';
 import Wish from './__Add_Wish.vue';
 import AliExpress from './__Add_AliExpress.vue';
+import Etsy from './__Add_Etsy.vue';
 
-    import AuthenticationWarning from './../Other/AuthenticationWarning.vue';
+import AuthenticationWarning from './../Other/AuthenticationWarning.vue';
 
  import {
      getflashWithdrawNotice,
@@ -127,6 +135,10 @@ export default {
             //wish
             wishAuthToken:null,             //wish店铺返回的code；
             wishAuthLink:'',
+
+            //etsy
+            etsyAuthLink:null,
+            etsyAddflag:null,
 
             flashWithdraw:{
                 startTime:'',
@@ -179,7 +191,6 @@ export default {
 
                         this.STORE_STATUS !=3 && this.bindChangeTopTab(2);
                     }
-
                     //选择回显的组件
                     this.__changeComponents(this.PLATFORMCODE);
                 }else{
@@ -203,6 +214,14 @@ export default {
                  this.PLATFORMCODE = 'WISH';
                  //wish店铺认证的结果
                  this.wishAuthToken = QUERY.code; 
+             }
+
+            //3.etsy认证返回的链接  ?platformCode=etsy&code=22
+             if(QUERY.platformCode && QUERY.platformCode.toUpperCase() == "ETSY"){
+                 this.PLATFORMCODE = 'ETSY';
+                //  //wish店铺认证的结果
+                //  this.etsyAuthToken = QUERY.code; 
+                this.etsyAddflag = true
              }
 
         }
@@ -230,6 +249,8 @@ export default {
                 case 'TAB' :{ this.bindChangeTopTab(params.value); }break;
                 case 'EBAYLINK' :{ this.eBayAuthLink = params.value; }break;
                 case 'WISHLINK' :{ this.wishAuthLink = params.value; }break;
+                case 'ETSYLINK' :{ this.etsyAuthLink = params.value; }break;
+                //添加结束
                 case 'FILLDONE' :{ this.ISDONE = params.value; }break;
             }
         },
@@ -268,6 +289,7 @@ export default {
               break;
               case 'WISH':{  this.COMPONENTID = "Wish"; }break;
               case 'AE':{ this.COMPONENTID = "AliExpress"; }break;
+              case 'ETSY':{ this.COMPONENTID = "Etsy"; }break;
           }
         },
          canIleaveNow(bol){
@@ -291,6 +313,7 @@ export default {
         AliExpress,
         Amazon,
         Wish,
+        Etsy,
         Ebay
     },
     beforeRouteLeave(to,from,next){
@@ -422,7 +445,7 @@ export default {
                 padding: 0 20px;
                 background-color: #fff;
                 padding-bottom:20px;
-                min-height: 400px;
+                min-height: 460px;
             }
         }
     }

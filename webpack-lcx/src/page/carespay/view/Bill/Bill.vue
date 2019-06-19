@@ -15,7 +15,7 @@
                     </thead>
                     <tbody>
                         <tr v-if="!dataArr || value.length==0" class="empty">
-                            <td colspan="5">暂无数据</td>
+                            <td colspan="6">暂无数据</td>
                         </tr>
                         <tr v-else v-for="(item,index) in dataArr" :key="index">
                             <td data-label="时间">{{item.completeTime}}</td>

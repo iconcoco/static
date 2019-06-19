@@ -25,9 +25,9 @@
 
                 <ElFormItem label="查询时间：">
                     <el-date-picker
-                        type="datetimerange"
+                        type="daterange"
                         v-model="searceFormTime"
-                        value-format="yyyy-MM-dd HH:mm:ss"
+                        value-format="yyyy-MM-dd"
                         range-separator="至"
                         start-placeholder="开始日期"
                         end-placeholder="结束日期"
@@ -356,8 +356,6 @@
             });
             //默认选择一月
             this.changeStartDate(1,true);
-            //查询数据
-            this.bindSearch(1);
         },
         methods: {
             //请求->账单明细
@@ -426,7 +424,7 @@
                  //展示的表格
                 //
                 this.form.startDate = this.searceFormTime ? this.searceFormTime[0] : '';
-                this.form.endDate = this.searceFormTime ? this.searceFormTime[1] : '';
+                this.form.endDate = this.searceFormTime ? `${this.searceFormTime[1]} 23:59:59` : '';
 
                 this.form.pageNum = val;
                 this.switchType = this.form.type;
@@ -481,7 +479,7 @@
                     if(this.searceLi == flag) return;
                     
                     this.searceLi = flag;
-                    this.searceFormTime = [`${startDate} 00:00:00`,`${this.addDate(curDate,0,days)} 23:59:59`];
+                    this.searceFormTime = [startDate,this.addDate(curDate,0,days)];
                     this.bindSearch(1);
                 }else{
                     this.exportLi = flag;

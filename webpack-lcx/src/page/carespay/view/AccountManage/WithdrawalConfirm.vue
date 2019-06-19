@@ -148,6 +148,7 @@ export default {
         //确认提现按钮
         ApplyWithdraw(){
             if(this.verifyCode.length<6) return;
+            if(this.Model.ING) return;
             this.Model.ING = true;
             //申请提现的借口
             applyWithdraw({
