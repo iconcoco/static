@@ -1,0 +1,16 @@
+/* 改变主题色变量 */
+$--color-primary: #409eff;
+$--color-primary-hover: #f6faff;
+
+$--color-danger:#F56C6C;
+$--color-success:#67C23A;
+$--color-warning:#E6A23C;
+$--color-waiting:#999;
+
+// $--color-primary: #FF6333;
+// $--color-primary-hover: rgb(253, 250, 247);
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

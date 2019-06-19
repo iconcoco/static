@@ -1,0 +1,6 @@
+kycList -- KYC审核列表
+    kyc -- KYC审核项目详情
+    kycForm -- kyc审核项目展示的表格
+    holderTabel -- kyc审核中的合伙人的资料审核
+
+accountList -- 账户列表审核

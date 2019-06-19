@@ -1,0 +1,7 @@
+financeForm -- 财务报表
+IbcBillList -- 海外出账列表
+SpareGold -- 备用金管理
+withdrawRecord -- 提现记录
+withdrawDetails -- 提现详情页面
+SettlementList -- 结汇列表
+PlatformBilling -- 平台出账

@@ -1,0 +1,398 @@
+@import './normaly.css';
+
+@import './element-variables.scss';
+
+
+
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.per10 {
+    width: 10%;
+}
+
+.per15 {
+    width: 15%;
+}
+
+.per20 {
+    width: 20%;
+}
+
+.per25 {
+    width: 25%;
+}
+
+.per30 {
+    width: 30%;
+}
+
+.per40 {
+    width: 40%;
+}
+
+.per50 {
+    width: 50%;
+}
+
+.mg-bt-0{
+    margin-bottom: 0 !important;
+}
+
+.waiting{
+    color: $--color-waiting !important;
+}
+
+.ing{
+    color: $--color-warning !important;
+}
+
+.yes{
+    color: $--color-success !important;
+}
+
+.no{
+    color: $--color-danger !important;
+}
+
+.point{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right:5px;
+    &.no{
+        background-color: $--color-danger;
+    }
+    &.yes{
+        background-color: $--color-success;
+    }
+    &.warning{
+        background-color: $--color-warning;
+    }
+    &.ING{
+        background-color: $--color-waiting;
+    }
+}
+
+.primary{
+    color: $--color-primary !important;
+}
+
+.bg-fff{
+    background-color: #fff;
+}
+
+table{
+    width: 100%;
+    background-color: #fff;
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+// 加载进度条的颜色
+#nprogress {
+    .spinner{
+        z-index: 3000;
+    }
+    .bar{
+        background:$--color-primary;
+        z-index: 3000;
+    }
+    .peg{
+        box-shadow:0 0 10px $--color-primary, 0 0 5px $--color-primary;
+    }
+    .spinner-icon{
+        border-top-color:$--color-primary;
+        border-left-color:$--color-primary;
+    }
+
+}
+
+// 滚动条
+body,div,nav,ul,ol{
+    &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
+        height: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块样式*/
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        background: #aaa;
+    }
+    &::-webkit-scrollbar-track {
+    /*滚动条里面轨道样式*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        border-radius: 0;
+        background: rgba(0, 0, 0, 0.1);
+    }
+}
+
+//4.input
+.el-input {
+    // width: 170px;
+    height: 30px;
+    line-height: 30px;
+    .el-input__inner {
+        width: 100%;
+        height: 100%;
+        line-height: 30px;
+        padding: 0;
+        padding-left: 8px;
+        // border: none;
+        background-color: $--color-primary-hover;
+        border: 1px solid $--color-primary-hover;
+    }
+
+    .el-input__icon {
+        color: $--color-primary;
+    }
+}
+
+//日期范围选择
+.el-range-editor.el-input__inner{
+    height: 34px;
+    line-height: 34px;
+    vertical-align: middle;
+    background-color: $--color-primary-hover;
+    border: 1px solid $--color-primary-hover;
+    .el-range-input{
+        text-align: left;
+        padding-left: 10px;
+        background-color: $--color-primary-hover;
+    }
+    .el-range__icon{
+        color: $--color-primary;
+        line-height: 28px;
+    }
+    .el-range-separator{
+        line-height: 28px;
+    }
+}
+
+
+//1. table
+.table-container{
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+    &:last-child{
+        margin-bottom: 0px;
+    }
+}
+table{
+    margin: 20px 0;
+    // margin-top: 20px;
+    // margin-bottom: 20px;
+    thead{
+        th{
+            height: 40px;
+            // text-align: center !important;
+            border: 1px solid #F5F5F5;
+            vertical-align: middle;
+            // background-color: $--color-primary-hover !important;
+            font-size: 13px;
+            background-color: #f8f8f8;;
+            color: #999;
+            text-align: center;
+            padding-left: 8px;
+            font-weight: normal;
+            .sort{
+                display: inline-block;
+                width: 14px;
+                height: 24px;
+                vertical-align: middle;
+                span{
+                    float: left;
+                    cursor: pointer;
+                    height: 10px;
+                    &:hover{
+                        color: #2593FC;
+                    }
+                }
+            }
+        }
+    }
+    tbody{
+        tr{
+            background-color: #fff;
+            transition: all .3s;
+            &:hover{
+                background-color: $--color-primary-hover;
+            }
+        }
+        td{
+            border: 1px solid #F5F5F5;
+            height: 45px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 12px;
+            color: #495060;
+
+            .el-date-editor.el-input,
+            .el-input,
+            .el-select
+            {
+                width:50%;
+            }
+        }
+    }
+}
+
+.el-picker-panel__body{
+    table{
+        margin-top: 0;
+        tbody{
+            tr{
+                background-color: #fff;
+                &:hover{
+                    background-color: #fff;
+                }
+            }
+            td{
+               border: none;
+            }
+        }
+    }
+}
+
+//2. tab 切换
+.admin-tab{
+    height: 44px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    li{
+        float: left;
+        height: 100%;
+        font-size: 14px;
+        color: #333;
+        line-height: 44px;
+        cursor: pointer;
+        padding: 0 15px;
+        border: 1px solid #eee;
+        border-bottom: 0;
+        border-left: 0;
+        border-top: 2px solid transparent;
+        &:hover{
+            color:$--color-primary;
+        }
+        &.active{
+            height: 42px;
+            color:$--color-primary;
+            background-color: #fff;
+            border-top-color: $--color-primary;
+            padding-bottom: 0px;
+            box-sizing: content-box;
+        }
+    }
+}
+
+.admin-tab-title{
+    position: relative;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 10px;
+    &::before{
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 16px;
+        background-color: $--color-primary;
+        left: 0px;
+        top: 50%;
+        margin-top:-8px;
+    }
+}
+
+
+//3. form-inline
+
+.admin-form-inline{
+    //lable
+    .el-form-item__label{
+        width: auto;
+        text-align: left;
+    }
+    .el-form-item__content{
+        width: 146px;
+    }
+    // data
+    .el-date-editor.el-input{
+        width: 146px;
+    }
+
+    .widthAuto{
+        .el-form-item__content{
+            width: auto;
+            height: auto;
+            max-width: 800px;
+        }
+    }
+}
+
+//4. 模态框
+.el-popover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.2) !important;
+    border: none;
+    box-shadow: none;
+    z-index: 88;
+    padding: 0;
+    >div{
+        position: absolute;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        top: 50px;
+    }
+}
+
+
+//组件离开和进入的动画
+.fade-enter-active {
+  transition: all .8s ease;
+}
+.fade-leave-active {
+    opacity: 0;
+//   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-enter, .fade-leave-to
+// .fade-enter
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.fadeIn{
+    animation: fadeIn .8s ease;
+  }
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.pswp{
+    z-index: 3001;
+}

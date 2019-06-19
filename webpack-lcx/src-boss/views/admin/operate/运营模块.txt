@@ -1,0 +1,6 @@
+channelAdmin -- 渠道管理
+subAccount -- 子账号管理
+spokesman -- 代言人活动管理界面
+SpokesmanWithdraw -- 代言人活动提现记录
+withdrawDetails -- 代言人活动提现详情页面
+monitoring -- 代言人活动数据监测统计
